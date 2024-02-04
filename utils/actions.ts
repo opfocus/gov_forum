@@ -1,4 +1,3 @@
-export const revalidate = 0
 "use server";
 import * as Realm from "realm-web";
 
