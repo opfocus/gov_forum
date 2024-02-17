@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import ReplyControlPanel from "@/ui/reply-control-panel";
 import ReplyBottomControlPanel from "@/ui/reply-bottom-control-panel";
-import Editor from "@/app/components/focus-plugin";
+import Editor from "@/app/_components/focus-plugin";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { createPost } from "@/lib/createPost";
 import type { Post } from "@/lib/type";

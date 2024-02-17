@@ -2,14 +2,25 @@ import "style/globals.css";
 import { Metadata } from "next";
 import GlobalNav from "ui/global-nav";
 
-import OpenEditorProvider from "@/app/components/open-editor-provider";
+import OpenEditorProvider from "@/app/_components/open-editor-provider";
 import TopicCreate from "@/ui/topic-create";
 
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 export const metadata: Metadata = {
-  title: "experiment",
-  description: "This is one of my work, I need to complete it...",
+  generator: "Next.js",
+  applicationName: "Gov_forum",
+  referrer: 'origin-when-cross-origin',
+  keywords: ['op', 'OP', 'optimism', 'op stack', 'SuperChain', 'L2','governace','forum'],
+  creator: 'simple8720',
+
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
+  
+  title: {
+    default: "gov_forum",
+    template: "%s | gov_forum"
+  },
+  description: "Optimism governance forum clone, For sharing and learning",
   // openGraph: {
   //   title: 'experiment work',
   //   description: 'This is my experiment work, hover I need complete it. Come on!',

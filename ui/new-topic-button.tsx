@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { OpenEditorContext } from "@/app/components/open-editor-provider";
+import { OpenEditorContext } from "@/app/_components/open-editor-provider";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 
