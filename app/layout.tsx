@@ -2,22 +2,49 @@ import "style/globals.css";
 import { Metadata } from "next";
 import GlobalNav from "ui/global-nav";
 
-import OpenEditorProvider from "@/app/components/open-editor-provider";
+import OpenEditorProvider from "@/app/_components/open-editor-provider";
 import TopicCreate from "@/ui/topic-create";
 
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 export const metadata: Metadata = {
-  title: "experiment",
-  description: "This is one of my work, I need to complete it...",
-  // openGraph: {
-  //   title: 'experiment work',
-  //   description: 'This is my experiment work, hover I need complete it. Come on!',
-  //   images: [`/api/og?title=Next.js App Router`],
-  // },
-  // twitter: {
-  //   card: 'summary_large_image',
-  // }
+  generator: "Next.js",
+  applicationName: "Gov Forum",
+  referrer: "origin-when-cross-origin",
+  keywords: [
+    "op",
+    "OP",
+    "optimism",
+    "op stack",
+    "SuperChain",
+    "L2",
+    "governace",
+    "forum",
+  ],
+  creator: "simple8720",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
+  alternates: {
+    canonical: '/',
+  },
+  title: {
+    default: "gov_forum",
+    template: "%s | gov_forum",
+  },
+  description: "Optimism governance forum clone, For sharing and learning",
+
+  verification: {
+    google: 'google918a5c421d729bcd',
+  },
+
+  openGraph: {
+    title: 'gov_forum"',
+    url: '/',
+    description: "Optimism governance forum clone, For sharing and learning",
+    siteName: 'Gov Forum'
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

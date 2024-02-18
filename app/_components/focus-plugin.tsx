@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { theme } from "@/app/components/plugins/theme";
+import { theme } from "@/app/_components/plugins/theme";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
 

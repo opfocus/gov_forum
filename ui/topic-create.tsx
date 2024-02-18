@@ -1,36 +1,36 @@
 //   todo:  title need requaried.  building....
 
-
 "use client";
 
-import { useState, useContext  } from "react";
-import { OpenEditorContext } from "@/app/components/open-editor-provider";
+import { useState, useContext } from "react";
+import { OpenEditorContext } from "@/app/_components/open-editor-provider";
 import clsx from "clsx";
 
 import TopicCreateControlPanel from "@/ui/topic-create-control-panel";
 import TopicCreateBottomControlPanel from "@/ui/topic-create-bottom-control-panel";
 import TopicEditorTitleCategoryTag from "./topic-editor-title-category-tag";
-import Editor from "@/app/components/focus-plugin";
+import Editor from "@/app/_components/focus-plugin";
 
-import {generateSlug} from '@/lib/genrateTopicSlug'
+import { generateSlug } from "@/lib/genrateTopicSlug";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { createTopic } from "@/lib/createTopic";
 import { createPost } from "@/lib/createPost";
-import type { Post, Topic} from "@/lib/type";
+import type { Post, Topic } from "@/lib/type";
 
 export default function TopicCreate() {
   const [isZoomEditorTextarea, setIsZoomEditorTextarea] = useState(false);
   const context = useContext(OpenEditorContext);
   const [myString, setMyString] = useState("");
-  const {user} = useUser()
-  const [status, setStatus] =useState("create")
+  const { user } = useUser();
+  const [status, setStatus] = useState("create");
 
   const [categorySelected, setCategorySelected] = useState<
-  {
-    id: number,
-    name: string
-  } | undefined
-  >()
+    | {
+        id: number;
+        name: string;
+      }
+    | undefined
+  >();
 
   const [tagSelected, setTagSelected] = useState([""]);
 
@@ -83,76 +83,99 @@ export default function TopicCreate() {
   };
 
   const handleCreate = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/counters`)
-    const [newPostIdCounter, newTopicIdCounter] = await res.json() 
+    const res = await fetch('api/counters');
+    const [newPostIdCounter, newTopicIdCounter] = await res.json();
 
     // topic construct
-    //asign new topic id 
-     const topiciId = newTopicIdCounter.sequence_value
-    
-    const inputElement = document.getElementById('topic-input') as HTMLInputElement;
-   
-   
-   title = inputElement.value;
+    //asign new topic id
+    const topiciId = newTopicIdCounter.sequence_value;
+
+    const inputElement = document.getElementById(
+      "topic-input"
+    ) as HTMLInputElement;
+
+    title = inputElement.value;
 
     //asign new topic create date
-     const create_at = (new Date()).toISOString()
+    const create_at = new Date().toISOString();
     // asign new topic post stream
-     const stream = [newPostIdCounter.sequence_value]
+    const stream = [newPostIdCounter.sequence_value];
     //asign new topic slug
-     const topicSlug = generateSlug(title)
-     const user_id = user?.sub!
+    const topicSlug = generateSlug(title);
+    const user_id = user?.sub!;
     // user name
-     const user_name = user!.nickname!
+    const user_name = user!.nickname!;
     //tag name
-     const tags = tagSelected
+    const tags = tagSelected;
     //category id (hard write for testing)
-     const category_id = categorySelected!.id
-     const category_name = categorySelected!.name
-     const last_posted_at = create_at
-     const avatar_template = user?.picture!
+    const category_id = categorySelected!.id;
+    const category_name = categorySelected!.name;
+    const last_posted_at = create_at;
+    const avatar_template = user?.picture!;
 
-    const topic: Topic = createTopic(topiciId, title, create_at, stream, topicSlug, user_id, user_name, tags,category_id, category_name, last_posted_at, avatar_template)
+    const topic: Topic = createTopic(
+      topiciId,
+      title,
+      create_at,
+      stream,
+      topicSlug,
+      user_id,
+      user_name,
+      tags,
+      category_id,
+      category_name,
+      last_posted_at,
+      avatar_template
+    );
     //post construct
     //post id
-    const postId =  newPostIdCounter.sequence_value
+    const postId = newPostIdCounter.sequence_value;
     // psot related user name
-     const name = user?.name!
+    const name = user?.name!;
     //post cooked
-     const cooked = myString
+    const cooked = myString;
 
-    const post: Post = createPost(postId, name, user_name, user_id, avatar_template, create_at, cooked, topiciId, topicSlug)
+    const post: Post = createPost(
+      postId,
+      name,
+      user_name,
+      user_id,
+      avatar_template,
+      create_at,
+      cooked,
+      topiciId,
+      topicSlug
+    );
 
     //for testing... (not complete)
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/posts`, {
+    fetch('/api/posts', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(post),
-      })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-      })
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/topic`, {
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+    });
+    fetch('api/topic', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(topic),
-      })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-      })
-      setStatus("created")
-    }
-    
-    let title 
-   const createable:boolean =  myString !== '' &&  tagSelected[0] !== '' && categorySelected !== undefined
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+    });
+    setStatus("created");
+  };
+
+  let title;
+  const createable: boolean =
+    myString !== "" && tagSelected[0] !== "" && categorySelected !== undefined;
   return (
     <div
       className={clsx(
@@ -187,11 +210,11 @@ export default function TopicCreate() {
                   hidden: isZoomEditorTextarea,
                 })}
               >
-                <TopicEditorTitleCategoryTag 
-                  categorySelected = {categorySelected}
-                  setCategorySelected = {setCategorySelected}
-                  tagSelected = {tagSelected}
-                  setTagSelected ={setTagSelected}
+                <TopicEditorTitleCategoryTag
+                  categorySelected={categorySelected}
+                  setCategorySelected={setCategorySelected}
+                  tagSelected={tagSelected}
+                  setTagSelected={setTagSelected}
                 />
               </div>
               <div className="  border border-solid border-gray-400 growo">
@@ -202,7 +225,12 @@ export default function TopicCreate() {
               </div>
             </div>
           </div>
-          <TopicCreateBottomControlPanel handleCreate={handleCreate} createable = {createable} status ={status} setStatus = {setStatus}/>
+          <TopicCreateBottomControlPanel
+            handleCreate={handleCreate}
+            createable={createable}
+            status={status}
+            setStatus={setStatus}
+          />
         </div>
       </div>
     </div>

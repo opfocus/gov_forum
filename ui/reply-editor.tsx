@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import ReplyControlPanel from "@/ui/reply-control-panel";
 import ReplyBottomControlPanel from "@/ui/reply-bottom-control-panel";
-import Editor from "@/app/components/focus-plugin";
+import Editor from "@/app/_components/focus-plugin";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { createPost } from "@/lib/createPost";
 import type { Post } from "@/lib/type";
@@ -102,7 +102,7 @@ export default function ReplyEditor({
       reply_to_post_number,
     );
 
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/reply`, {
+    fetch('/api/reply', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

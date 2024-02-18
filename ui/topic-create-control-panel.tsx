@@ -1,7 +1,7 @@
 " use client";
 
 import { useContext } from "react";
-import { OpenEditorContext } from "@/app/components/open-editor-provider";
+import { OpenEditorContext } from "@/app/_components/open-editor-provider";
 
 import { PlusIcon, ChevronDownIcon } from "@heroicons/react/solid";
 
