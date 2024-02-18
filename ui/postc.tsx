@@ -2,7 +2,7 @@
 
 import { formatTimeSince } from "@/utils/formatTimeSince";
 import { useState, useContext } from "react";
-import { OpenEditorContext } from "@/app/components/open-editor-provider";
+import { OpenEditorContext } from "@/app/_components/open-editor-provider";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { usePathname } from "next/navigation";
 import type { Post } from "@/lib/type";

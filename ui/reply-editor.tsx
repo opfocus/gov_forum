@@ -102,7 +102,7 @@ export default function ReplyEditor({
       reply_to_post_number,
     );
 
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/reply`, {
+    fetch('/api/reply', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

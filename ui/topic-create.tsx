@@ -83,7 +83,7 @@ export default function TopicCreate() {
   };
 
   const handleCreate = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/counters`);
+    const res = await fetch('api/counters');
     const [newPostIdCounter, newTopicIdCounter] = await res.json();
 
     // topic construct
@@ -148,7 +148,7 @@ export default function TopicCreate() {
     );
 
     //for testing... (not complete)
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/posts`, {
+    fetch('/api/posts', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -159,7 +159,7 @@ export default function TopicCreate() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
     });
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/topic`, {
+    fetch('api/topic', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
