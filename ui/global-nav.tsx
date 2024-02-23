@@ -18,6 +18,7 @@ export default async function GlobalNav() {
             alt="OP Logo"
             width={40}
             height={40}
+            priority= {true}
           ></Image>
         </Link>
         <div className=" relative flex flex-row gap-2 items-center">
