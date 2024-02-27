@@ -46,7 +46,7 @@ export default async function TopicsLatest() {
               className="rounded-full"
             ></img>
             <div className="flex flex-col grow">
-            <Link href={"t/"+topic.slug + "/" + topic.id.toString()}>{topic.title}</Link>
+            <Link href={"t/"+topic.slug + "/" + topic.id.toString()} scroll={false}>{topic.title}</Link>
               <div className=" text-sm text-gray-400 font-light">
                 {`${topic.category_name} ${topic.tags.join(',')}`}
               </div>

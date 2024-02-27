@@ -45,7 +45,7 @@ export default async function TopicsList({
             >
               <td className=" text-left px-2 py-3">
                 <div className=" text-base font-medium text-gray-700 whitespace-nowrap">
-                  <Link href={"/t/"+topic.slug + "/" + topic.id.toString()}>{topic.title}</Link>
+                  <Link href={"/t/"+topic.slug + "/" + topic.id.toString()} scroll={true}>{topic.title}</Link>
                 </div>
                 <div className=" flex flex-row gap-1 justify-start text-sm font-normal text-gray-400">
                   <span>{topic.category_name}</span>

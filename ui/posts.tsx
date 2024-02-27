@@ -15,7 +15,7 @@ export default function Posts({
   const [isOpenReplyEdior, setIsOpenReplyEditor] = useState(false);
 
   return (
-    <div>
+    <div className=" grow">
       {postsRecord.map((post, index) => (
         <PostC 
         key={index}
