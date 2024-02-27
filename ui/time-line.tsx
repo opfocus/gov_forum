@@ -5,12 +5,10 @@ The first method uses router.push(). Test result: After navigation, unable to se
 The second method uses window.scrollTo()
 */
 import { useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
 import type { Post } from "@/lib/type";
 import { formatTimeSince } from "@/utils/formatTimeSince";
 import { formatDate } from "@/utils/formatDate";
 
-// test, Assume there are 10 posts in total
 const sideScrollAreaHeight = 240;
 
 export default function TimeLine({
@@ -27,7 +25,6 @@ export default function TimeLine({
   const [scrollerPosition, setScrollerPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartY, setDragStartY] = useState(0);
-  // const router = useRouter()
 
   useEffect(() => {
     if (activePostId) {
@@ -39,7 +36,6 @@ export default function TimeLine({
 
   const scrollerHeight = sideScrollAreaHeight / postCount;
 
-  // Math.floor(scrollerPosition / (sideScrollAreaHeight / postCount))
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setDragStartY(e.clientY);
@@ -153,7 +149,6 @@ export default function TimeLine({
           {formatTimeSince(postsRecord[postCount - 1].created_at)}
         </div>
       </div>
-      <div>{/* ... */}</div>
     </div>
   );
 }

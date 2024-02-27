@@ -1,8 +1,9 @@
 "use server";
 import * as Realm from "realm-web";
+import { cache } from 'react'
 
 ////////////////////
-export const getTopics = async (
+export const getTopics = cache(async (
   queryFrom: string | undefined = undefined,
   queryValue: string | undefined = undefined
 ) => {
@@ -36,7 +37,7 @@ export const getTopics = async (
       break
     }
     return JSON.stringify(data);
-  }
+  })
 ///////////
 export const getPosts = async (topicId: number) => {
   const apiKey = process.env.REALM_API_KEY!;

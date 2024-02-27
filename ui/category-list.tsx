@@ -1,12 +1,8 @@
 import Link from "next/link";
-import {getCategories} from "@/utils/getCategories";
 
-export const revalidate = 3600 // revalidate the data at most every hour
-
-export default async function CategoryList() {
-  
-
-  const categories = await getCategories() 
+export default async function CategoryList({categories}: {
+  categories: any[]
+}) {
 
   return (
     <table className="w-full">

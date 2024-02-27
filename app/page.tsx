@@ -4,13 +4,24 @@ import TopicsLatest from "@/ui/topics-latest";
 import NewTopicButton from "@/ui/new-topic-button";
 import Banner from "@/ui/banner";
 
-export const revalidate = 60;
+import {getCategories} from "@/utils/getCategories";
+import { getTopics } from "@/utils/actions";
+
 // test only
 import TestUi from "@/ui/test-ui";
 import { Suspense } from "react";
 import Processing from "@/ui/processing";
 
-export default function Page() {
+export const revalidate = 1800
+
+
+export default async function Page() {
+
+  
+  const categories = await getCategories() 
+  const res = await getTopics();
+  let topics = JSON.parse(res)
+
   return (
     <div className="space-y-6">
       <Banner />
@@ -20,17 +31,18 @@ export default function Page() {
       </div>
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className=" w-full lg:flex-1">
-          <Suspense fallback={<Processing />} >
-          <CategoryList />
+          <Suspense fallback={<Processing />}>
+            <CategoryList categories={categories}/>
           </Suspense>
         </div>
         <div className=" w-full lg:flex-1">
-        <Suspense fallback={<Processing />} >
-          <TopicsLatest />
-        </Suspense>
+          <Suspense fallback={<Processing />}>
+            <TopicsLatest  topics={topics}/>
+          </Suspense>
         </div>
       </div>
       <TestUi />
     </div>
   );
 }
+

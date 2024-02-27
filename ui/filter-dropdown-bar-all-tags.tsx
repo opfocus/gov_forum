@@ -10,6 +10,9 @@ import Processing from './processing';
 
 import Link from "next/link";
 
+
+export const revalidate = 1800
+
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
@@ -23,7 +26,7 @@ export default function FilterDropdownBarAllTags() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/tags');
+        const response = await fetch('/api/tags')
         const tags = await response.json();
         setSearchedTags(tags);
         setTags(tags)
