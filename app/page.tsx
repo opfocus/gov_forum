@@ -8,7 +8,6 @@ import {getCategories} from "@/utils/getCategories";
 import { getTopics } from "@/utils/actions";
 
 // test only
-import TestUi from "@/ui/test-ui";
 import { Suspense } from "react";
 import Processing from "@/ui/processing";
 
@@ -41,7 +40,6 @@ export default async function Page() {
           </Suspense>
         </div>
       </div>
-      <TestUi />
     </div>
   );
 }
