@@ -8,6 +8,8 @@ import { SearchIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import Processing from "./processing";
 
+export const revalidate = 1800
+
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
@@ -23,7 +25,7 @@ export default function FilterDropdownBarCategories() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/categories');
+        const response = await fetch('/api/categories')
         const categories = await response.json();
 
         setCategories(categories);

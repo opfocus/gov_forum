@@ -1,5 +1,5 @@
-export   const formatTimeSince = (timestamp: string): string => {
-  const lastPostDate = new Date(timestamp) as Date;
+export   const formatTimeSince = (dateString: string): string => {
+  const lastPostDate = new Date(dateString) as Date;
   const currentDate = new Date() as Date;
   const difference =
     (currentDate.getTime() - lastPostDate.getTime()) / (1000 * 60);

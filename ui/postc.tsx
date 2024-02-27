@@ -62,7 +62,7 @@ export default function PostC({
   return (
         <div
           id={`post-${index}`}
-          className=" max-w-4xl border-t border-solid border-gray-200 flex flex-row gap-1"
+          className=" max-w-3xl border-t border-solid border-gray-200 flex flex-row gap-1"
         >
           <img
             src={post.avatar_template}
