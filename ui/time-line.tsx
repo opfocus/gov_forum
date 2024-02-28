@@ -2,7 +2,7 @@
 /*
 Test two methods of side(time-line) navigation. 
 The first method uses router.push(). Test result: After navigation, unable to set the position of elements; the global navigation bar (nav) is covering some content. 
-The second method uses window.scrollTo()
+The second method uses window.scrollTo()/.scrollIntoView()
 */
 import { useEffect, useState } from "react";
 import type { Post } from "@/lib/type";
@@ -15,12 +15,12 @@ export default function TimeLine({
   postCount,
   postsRecord,
   activePostId,
-  setActivePostId,
+  setNextPostIndex,
 }: {
   postCount: number;
   postsRecord: Post[];
   activePostId: string | undefined;
-  setActivePostId: (id: string) => void;
+  setNextPostIndex: (id: string) => void;
 }) {
   const [scrollerPosition, setScrollerPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -58,7 +58,8 @@ export default function TimeLine({
   };
   const handleMouseLeave = () => {
     setIsDragging(false);
-    setActivePostId(
+    console.log("hello")
+    setNextPostIndex(
       `post-${Math.floor(
         scrollerPosition / (sideScrollAreaHeight / postCount)
       )}`
@@ -71,7 +72,7 @@ export default function TimeLine({
     if (parentTop !== null) {
       const newRelativeTopToParent = e.clientY - parentTop;
 
-      setActivePostId(
+      setNextPostIndex(
         `post-${Math.floor(
           newRelativeTopToParent / (sideScrollAreaHeight / postCount)
         )}`

@@ -14,6 +14,7 @@ export default function PostsStream() {
   const [topicRecord, setTopicRecord] = useState<Topic | undefined>(undefined);
   const [postsRecord, setPostsRecord] = useState<Post[] | undefined>(undefined);
   const [activePostId, setActivePostId] = useState<string | undefined>(undefined);
+  const [nextPostIndex, setNextPostIndex] = useState<string | undefined>(undefined)
 
   const params = useParams<{ title: string; id: string }>();
 
@@ -59,13 +60,13 @@ export default function PostsStream() {
   useEffect(() => {
     let postElement
 
-    if (activePostId !== undefined) {
-       postElement = document.getElementById(activePostId)
+    if (nextPostIndex !== undefined) {
+       postElement = document.getElementById(nextPostIndex)
        if (postElement) {
         postElement.scrollIntoView({block: "start"});
       }
     } 
-  }, [activePostId])
+  }, [nextPostIndex])
 
   if (topicRecord === undefined || postsRecord === undefined)
     return <Processing />;
@@ -87,7 +88,7 @@ export default function PostsStream() {
             postCount={postsRecord.length}
             postsRecord={postsRecord}
             activePostId={activePostId}
-            setActivePostId = {setActivePostId}
+            setNextPostIndex = {setNextPostIndex}
           />
         </div>
       </div>
