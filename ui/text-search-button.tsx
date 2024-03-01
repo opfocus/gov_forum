@@ -8,8 +8,7 @@ export default function TextSearchButton() {
   return (
     <Menu as="div" className="inline-block ">
       <div>
-        <Menu.Button className=" p-1 text-gray-400 hover:text-gry-700 hover:bg-gray-200 cursor-not-allowed"
-        title="TBA">
+        <Menu.Button className=" p-1 text-gray-400 hover:text-gry-700 hover:bg-gray-200">
           <SearchIcon className=" block w-8" />
         </Menu.Button>
         <TextSearch />

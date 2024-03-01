@@ -113,3 +113,39 @@ export const generatePostId = async () => {
 
   return JSON.stringify(nextPostId);
 };
+//////////////////////////////////////////////
+import type { Post } from "@/app/api/post";
+export const searchPosts = async (prevState: string, formData: FormData) => {
+
+  const rawFormData = Object.fromEntries(formData.entries())
+
+  console.log(rawFormData)
+
+  const apiKey = process.env.REALM_API_KEY!;
+  const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID! });
+
+  // Log in user using realm API key
+  const credentials = Realm.Credentials.apiKey(apiKey);
+  const user = await app.logIn(credentials);
+
+  // Connect to database
+  const mongo = user.mongoClient("mongodb-atlas");
+
+  const collection = mongo.db("forum_demo").collection("posts");
+
+  const data:Post[] = await collection.aggregate([
+    {
+      $search: {
+        index: "content",
+        text: {
+          query: rawFormData.keyworlds,
+          path: {
+            wildcard: "*"
+          }
+        }
+      }
+    }
+  ]);
+  return JSON.stringify(data)
+}
+
