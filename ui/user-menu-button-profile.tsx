@@ -1,5 +1,5 @@
 'use client'
-import { UserIcon, ViewListIcon, UserAddIcon, PencilIcon,CogIcon, LockOpenIcon, LogoutIcon} from "@heroicons/react/solid"
+import { UserIcon, ListBulletIcon, UserPlusIcon, PencilIcon,CogIcon, LockOpenIcon, } from "@heroicons/react/16/solid"
 import LogoutButton from "./logout-button"
 import Link from "next/link"
 
@@ -17,14 +17,14 @@ export default function UserMenuButtonProfile () {
       <li key={2} className=" hover:bg-gray-200 p-2">
         <Link href = {'#'} className="flex flex-row justify-start items-center cursor-not-allowed"
          title="TBA">
-          <ViewListIcon className=" w-5 h-5 text-gray-400   "/>
+          <ListBulletIcon className=" w-5 h-5 text-gray-400   "/>
           <span className=" pl-2 text-base">Active</span>
         </Link>
       </li>
       <li key={3} className=" hover:bg-gray-200 p-2">
         <Link href = {'#'} className="flex flex-row justify-start items-center cursor-not-allowed"
          title="TBA">
-          <UserAddIcon className=" w-5 h-5 text-gray-400   "/>
+          <UserPlusIcon className=" w-5 h-5 text-gray-400   "/>
           <span className=" pl-2 text-base">Invites</span>
         </Link>
       </li>

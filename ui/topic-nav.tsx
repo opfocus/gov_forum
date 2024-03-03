@@ -1,11 +1,11 @@
 import {
   LinkIcon,
   FlagIcon,
-  ReplyIcon,
+  ArrowUturnLeftIcon,
   BellIcon,
   BookmarkIcon,
   ChevronDownIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/16/solid";
 
 export default function TopicNav() {
   return (
@@ -24,7 +24,7 @@ export default function TopicNav() {
           <span>Flag</span>
         </button>
         <button className=" bg-gray-200 hover:bg-gray-400 text-gray-600 hover:text-gray-200">
-          <ReplyIcon />
+          <ArrowUturnLeftIcon />
           <span>Reply</span>
         </button>
       </div>

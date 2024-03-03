@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { OpenEditorContext } from "@/app/_components/open-editor-provider";
 
-import { PlusIcon, ChevronDownIcon } from "@heroicons/react/solid";
+import { PlusIcon, ChevronDownIcon } from "@heroicons/react/16/solid";
 
 export default function TopicCreateControlPanel({
   isZoomEditorTextarea,

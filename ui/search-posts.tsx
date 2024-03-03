@@ -1,6 +1,6 @@
 'use client'
 
-import { SearchIcon,  ArrowNarrowRightIcon} from "@heroicons/react/outline";
+import { MagnifyingGlassIcon,  ArrowLongRightIcon} from "@heroicons/react/16/solid";
 import { searchPosts } from "@/utils/actions";
 import { useFormState } from "react-dom";
 import SearchPostsResult from "./search-posts-result";
@@ -38,7 +38,7 @@ export default function SearchPosts() {
               type="submit"
               className=" px-2 py-1 text-white bg-blue-400 hover:bg-blue-700 flex flex-row gap-1 items-center"
             >
-              <SearchIcon className="w-5 h-5" />
+              <MagnifyingGlassIcon className="w-5 h-5" />
               <span>Search</span>
             </button>
           </div>
@@ -170,7 +170,7 @@ export default function SearchPosts() {
                 <br />
                 <div className="mt-1 flex flex-row gap-2 w-full items-center text-gray-500">
                   <input type="number" placeholder="min" name="posts_min" id="post_min" className=" w-5/12 px-2 py-1 border border-solid border-gray-400 grow focus: outline-blue-400"/>
-                  <ArrowNarrowRightIcon className=" w-5 h-5" />
+                  <ArrowLongRightIcon className=" w-5 h-5" />
                   <input type="number" placeholder="max" name="posts_max" id="post_max"
                   className=" w-5/12 px-2 py-1 border border-solid border-gray-400 grow focus: outline-blue-400"/>
                 </div>
@@ -182,7 +182,7 @@ export default function SearchPosts() {
                 <br />
                 <div className="mt-1 flex flex-row gap-2 items-center text-gray-500">
                   <input type="number" placeholder="min" id="views_min" name="views_min" className=" w-5/12 px-2 py-1 border border-solid border-gray-400 grow focus: outline-blue-400"/>
-                  <ArrowNarrowRightIcon className=" w-5 h-5" />
+                  <ArrowLongRightIcon className=" w-5 h-5" />
                   <input type="number" placeholder="max" name="views_max" id="views_max"
                   className=" w-5/12 px-2 py-1 border border-solid border-gray-400 grow focus: outline-blue-400"/>
                 </div>

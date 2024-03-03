@@ -1,9 +1,9 @@
 'use client'
 
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { SearchIcon } from "@heroicons/react/solid";
+import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import type { Tag } from '@/lib/type';
 import { useParams } from 'next/navigation';
 import Processing from './processing';
@@ -84,7 +84,7 @@ export default function FilterDropdownBarAllTags() {
               onChange={(e) => handleChange(e)}
               value={searchValue}
             />
-            <SearchIcon className="w-5 h-5" />
+            <MagnifyingGlassIcon className="w-5 h-5" />
           </div>
           <div className=" overflow-y-auto h-96 ">
             {data == undefined ? 

@@ -1,7 +1,7 @@
 " use client";
 
 import type { Post } from "@/lib/type";
-import { ChevronDownIcon, ReplyIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, ArrowUturnLeftIcon } from "@heroicons/react/16/solid";
 
 export default function ReplyControlPanel({
   isZoomEditorTextarea,
@@ -22,7 +22,7 @@ export default function ReplyControlPanel({
           <span className=" text-sm text-blue-300">{replyWhichPost?.username}</span>
         </div>
         <button className=" p-1 border border-gray-400 border-solid hover:bg-gray-200">
-          <ReplyIcon className="w-4 h-4" />
+          <ArrowUturnLeftIcon className="w-4 h-4" />
         </button>
       </div>
       <div className=" flex flex-row gap-2">

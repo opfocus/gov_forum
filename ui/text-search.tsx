@@ -1,9 +1,9 @@
 "use client";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { useFormState } from "react-dom";
 import { Menu, Transition } from "@headlessui/react";
 import Link from "next/link";
-import { SearchIcon } from "@heroicons/react/solid";
+import { MagnifyingGlassIcon} from "@heroicons/react/16/solid";
 import { searchPosts } from "@/utils/actions";
 import type { Post } from "@/lib/type";
 
@@ -58,7 +58,7 @@ export default function TextSearch() {
               type="submit"
               className=" px-2 py-1 flex flex-row gap-1 items-center"
             >
-              <SearchIcon className=" w-4 h-4" />
+              <MagnifyingGlassIcon className=" w-4 h-4" />
               <span>{searchValue}</span>
               <span className=" text-gray-400 text-sm">
                 in all topics and posts

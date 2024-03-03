@@ -2,13 +2,13 @@
 
 import {
   BellIcon,
-  ReplyIcon,
+  MagnifyingGlassIcon,
   HeartIcon,
-  MailIcon,
+  EnvelopeIcon,
   BookmarkIcon,
-  PuzzleIcon,
+  PuzzlePieceIcon,
   UserIcon,
-} from "@heroicons/react/solid";
+} from "@heroicons/react/16/solid";
 import { forwardRef, useEffect, useState } from "react";
 import Link from "next/link";
 import QuickPreview from '@/ui/user-tab-quick-preview'
@@ -46,7 +46,6 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
       tabElement.addEventListener("click", handleClick);
     });
 
-    // 清理事件监听器
     return () => {
       tabElements.forEach((tabElement) => {
         tabElement.removeEventListener("click", handleClick);
@@ -82,7 +81,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             href="/test7/#"
             title="TBA"
           >
-            <ReplyIcon className=" w-5 h-5  text-gray-400" role='presentation' aria-hidden='true'/>
+            <MagnifyingGlassIcon className=" w-5 h-5  text-gray-400" role='presentation' aria-hidden='true'/>
           </Link>
           <Link
             role="tab"
@@ -100,7 +99,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             href="/test7/#"
             title="TBA"
           >
-            <MailIcon className=" w-5 h-5  text-gray-400" role='presentation' aria-hidden='true'/>
+            <EnvelopeIcon className=" w-5 h-5  text-gray-400" role='presentation' aria-hidden='true'/>
           </Link>
           <Link
             role="tab"
@@ -118,7 +117,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             href="/test7/#"
             title="TBA"
           >
-            <PuzzleIcon className=" w-5 h-5  text-gray-400" role='presentation' aria-hidden='true'/>
+            <PuzzlePieceIcon className=" w-5 h-5  text-gray-400" role='presentation' aria-hidden='true'/>
           </Link>
           {/* user menu tab part 2 */}
         </div>
