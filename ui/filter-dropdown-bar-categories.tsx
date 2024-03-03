@@ -1,14 +1,12 @@
 "use client";
 
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { useParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { SearchIcon } from "@heroicons/react/solid";
+import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import Processing from "./processing";
-
-export const revalidate = 1800
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -87,7 +85,7 @@ export default function FilterDropdownBarCategories() {
                   onChange={(e) => handleChange(e)}
                   value={searchValue}
                 />
-                <SearchIcon className="w-5 h-5" />
+                <MagnifyingGlassIcon className="w-5 h-5" />
               </div>
               <div className=" overflow-y-auto h-96 ">
                 {data === undefined ? (

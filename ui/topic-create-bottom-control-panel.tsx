@@ -1,6 +1,6 @@
 "use client";
 
-import { PlusIcon } from "@heroicons/react/solid";
+import { PlusIcon } from "@heroicons/react/16/solid";
 import Processing from "./processing";
 import Link from "next/link";
 

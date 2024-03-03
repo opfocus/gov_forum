@@ -1,4 +1,4 @@
-import { BellIcon } from "@heroicons/react/solid"
+import { BellIcon } from "@heroicons/react/16/solid"
 
 export default function TagNotificationButton() {
 

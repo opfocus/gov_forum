@@ -8,7 +8,7 @@ import {
   HeartIcon,
   BookmarkIcon,
   CheckIcon,
-} from "@heroicons/react/solid";
+} from "@heroicons/react/16/solid";
 
 export default function UserSecondryNavActivity() {
   return (

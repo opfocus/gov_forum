@@ -9,8 +9,8 @@ import {
   BookmarkIcon,
   CheckIcon,
   TagIcon,
-} from "@heroicons/react/solid";
-import { BellIcon } from "@heroicons/react/outline";
+} from "@heroicons/react/16/solid";
+import { BellIcon } from "@heroicons/react/16/solid";
 
 export default function UserSecondryNavNotifications() {
   return (

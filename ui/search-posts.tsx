@@ -1,6 +1,6 @@
 'use client'
 
-import { SearchIcon,  ArrowNarrowRightIcon} from "@heroicons/react/outline";
+import { SearchIcon,  ArrowNarrowRightIcon} from "@heroicons/react/16/solid";
 import { searchPosts } from "@/utils/actions";
 import { useFormState } from "react-dom";
 import SearchPostsResult from "./search-posts-result";
@@ -38,7 +38,7 @@ export default function SearchPosts() {
               type="submit"
               className=" px-2 py-1 text-white bg-blue-400 hover:bg-blue-700 flex flex-row gap-1 items-center"
             >
-              <SearchIcon className="w-5 h-5" />
+              <MagnifyingGlassIconclassName="w-5 h-5" />
               <span>Search</span>
             </button>
           </div>

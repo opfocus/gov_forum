@@ -5,7 +5,7 @@ import {
   BellIcon,
   BookmarkIcon,
   ChevronDownIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/16/solid";
 
 export default function TopicNav() {
   return (

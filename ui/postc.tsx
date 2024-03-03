@@ -13,9 +13,9 @@ import Link from "next/link";
 import {
   HeartIcon,
   LinkIcon,
-  DotsHorizontalIcon,
-  ReplyIcon,
-} from "@heroicons/react/outline";
+  EllipsisHorizontalIcon,
+  ArrowUturnLeftIcon,
+} from "@heroicons/react/16/solid";
 
 export default function PostC({
   post,
@@ -84,7 +84,7 @@ export default function PostC({
                     className=" w-6 h-6 rounded-full"
                   />
                   <span>{replyToPost(post.reply_to_post_number).username}</span>
-                  <ReplyIcon className=" w-5 h-5"/>
+                  <ArrowUturnLeftIcon className=" w-5 h-5"/>
                 </div>
                 :
                 null
@@ -140,7 +140,7 @@ export default function PostC({
                 className=" cursor-not-allowed  p-2 hover:bg-gray-200  hover:text-gray-700"
                 title="TBA"
               >
-                <DotsHorizontalIcon className=" w-6 h-6" />
+                <EllipsisHorizontalIcon className=" w-6 h-6" />
               </button>
               {user ? 
               <button
@@ -151,7 +151,7 @@ export default function PostC({
                 setReplyWhichPost(post);
               }}
             >
-              <ReplyIcon className=" w-6 h-6" />
+              <ArrowUturnLeftIcon className=" w-6 h-6" />
               <span>Reply</span>
             </button>
             :
@@ -159,7 +159,7 @@ export default function PostC({
             className=" text-base font-medium flex flex-row p-2 hover:bg-gray-200 hover:text-gray-700"
               href={'/api/auth/login'}
           >
-            <ReplyIcon className=" w-6 h-6" />
+            <ArrowUturnLeftIcon className=" w-6 h-6" />
             <span>Reply</span>
           </Link>
               }

@@ -1,6 +1,6 @@
 "use client";
 
-import { ReplyIcon } from "@heroicons/react/solid";
+import { ArrowUturnLeftIcon } from "@heroicons/react/16/solid";
 
 export default function ReplyBottomControlPanel({
   handleReply,
@@ -16,7 +16,7 @@ export default function ReplyBottomControlPanel({
           className="px-2 py-1 flex flex-row gap-1 bg-blue-400 text-white hover:bg-blue-500"
           onClick={() => handleReply()}
         >
-          <ReplyIcon className=" w-6 h-6" />
+          <ArrowUturnLeftIcon className=" w-6 h-6" />
           Reply
         </button>
        : 
@@ -25,7 +25,7 @@ export default function ReplyBottomControlPanel({
           className="px-2 py-1 flex flex-row gap-1 bg-blue-400 text-white hover:bg-blue-500 cursor-not-allowed"
           onClick={() => handleReply()}
         >
-          <ReplyIcon className=" w-6 h-6" />
+          <ArrowUturnLeftIcon className=" w-6 h-6" />
           Reply
         </button>
       }

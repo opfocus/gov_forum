@@ -1,4 +1,4 @@
-import { InformationCircleIcon } from "@heroicons/react/solid";
+import { InformationCircleIcon } from "@heroicons/react/16/solid";
 
 export default function TagInfoButton() {
   return (

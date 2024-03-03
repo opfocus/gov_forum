@@ -5,7 +5,7 @@ import { OpenEditorContext } from "@/app/_components/open-editor-provider";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 
-import { PlusIcon } from "@heroicons/react/solid";
+import { PlusIcon } from "@heroicons/react/16/solid";
 
 export default function NewTopicButton() {
   const context = useContext(OpenEditorContext);

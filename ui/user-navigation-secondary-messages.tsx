@@ -11,8 +11,8 @@ import {
   ExclamationIcon,
   PlusCircleIcon,
   ArchiveIcon,
-} from "@heroicons/react/solid";
-import { MailIcon } from "@heroicons/react/outline";
+} from "@heroicons/react/16/solid";
+import { MailIcon } from "@heroicons/react/16/solid";
 
 export default function UserSecondryNavMessages() {
   return (

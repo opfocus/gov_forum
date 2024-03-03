@@ -6,8 +6,8 @@ import {
   CogIcon,
   SunIcon,
   MailIcon,
-} from "@heroicons/react/solid";
-import { BellIcon } from "@heroicons/react/outline";
+} from "@heroicons/react/16/solid";
+import { BellIcon } from "@heroicons/react/16/solid";
 
 export default function UserNav() {
   return (

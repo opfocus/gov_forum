@@ -5,7 +5,7 @@ import Image from "next/image";
 import {
   ChevronDoubleDownIcon,
   ChevronDoubleUpIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/16/solid";
 import clsx from "clsx";
 
 
