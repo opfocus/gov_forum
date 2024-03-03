@@ -1,11 +1,10 @@
-import Link from "next/link";
 import {
   UserIcon,
-  ViewListIcon,
-  UserAddIcon,
+  ListBulletIcon,
+  UserPlusIcon,
   CogIcon,
   SunIcon,
-  MailIcon,
+  EnvelopeIcon,
 } from "@heroicons/react/16/solid";
 import { BellIcon } from "@heroicons/react/16/solid";
 
@@ -20,7 +19,7 @@ export default function UserNav() {
       </li>
       <li className=" flex-1 flex place-items-center p-4 hover:border-b-2 hover:border-solid hover:border-orange-400">
         <div className="flex flex-row justify-start items-center hover:text-orange-400">
-          <ViewListIcon className=" w-6 h-6   " />
+          <ListBulletIcon className=" w-6 h-6   " />
           <span className=" pl-2 text-base">Active</span>
         </div>
       </li>
@@ -32,13 +31,13 @@ export default function UserNav() {
       </li>
       <li className=" flex-1 flex place-items-center p-4 hover:border-b-2 hover:border-solid hover:border-orange-400">
         <div className="flex flex-row justify-start items-center hover:text-orange-400">
-          <MailIcon className=" w-6 h-6   " />
+          <EnvelopeIcon className=" w-6 h-6   " />
           <span className=" pl-2 text-base">Messages</span>
         </div>
       </li>
       <li className=" flex-1 flex place-items-center p-4 hover:border-b-2 hover:border-solid hover:border-orange-400">
         <div className="flex flex-row justify-start items-center hover:text-orange-400">
-          <UserAddIcon className=" w-6 h-6   " />
+          <UserPlusIcon className=" w-6 h-6   " />
           <span className=" pl-2 text-base">Invites</span>
         </div>
       </li>

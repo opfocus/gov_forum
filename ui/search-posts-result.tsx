@@ -1,6 +1,5 @@
 'use client'
 import type { Post } from "@/lib/type"
-import Image from "next/image"
 
 export default function SearchPostsResult({posts}: {
   posts:Post[]
