@@ -4,6 +4,9 @@ import TopicsLatest from "@/ui/topics-latest";
 import NewTopicButton from "@/ui/new-topic-button";
 import Banner from "@/ui/banner";
 
+// test
+import Link from "next/link";
+
 import {getCategories} from "@/utils/getCategories";
 import { getTopics } from "@/utils/actions";
 
@@ -40,6 +43,9 @@ export default async function Page() {
           </Suspense>
         </div>
       </div>
+      <Link href={"/search"}>
+        search page
+      </Link>
     </div>
   );
 }

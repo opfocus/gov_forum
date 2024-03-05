@@ -1,19 +1,42 @@
-export type Category = {
-  index: number;
+export type BarItem2 = {
+    id: number;
+    name: string;
+    slug: string;
+    icon: React.ForwardRefExoticComponent<Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
+      title?: string | undefined;
+      titleId?: string | undefined;
+  } & React.RefAttributes<SVGSVGElement>>,
+  }
+
+
+export type BarItem = {
+  id: number;
   name: string;
   slug: string;
-  description: string
-}
+  icon:React.ForwardRefExoticComponent<Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
+    title?: string | undefined;
+    titleId?: string | undefined;
+} & React.RefAttributes<SVGSVGElement>>,
+  children: BarItem2[] | null;
+};
+
+
+export type Category = {
+  index: number,
+  name: string,
+  slug: string,
+  description: string,
+};
 
 export type Tag = {
   index: number;
-  name:string
-}
+  name: string;
+};
 
 export type OpenEditorContextType = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
 export type Post = {
   id: number;
@@ -38,22 +61,20 @@ export type Post = {
   deleted_at: string | null;
   user_deleted: boolean;
   edit_reason: string | null;
-  likes:string[];
-}
+  likes: string[];
+};
 
 export type NewPost = {
-  id: number,
-  name: string,
-  username: string,
-  user_id: string,
-  avatar_template: string,
-  created_at: string,
-  cooked: string,
-  topic_id: number,
-  topic_slug: string,
-}
-
-
+  id: number;
+  name: string;
+  username: string;
+  user_id: string;
+  avatar_template: string;
+  created_at: string;
+  cooked: string;
+  topic_id: number;
+  topic_slug: string;
+};
 
 export type Topic = {
   id: number;
@@ -66,13 +87,11 @@ export type Topic = {
   user_id: string;
   username: string;
   avatar_template: string;
-  
 
-  tags: string[]; 
-  tags_descriptions: string | null; 
+  tags: string[];
+  tags_descriptions: string | null;
   category_id: number;
   category_name: string;
-
 
   views: number;
   reply_count: number;
@@ -83,7 +102,6 @@ export type Topic = {
   archived: boolean;
   has_summary: boolean;
   archetype: string | null;
-
 
   deleted_at: string | null;
 
@@ -100,31 +118,31 @@ export type Topic = {
   current_post_number: number;
   highest_post_number: number;
   deleted_by: number | null;
-  bookmarks: number[] | null; 
+  bookmarks: number[] | null;
   topic_timer: string | null;
   message_bus_last_id: number | null;
   participant_count: number;
   show_read_indicator: boolean;
-  thumbnails: string | null; 
+  thumbnails: string | null;
   summarizable: boolean;
   details: {
     notification_level: number;
-    participants: string[]; 
-    links: string[] | null; 
+    participants: string[];
+    links: string[] | null;
   };
 };
 
 export type NewTopic = {
-  id: number,
-  title: string,
-  create_at: string,
-  stream: number[],
-  slug: string,
-  user_id: string,
-  user_name: string,
-  tags: string[],
-  category_id: number
-}
+  id: number;
+  title: string;
+  create_at: string;
+  stream: number[];
+  slug: string;
+  user_id: string;
+  user_name: string;
+  tags: string[];
+  category_id: number;
+};
 
 export type User = {
   id: string;
@@ -132,5 +150,4 @@ export type User = {
   nickname: string;
   picture: string;
   email: string;
-}
-
+};

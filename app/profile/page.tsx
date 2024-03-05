@@ -1,5 +1,7 @@
 import { withPageAuthRequired, getSession } from '@auth0/nextjs-auth0';
 
+
+// test need auth page
 export default withPageAuthRequired(async function Profile() {
   const session = await getSession();
   if (session) {
