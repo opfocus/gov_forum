@@ -13,7 +13,7 @@ export default function UserNavTab({
     // @ts-ignore
     <A path={path} slug={tab.slug} isNav1={tab.children === undefined}>
       <div
-        className={clsx("flex flex-row justify-start items-center", {
+        className={clsx("flex flex-row place-content-center w-full whitespace-nowrap", {
             // @ts-ignore
           " text-sm": tab.children === undefined,
         })}

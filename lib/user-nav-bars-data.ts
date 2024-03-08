@@ -104,31 +104,37 @@ export const barsItems: BarItem[]  = [
     children: [
       {
         id: 31,
+        name: "All",
+        slug: "",
+        icon: BellIcon,
+      },
+      {
+        id: 32,
         name: "Responses",
         slug: "responses",
         icon: ArrowUturnLeftIcon,
       },
       {
-        id: 32,
+        id: 33,
         name: "Likes",
         slug: "likes",
         icon: HeartIcon,
       },
       {
-        id: 33,
+        id: 34,
         name: "Mentions",
         slug: "mentions",
         icon: AtSymbolIcon,
 
       },
       {
-        id: 34,
+        id: 35,
         name: "Edit",
         slug: "edit",
         icon: PencilIcon,
       },
       {
-        id: 35,
+        id: 36,
         name: "Dismiss All",
         slug: "dismiss",
         icon: CheckIcon,
@@ -202,7 +208,7 @@ export const barsItems: BarItem[]  = [
       {
         id: 71,
         name: "Accout",
-        slug: "account",
+        slug: "",
         icon: UserIcon,
       },
       {

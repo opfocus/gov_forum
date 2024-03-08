@@ -18,7 +18,7 @@ export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('api/tags');
+        const response = await fetch('/api/tags');
         const tags = await response.json();
         setSearchedTags(tags);
       } catch (error) {
