@@ -1,7 +1,7 @@
 
 import UserSummary from "@/ui/user_summary"
-import { getUserSummary } from "@/utils/getUserSummary"
-import { getUserActivity } from "@/utils/getUserActivity"
+import { getUserSummary } from "@/utils/getUserInfo"
+import { getUserActivity } from "@/utils/getUserInfo"
 import UserActivity from "@/ui/user_activity"
 import { getCategories } from "@/utils/getCategories"
 

@@ -1,25 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { matchCategory } from "@/utils/common";
+import { HeartIcon } from "@heroicons/react/16/solid";
 
-export default function UserActivity({
-  data,
-  categories,
-}: {
-  data: any[];
+export default function UserActivityLikes({likes, categories}: {
+  likes: any[];
   categories: any[];
 }) {
-
+  
   return (
     <main>
       <section className=" mt-8">
-        <ul>
-          {data.map((item: any) => (
+      <ul>
+          {likes.map((item: any) => (
             <li
               key={item.post_id}
               className=" border-b border-gray-200 border-solid px-2 py-4"
             >
-              <div className=" flex flex-row ">
+              <div className=" flex flex-row items-start">
                 <Image
                   src={item.avatar_template}
                   alt="user avatar"
@@ -37,9 +35,10 @@ export default function UserActivity({
                   <div className=" flex flex-row gap-1 items-center">
                     <div className=" w-2 h-2" style={{
                       backgroundColor: `#${matchCategory(item.category_id, categories).color}`
-                    }}></div>
+                    }}
+                    ></div>
                     <span className=" text-xs text-gray-400">
-                      {matchCategory(item.category_id, categories).nane}
+                      {matchCategory(item.category_id, categories).name}
                     </span>
                   </div>
                 </div>
@@ -51,11 +50,22 @@ export default function UserActivity({
                   {""} {new Date(item.created_at).getFullYear()}
                 </div>
               </div>
-              <p className=" mt-4 text-sm text-gray-700">{item.excerpt}</p>
+              <p className=" mt-4 text-sm text-gray-700" dangerouslySetInnerHTML={{__html: item.excerpt}}></p>
+              <div className=" mt-2 flex flex-row gap-1">
+                <HeartIcon className=" w-4 h-4 text-red-400" />
+                <Image
+                  src={item.acting_avatar_template}
+                  alt="user avatar"
+                  width={24}
+                  height={24}
+                  className=" rounded-full"
+                >
+                </Image>
+              </div>
             </li>
           ))}
         </ul>
       </section>
     </main>
-  );
+  )
 }
