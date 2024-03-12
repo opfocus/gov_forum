@@ -38,9 +38,9 @@ export default async function TopicsList({
           </tr>
         </thead>
         <tbody>
-          {topics.map((topic) => (
+          {topics.map((topic, index) => (
             <tr
-              key={topic.id}
+              key={index}
               className=" border-b border-gray-100 border-solid"
             >
               <td className=" text-left px-2 py-3">

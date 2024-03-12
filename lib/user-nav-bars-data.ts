@@ -129,8 +129,8 @@ export const barsItems: BarItem[]  = [
       },
       {
         id: 35,
-        name: "Edit",
-        slug: "edit",
+        name: "Edits",
+        slug: "edits",
         icon: PencilIcon,
       },
       {
@@ -150,7 +150,7 @@ export const barsItems: BarItem[]  = [
       {
         id: 41,
         name: "Latest",
-        slug: "latest",
+        slug: "",
         icon: EnvelopeIcon,
       },
       {
@@ -180,7 +180,7 @@ export const barsItems: BarItem[]  = [
     {
       id: 45,
       name: "New Message",
-      slug: "",
+      slug: "new-message",
       icon: EnvelopeIcon,
     },
   ],

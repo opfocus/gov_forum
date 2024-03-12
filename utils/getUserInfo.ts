@@ -1,6 +1,4 @@
-import { rejects } from "assert";
 import fs from "fs";
-import { resolve } from "path";
 import { cache } from "react";
 
 export const getUserSummary = cache(async () => {
@@ -80,6 +78,84 @@ export const getUserActivityBookmarks =cache(async () => {
         const jsonData = JSON.parse(data.toString())
         resolve(jsonData)
       }
+    })
+  })
+})
+
+export const getUserNotifications = cache(async() => {
+  return new Promise((resolve, reject) => {
+    fs.readFile("lib/notifications_for_test.json", function(err, data) {
+      if (err)
+        reject(err)
+      else {
+        const jsonData = JSON.parse(data.toString())
+        resolve(jsonData)
+      }
+    })
+  })
+})
+
+export const getUserNotificationsResponses = cache(async() => {
+  return new Promise((resolve, reject) => {
+    fs.readFile("lib/notifications_responses_for_test.json", function(err, data) {
+      if (err) 
+        reject(err)
+      else {
+        const jsonData = JSON.parse(data.toString())
+        resolve(jsonData)
+      }
+    })
+  })
+})
+
+export const getUserNotificationsMentions = cache(async () => {
+  return new Promise((resolve, reject) => {
+    fs.readFile("lib/notifications_mentions_for_test.json", function(err, data) {
+      if (err)
+        return reject(err)
+      else {
+        const jsonData = JSON.parse(data.toString())
+        resolve(jsonData)
+      }
+    })
+  })
+})
+
+export const getUserMessages = cache(async() => {
+  return new Promise((resolve, reject) => {
+    fs.readFile("lib/messages_for_test.json", function(err, data) {
+      if (err) 
+        reject(err)
+      else {
+        const jsonData = JSON.parse(data.toString())
+        resolve(jsonData)
+      }
+    })
+  })
+})
+
+export const getUserMessagesSent = cache(async() => {
+  return new Promise((resolve, reject) => {
+    fs.readFile("lib/messages_sent_for_test.json", function(err, data) {
+      if (err) 
+      reject(err)
+    else {
+      const jsonData = JSON.parse(data.toString())
+      resolve(jsonData)
+    }
+    })
+  })
+})
+
+export const getUserBadges = cache(async() => {
+  return new Promise((resolve, reject) => {
+    fs.readFile("lib/user_badges_for_test.json", function(err, data) {
+      if (err)
+      reject(err)
+    else {
+      const jsonData = JSON.parse(data.toString())
+      resolve(jsonData)
+    }
     })
   })
 })

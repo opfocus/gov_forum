@@ -1,19 +1,23 @@
-import Image from "next/image";
-import Link from "next/link";
-import { matchCategory } from "@/utils/common";
+import Image from "next/image"
+import Link from "next/link"
+import { matchCategory } from "@/utils/common"
 
-export default function UserActivity({
-  data,
-  categories,
-}: {
-  data: any[];
-  categories: any[];
+export default function UserNotificationsResponses({data, categories}: {
+  data: any[],
+  categories: any[]
 }) {
-
+  if (data.length === 0)
+    return (
+      <main>
+      <section className=" mt-8">
+        No data yet
+      </section>
+    </main>
+  )
   return (
     <main>
       <section className=" mt-8">
-        <ul>
+      <ul>
           {data.map((item: any) => (
             <li
               key={item.post_id}
@@ -25,12 +29,12 @@ export default function UserActivity({
                   alt="user avatar"
                   width={48}
                   height={48}
-                  className=" mr-2 rounded-full"
+                  className=" mr-2 rounded-full self-start"
                 ></Image>
                 <div className=" grow">
                   <Link
                     href={`/t/${item.slug}/${item.topic_id}`}
-                    className=" text-cyan-400"
+                    className=" text-cyan-700"
                   >
                     {item.title}
                   </Link>
@@ -39,7 +43,7 @@ export default function UserActivity({
                       backgroundColor: `#${matchCategory(item.category_id, categories).color}`
                     }}></div>
                     <span className=" text-xs text-gray-400">
-                      {matchCategory(item.category_id, categories).nane}
+                      {matchCategory(item.category_id, categories).name}
                     </span>
                   </div>
                 </div>
@@ -57,5 +61,5 @@ export default function UserActivity({
         </ul>
       </section>
     </main>
-  );
+  )
 }

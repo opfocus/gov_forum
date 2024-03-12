@@ -1,17 +1,13 @@
+import { matchCategory } from "@/utils/common";
 import Link from "next/link";
 
-export default function UserActivityReadTopics({
+export default function TopicsTable({
   topics,
   categories,
 }: {
   topics: any[];
   categories: any[];
 }) {
-  const matchCategory = (id: number) => {
-    const cate = categories!.find((item: any) => item.id === id);
-    return cate ? cate : "category not found";
-  };
-
   return (
     <main>
       <section className=" mt-8">
@@ -32,7 +28,7 @@ export default function UserActivityReadTopics({
                 <td className=" py-3 px-2">
                   <div>
                     <Link
-                      href={`/t/${item.slug}/${item.topic_id}`}
+                      href={`/t/${item.slug}/${item.id}`}
                       className=" text-cyan-700"
                     >
                       {item.title}
@@ -42,12 +38,12 @@ export default function UserActivityReadTopics({
                         className=" w-2 h-2"
                         style={{
                           backgroundColor: `#${
-                            matchCategory(item.category_id).color
+                            matchCategory(item.category_id, categories).color
                           }`,
                         }}
                       ></div>
                       <span className=" text-xs text-gray-400">
-                        {matchCategory(item.category_id).name}
+                        {matchCategory(item.category_id, categories).name}
                       </span>
                     </div>
                   </div>

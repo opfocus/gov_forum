@@ -218,7 +218,7 @@ export default function UserSummary({ data }: any) {
                       </div>
                     </td>
                     <td className=" text-center py-2">-</td>
-                    <td className=" text-center py-2 text-cyan-400">{item.post_count}</td>
+                    <td className=" text-center py-2 text-cyan-700">{item.post_count}</td>
                   </tr>
                 ))}
               </tbody>
