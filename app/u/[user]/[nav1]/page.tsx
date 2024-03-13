@@ -8,6 +8,7 @@ import UserNotifications from "@/ui/user-notifications"
 import UserActionsList from "@/ui/user_actions_list"
 import TopicsTable from "@/ui/topics_table"
 import BadgesList from "@/ui/badges_list"
+import UserAccount from "@/ui/user-account"
 
 export const revalidate = 1800
 
@@ -46,8 +47,11 @@ export default async function Page({params} : {
   }
   if (params.nav1 === "badges") {
     data = await getUserBadges()
-    console.log(data)
     return <BadgesList userBadges={data.user_badges} badges={data.badges} />
+  }
+  if (params.nav1 === "preferences") {
+
+    return <UserAccount />
   }
   return (
     <h1>{params.nav1}</h1>

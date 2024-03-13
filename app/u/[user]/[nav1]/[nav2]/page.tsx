@@ -20,6 +20,7 @@ import UserActionsList from "@/ui/user_actions_list";
 import TopicsTable from "@/ui/topics_table";
 import Link from "next/link";
 import { EnvelopeIcon } from "@heroicons/react/16/solid";
+import UserSecurity from "@/ui/user-security";
 
 export const revalidate = 1800;
 
@@ -179,6 +180,9 @@ export default async function Page({
         </section>
       </main>
     )
+  }
+  if (params.nav2 === "security") {
+    return <UserSecurity />
   }
   return <div>here is the activity 2 page</div>;
 }
