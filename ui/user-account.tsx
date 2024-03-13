@@ -1,6 +1,10 @@
 "use client";
 
-import { PencilIcon, PlusIcon, CloudArrowDownIcon } from "@heroicons/react/16/solid";
+import {
+  PencilIcon,
+  PlusIcon,
+  CloudArrowDownIcon,
+} from "@heroicons/react/16/solid";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -170,26 +174,29 @@ export default function UserAccount() {
         <label className=" text-xl font-bold text-gray-500">
           Export your data
         </label>
-        <button className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
+        <button
+          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
          hover:text-white 
          flex flex-row gap-1 items-center
           disabled cursor-not-allowed
          "
-        title="TBA"
-         >
+          title="TBA"
+        >
           <CloudArrowDownIcon className=" w-5 h-5" />
           Request archive
         </button>
-        <p className=" text-xs text-gray-500 mt-2">Never shown to the public.</p>
+        <p className=" text-xs text-gray-500 mt-2">
+          Never shown to the public.
+        </p>
       </section>
-        <section className=" mt-8">
+      <section className=" mt-8">
         <button
-                className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
-                title="TBA"
-              >
-                Save Changes
-              </button>
-        </section>
+          className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+          title="TBA"
+        >
+          Save Changes
+        </button>
+      </section>
     </main>
   );
 }

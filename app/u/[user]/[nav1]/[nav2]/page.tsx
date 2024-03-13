@@ -21,6 +21,13 @@ import TopicsTable from "@/ui/topics_table";
 import Link from "next/link";
 import { EnvelopeIcon } from "@heroicons/react/16/solid";
 import UserSecurity from "@/ui/user-security";
+import UserProfile from "@/ui/user-profile";
+import UserEmails from "@/ui/user-emails";
+import UserPreferencesNotifications from "@/ui/user-preferences-notifications";
+import UserTracking from "@/ui/user-tracking";
+import UserUsers from "@/ui/user-users";
+import UserInterface from "@/ui/user-interface";
+import UserNavMenuSet from "@/ui/user-nav-menu-set";
 
 export const revalidate = 1800;
 
@@ -121,11 +128,17 @@ export default async function Page({
             <p>
               Need to have a direct personal conversation with someone, outside
               the normal conversational flow? Message them by selecting their
-              avatar and using the <span><EnvelopeIcon className=" w-4 h-4 inline-block " /></span> message button.
+              avatar and using the{" "}
+              <span>
+                <EnvelopeIcon className=" w-4 h-4 inline-block " />
+              </span>{" "}
+              message button.
             </p>
             <br />
             If you need help, you can{" "}
-            <Link href={"/about"} className=" text-cyan-700">message a staff member.</Link>
+            <Link href={"/about"} className=" text-cyan-700">
+              message a staff member.
+            </Link>
           </div>
         </section>
       </main>
@@ -141,11 +154,17 @@ export default async function Page({
             <p>
               Need to have a direct personal conversation with someone, outside
               the normal conversational flow? Message them by selecting their
-              avatar and using the <span><EnvelopeIcon className=" w-4 h-4 inline-block" /></span> message button.
+              avatar and using the{" "}
+              <span>
+                <EnvelopeIcon className=" w-4 h-4 inline-block" />
+              </span>{" "}
+              message button.
             </p>
             <br />
             If you need help, you can{" "}
-            <Link href={"/about"} className=" text-cyan-700">message a staff member.</Link>
+            <Link href={"/about"} className=" text-cyan-700">
+              message a staff member.
+            </Link>
           </div>
         </section>
       </main>
@@ -161,11 +180,17 @@ export default async function Page({
             <p>
               Need to have a direct personal conversation with someone, outside
               the normal conversational flow? Message them by selecting their
-              avatar and using the <span><EnvelopeIcon className=" w-4 h-4 inline-block" /></span> message button.
+              avatar and using the{" "}
+              <span>
+                <EnvelopeIcon className=" w-4 h-4 inline-block" />
+              </span>{" "}
+              message button.
             </p>
             <br />
             If you need help, you can{" "}
-            <Link href={"/about"} className=" text-cyan-700">message a staff member.</Link>
+            <Link href={"/about"} className=" text-cyan-700">
+              message a staff member.
+            </Link>
           </div>
         </section>
       </main>
@@ -175,14 +200,22 @@ export default async function Page({
     //TBA
     return (
       <main>
-        <section className=" mt-8">
-          [TBA]
-        </section>
+        <section className=" mt-8">[TBA]</section>
       </main>
-    )
+    );
   }
   if (params.nav2 === "security") {
-    return <UserSecurity />
+    return <UserSecurity />;
   }
+  if (params.nav2 === "profile") {
+    return <UserProfile />;
+  }
+  if (params.nav2 === "emails") return <UserEmails />;
+  if (params.nav2 === "notifications") return <UserPreferencesNotifications />
+  if (params.nav2 === "tracking") return <UserTracking />
+  if (params.nav2 === "users") return <UserUsers />
+  if (params.nav2 === "interface") return <UserInterface />
+  if (params.nav2 === "navigation-menu") return <UserNavMenuSet />
+
   return <div>here is the activity 2 page</div>;
 }
