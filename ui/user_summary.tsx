@@ -199,9 +199,11 @@ export default function UserSummary({ data }: any) {
           ) : (
             <table className=" w-full">
               <thead className=" text-sm text-gray-400 border-b-2  border-gray-400">
+                <tr>
                 <th className=" font-medium py-4"></th>
                 <th className=" font-medium py-4">Topics</th>
                 <th className=" font-medium py-4">Replies</th>
+                </tr>
               </thead>
               <tbody>
                 {data.top_categories.map((item: any) => (

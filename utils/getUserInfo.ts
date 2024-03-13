@@ -1,3 +1,8 @@
+// Getting data for testing UI, but after compilation, the file path changes, 
+// and this file's functions don't work properly
+
+// All deprecated.
+
 import fs from "fs";
 import { cache } from "react";
 

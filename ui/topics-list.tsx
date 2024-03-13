@@ -21,7 +21,7 @@ export default async function TopicsList({
     return (
       <table className="w-full">
         <thead className=" border-b-2 border-gray-200 border-solid">
-          <tr className=" ">
+          <tr >
             <th className=" text-left text-gray-400 py-3 px-2 text-base font-medium">
               Topic
             </th>
