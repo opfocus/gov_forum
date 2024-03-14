@@ -42,9 +42,13 @@ export default async function Page() {
           </Suspense>
         </div>
       </div>
-      <Link href={"/u/me/summary"}>
-        Test user page UI
+      <div>
+      <Link href={"/u/me/summary"}
+        className=" mt-8 px-2 py-1 bg-sky-600 text-white hover:bg-sky-700"
+      >
+        Test user-profile UI
       </Link>
+      </div>
     </div>
   );
 }
