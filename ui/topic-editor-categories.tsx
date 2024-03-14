@@ -18,7 +18,7 @@ export default function TopicEditorCategories({categorySelected, setCategorySele
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('api/categories');
+        const response = await fetch('/api/categories');
         const categories = await response.json();
         setSearchedCategories(categories);
       } catch (error) {

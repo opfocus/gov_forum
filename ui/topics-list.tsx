@@ -21,7 +21,7 @@ export default async function TopicsList({
     return (
       <table className="w-full">
         <thead className=" border-b-2 border-gray-200 border-solid">
-          <tr className=" ">
+          <tr >
             <th className=" text-left text-gray-400 py-3 px-2 text-base font-medium">
               Topic
             </th>
@@ -38,9 +38,9 @@ export default async function TopicsList({
           </tr>
         </thead>
         <tbody>
-          {topics.map((topic) => (
+          {topics.map((topic, index) => (
             <tr
-              key={topic.id}
+              key={index}
               className=" border-b border-gray-100 border-solid"
             >
               <td className=" text-left px-2 py-3">

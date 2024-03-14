@@ -4,10 +4,12 @@ import TopicsLatest from "@/ui/topics-latest";
 import NewTopicButton from "@/ui/new-topic-button";
 import Banner from "@/ui/banner";
 
+// for testing
+import Link from "next/link";
+
 import {getCategories} from "@/utils/getCategories";
 import { getTopics } from "@/utils/actions";
 
-// test only
 import { Suspense } from "react";
 import Processing from "@/ui/processing";
 
@@ -40,6 +42,9 @@ export default async function Page() {
           </Suspense>
         </div>
       </div>
+      <Link href={"/u/me/summary"}>
+        Test user page UI
+      </Link>
     </div>
   );
 }

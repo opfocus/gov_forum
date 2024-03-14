@@ -119,8 +119,6 @@ export const searchPosts = async (prevState: string, formData: FormData) => {
 
   const rawFormData = Object.fromEntries(formData.entries())
 
-  console.log(rawFormData)
-
   const apiKey = process.env.REALM_API_KEY!;
   const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID! });
 

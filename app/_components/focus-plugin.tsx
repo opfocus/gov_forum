@@ -142,3 +142,73 @@ function Placeholder() {
 
 
 
+
+
+
+export function Editor2() {
+
+   const initialConfig = {
+    namespace: "MyEditor",
+    theme,
+    onError,
+    editable: true,
+    // Any custom nodes go here
+    nodes: [
+      HeadingNode,
+      ListNode,
+      ListItemNode,
+      QuoteNode,
+      CodeNode,
+      CodeHighlightNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
+      AutoLinkNode,
+      LinkNode,
+      ParagraphNode,
+    ], 
+  };
+
+  const URL_MATCHER =
+  /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
+
+const MATCHERS = [
+  (text: string) => {
+    const match = URL_MATCHER.exec(text);
+    if (match === null) {
+      return null;
+    }
+    const fullMatch = match[0];
+    return {
+      index: match.index,
+      length: fullMatch.length,
+      text: fullMatch,
+      url: fullMatch.startsWith('http') ? fullMatch : `https://${fullMatch}`,
+      // attributes: { rel: 'noreferrer', target: '_blank' }, // Optional link attributes
+    };
+  },
+];
+
+  return (
+    <LexicalComposer initialConfig={initialConfig }>
+    <div className="editor-container">
+      <ToolbarPlugin />
+      <div className="editor-inner">
+          <RichTextPlugin
+          contentEditable={<ContentEditable className="editor-input h-40" />}
+          placeholder={<Placeholder />}
+          ErrorBoundary={LexicalErrorBoundary}
+          />
+        <HistoryPlugin />
+        <AutoFocusPlugin />
+        <CodeHighlightPlugin />
+        <ListPlugin />
+        <LinkPlugin />
+        <AutoLinkPlugin />
+        <ListMaxIndentLevelPlugin maxDepth={7} />
+        <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+      </div>
+    </div>
+  </LexicalComposer>
+  );
+}
