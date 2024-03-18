@@ -6,6 +6,7 @@ import OpenEditorProvider from "@/app/_components/open-editor-provider";
 import TopicCreate from "@/ui/topic-create";
 
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import React from "react";
 
 export const metadata: Metadata = {
   generator: "Next.js",
@@ -48,9 +49,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children, auth
 }: {
   children: React.ReactNode;
+  auth: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -60,11 +62,13 @@ export default function RootLayout({
             <GlobalNav />
             <div className="mx-auto mt-16 lg:mt-24 max-w-5xl px-2 lg:px-4 overscroll-y-auto">
               <OpenEditorProvider>
-                {children}
+                {children} 
+ 
                 <TopicCreate />
               </OpenEditorProvider>
             </div>
           </div>
+          {auth}
         </body>
       </UserProvider>
     </html>

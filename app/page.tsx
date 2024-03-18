@@ -48,6 +48,14 @@ export default async function Page() {
       >
         Test user-profile UI
       </Link>
+      <br />
+      <br />
+      <Link href={"/login"}
+        className=" mt-8 px-2 py-1 bg-sky-600 text-white hover:bg-sky-700"
+        title="Utilized for testing login with intercepted routes and Parallel routes in Next.js."
+      >
+        Test another login way
+      </Link>
       </div>
     </div>
   );
