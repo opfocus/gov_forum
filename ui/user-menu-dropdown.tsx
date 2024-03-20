@@ -7,7 +7,7 @@ import { useRef } from "react";
 import LoginButton from "./login-button";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-export default function UserMenuDropown() {
+export default function UserMenuDropdown() {
   const ref = useRef(null);
   const { user, error, isLoading } = useUser();
 

@@ -57,17 +57,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-        <body className="pb-36">
-          <div className="  w-full">
+        <body className="pb-36 overflow-y-scroll">
             <GlobalNav />
-            <div className="mx-auto mt-16 lg:mt-24 max-w-5xl px-2 lg:px-4 overscroll-y-auto">
+            <div className="mx-auto max-w-[1110px] px-[10px]">
               <OpenEditorProvider>
                 {children} 
- 
                 <TopicCreate />
               </OpenEditorProvider>
             </div>
-          </div>
           {auth}
         </body>
       </UserProvider>

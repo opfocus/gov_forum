@@ -23,34 +23,34 @@ export default async function TopicsLatest({topics}: {
 
   return (
     <div>
-      <div className=" border-b-2 border-gray-400 border-solid">
+      <div className=" border-b-4 border-gray-200 border-solid">
         <div className="text-gray-400 text-base font-medium p-2">Latest</div>
       </div>
       {topics.map((topic) => (
         <div
-          key={topic.id}
-          className=" border-b border-gray-200 border-solid flex flex-row gap-4 items-center px-2 py-4"
+          key={topic.name}
+          className=" border-b border-gray-200 border-solid flex flex-row  items-center p-4"
         >
           <img
             src={topic.avatar_template}
             alt="user avatar"
-            width={40}
-            height={40}
-            className="rounded-full"
+            width={48}
+            height={48}
+            className="rounded-full mr-3"
           ></img>
           <div className="flex flex-col grow">
             <Link
               href={"t/" + topic.slug + "/" + topic.id.toString()}
               scroll={false}
             >
-              {topic.title}
+              <div className=" text-gray-700">{topic.title}</div>
             </Link>
             <div className=" text-sm text-gray-400 font-light">
               {`${topic.category_name} ${topic.tags.join(",")}`}
             </div>
           </div>
           <div className=" flex flex-col gap-1">
-            <div className="text-right text-lg font-semibold text-gray-400 ">
+            <div className="text-right text-lg font-semibold text-gray-500 ">
               {topic.stream.length}
             </div>
             <div className=" text-right text-sm font-normal text-gray-400">

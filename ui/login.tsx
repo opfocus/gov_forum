@@ -37,7 +37,8 @@ export default function Login() {
                 name="email-or-username"
                 id="email-or-username"
                 placeholder=" "
-              />
+                autoFocus
+              />  
               <label
                 htmlFor="email-or-username"
                 className=" px-1 absolute  text-base text-gray-400 bg-white

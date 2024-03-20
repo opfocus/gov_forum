@@ -24,25 +24,25 @@ export default async function Page() {
   let topics = JSON.parse(res)
 
   return (
-    <div className="space-y-6">
+    <div className=" mt-8 space-y-6">
       <Banner />
       <div className="flex justify-between items-center flex-wrap">
         <FilterBars />
         <NewTopicButton />
       </div>
-      <div className="flex flex-col gap-6 lg:flex-row">
-        <div className=" w-full lg:flex-1">
+      <main className="flex flex-col gap-6 lg:flex-row">
+        <section className=" w-full lg:flex-1">
           <Suspense fallback={<Processing />}>
             <CategoryList categories={categories}/>
           </Suspense>
-        </div>
-        <div className=" w-full lg:flex-1">
+        </section>
+        <section className=" w-full lg:flex-1">
           <Suspense fallback={<Processing />}>
             <TopicsLatest  topics={topics}/>
           </Suspense>
-        </div>
-      </div>
-      <div>
+        </section>
+      </main>
+      <section>
       <Link href={"/u/me/summary"}
         className=" mt-8 px-2 py-1 bg-sky-600 text-white hover:bg-sky-700"
       >
@@ -56,7 +56,7 @@ export default async function Page() {
       >
         Test another login way
       </Link>
-      </div>
+      </section>
     </div>
   );
 }

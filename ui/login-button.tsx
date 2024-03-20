@@ -6,7 +6,7 @@ export default function LoginButton() {
   return (
     <div>
       <Link
-        className=" bg-blue-400 text-white text-base px-2 py-1 ml-1 hover:bg-blue-500  flex flex-row gap-1 items-center"
+        className=" bg-sky-600 text-white text-sm px-2 py-1 ml-1 hover:bg-sky-700  flex flex-row gap-1 items-center"
         href={"/api/auth/login"}
       >
         <UserIcon className=" w-5 h-5" />

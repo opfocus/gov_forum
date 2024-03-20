@@ -1,32 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
-import UserMenuDropown from "./user-menu-dropdown";
+import UserMenuDropdown from "./user-menu-dropdown";
 import TextSearchButton from "./text-search-button";
 import MenuButton from "./menu-button";
 
 export default async function GlobalNav() {
-
   return (
-    <div
-      className=" bg-white fixed top-0 w-screen py-2  shadow-lg z-20 "
-      style={{ paddingRight: 17 }}
-    >
-      <div className=" flex justify-between mx-auto max-w-5xl px-2 lg:px-4 ">
+    <header className=" bg-white sticky top-0 w-full  shadow-lg z-40 border-t border-solid border-gray-100">
+      <nav className=" flex flex-row mx-auto max-w-[1110px] h-[60px]  px-[10px] items-center">
         <Link href={"/"}>
           <Image
             src={"/op-logo.png"}
             alt="OP Logo"
             width={40}
             height={40}
-            priority= {true}
+            priority={true}
           ></Image>
         </Link>
-        <div className=" relative flex flex-row gap-2 items-center">
-          <TextSearchButton />
-          <MenuButton />
-          <UserMenuDropown />
-        </div>
-      </div>
-    </div>
+        <ul className=" grow  relative flex flex-row  justify-end items-center">
+          <li>
+            <TextSearchButton />
+          </li>
+          <li>
+            <MenuButton />
+          </li>
+          <li>
+            <UserMenuDropdown />
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 }
