@@ -138,7 +138,7 @@ export default function UserSummary({ data }: any) {
                     <img
                       src={item.avatar_template}
                       alt="user avatar"
-                      className=" w-12 h-12"
+                      className=" w-12 h-12 rounded-full"
                     />
                     <div className=" pl-4 flex flex-col">
                       <div className=" text-sm font-semibold">
@@ -172,7 +172,7 @@ export default function UserSummary({ data }: any) {
                     <img
                       src={item.avatar_template}
                       alt="user avatar"
-                      className=" w-12 h-12"
+                      className=" w-12 h-12 rounded-full"
                     />
                     <div className=" pl-4 flex flex-col">
                       <div className=" text-sm font-semibold">

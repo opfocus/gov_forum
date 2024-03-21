@@ -12,9 +12,9 @@ const user = await app.logIn(credentials);
 
 const mongo = user.mongoClient("mongodb-atlas");
 
-const collection = mongo.db("forum_demo").collection("tags_demo");
+const collection = mongo.db("forum_demo").collection("tags_list");
 
-const data = (await collection.find({})).sort((a, b) => a.index-b.index);
+const data = await collection.findOne({});
 
 return Response.json(data, {
   headers: {

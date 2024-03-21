@@ -2,7 +2,7 @@
 
 import { Bars3Icon } from "@heroicons/react/16/solid";
 import { Menu} from '@headlessui/react'
-import MenuPanel from "./menuPanel";
+import MenuPanel from "./menu-panel";
 
 export default function MenuButton() {
 

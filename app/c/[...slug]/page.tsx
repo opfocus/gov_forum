@@ -6,12 +6,13 @@ import type { Metadata} from "next";
 import { getCategories } from "@/utils/getCategories";
 
 export async function generateMetadata({params}: {
-  params: {id: string}
+  params: {slug: string[]}
 }): Promise<Metadata> {
-  const id = params.id
+  const length = params.slug.length
+  const id = Number(params.slug[length-1])
   const categories = await getCategories()
 
-  const [item] = categories.filter((category) => category.id === Number(id))
+  const item = categories.find((category) => category.id === id)
 
   return {
     title: item?.name,
@@ -19,10 +20,13 @@ export async function generateMetadata({params}: {
   }
 }
 
-export default function Page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { slug: string[] } }) {
+  const length = params.slug.length
+  const id = params.slug[length-1]
+
   return (
     <Suspense fallback={<Processing />}>
-      <TopicsList queryFrom={"categories"} queryValue={params.id} />
+      <TopicsList queryFrom={"categories"} queryValue={id} />
     </Suspense>
   );
 }

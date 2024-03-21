@@ -1,58 +1,84 @@
-'use client'
-import { UserIcon, ListBulletIcon, UserPlusIcon, PencilIcon,CogIcon, LockOpenIcon, } from "@heroicons/react/16/solid"
-import LogoutButton from "./logout-button"
-import Link from "next/link"
+"use client";
+import {
+  UserIcon,
+  ListBulletIcon,
+  UserPlusIcon,
+  PencilIcon,
+  CogIcon,
+  LockOpenIcon,
+} from "@heroicons/react/16/solid";
+import Link from "next/link";
+import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/16/solid";
 
-export default function UserMenuButtonProfile () {
-
+export default function UserMenuButtonProfile() {
   return (
     <ul>
-      <li key={1} className=" hover:bg-gray-200 p-2">
-        <Link href = {'#'} className="flex flex-row justify-start items-center cursor-not-allowed"
-         title="TBA">
-          <UserIcon className=" w-5 h-5 text-gray-400 "/>
-          <span className=" pl-2 text-base">Summary</span>
+      <li className=" hover:bg-gray-100 px-2 py-3">
+        <Link
+          href={"/u/me/summary"}
+          className="flex flex-row justify-start items-center"
+          title="Test link, not a real one"
+        >
+          <UserIcon className=" w-4 h-4 text-gray-500 " />
+          <span className=" pl-2 text-sm">Summary</span>
         </Link>
       </li>
-      <li key={2} className=" hover:bg-gray-200 p-2">
-        <Link href = {'#'} className="flex flex-row justify-start items-center cursor-not-allowed"
-         title="TBA">
-          <ListBulletIcon className=" w-5 h-5 text-gray-400   "/>
-          <span className=" pl-2 text-base">Active</span>
+      <li className=" hover:bg-gray-100 px-2 py-3">
+        <Link
+          href={"/u/me/activity"}
+          className="flex flex-row justify-start items-center"
+          title="Test link, not a real one"
+        >
+          <ListBulletIcon className=" w-4 h-4 text-gray-500   " />
+          <span className=" pl-2 text-sm">Active</span>
         </Link>
       </li>
-      <li key={3} className=" hover:bg-gray-200 p-2">
-        <Link href = {'#'} className="flex flex-row justify-start items-center cursor-not-allowed"
-         title="TBA">
-          <UserPlusIcon className=" w-5 h-5 text-gray-400   "/>
-          <span className=" pl-2 text-base">Invites</span>
+      <li className=" hover:bg-gray-100 px-2 py-3">
+        <Link
+          href={"/u/me/invites"}
+          className="flex flex-row justify-start items-center"
+          title="Test link, not a real one"
+        >
+          <UserPlusIcon className=" w-4 h-4 text-gray-500   " />
+          <span className=" pl-2 text-sm">Invites</span>
         </Link>
       </li>
-      <li key={4} className=" hover:bg-gray-200 p-2">
-        <Link href = {'#'} className="flex flex-row justify-start items-center cursor-not-allowed"
-         title="TBA">
-          <PencilIcon className=" w-5 h-5 text-gray-400   "/>
-          <span className=" pl-2 text-base">Drafts</span>
+      <li className=" hover:bg-gray-100 px-2 py-3">
+        <Link
+          href={"/u/me/activity/drafts"}
+          className="flex flex-row justify-start items-center"
+          title="Test link, not a real one"
+        >
+          <PencilIcon className=" w-4 h-4 text-gray-500   " />
+          <span className=" pl-2 text-sm">Drafts</span>
         </Link>
       </li>
-      <li key={5} className=" hover:bg-gray-200 p-2">
-        <Link href = {'#'} className="flex flex-row justify-start items-center cursor-not-allowed"
-         title="TBA">
-          <CogIcon className=" w-5 h-5 text-gray-400   "/>
-          <span className=" pl-2 text-base">Perferences</span>
+      <li className=" hover:bg-gray-100 px-2 py-3">
+        <Link
+          href={"/u/me/preferencesd"}
+          className="flex flex-row justify-start items-center"
+          title="Test link, not a real one"
+        >
+          <CogIcon className=" w-4 h-4 text-gray-500   " />
+          <span className=" pl-2 text-sm">Perferences</span>
         </Link>
       </li>
-      <li key={6} className=" hover:bg-gray-200 p-2">
-        <Link href = {'#'} className="flex flex-row justify-start items-center cursor-not-allowed"
-         title="TBA">
-          <LockOpenIcon className=" w-5 h-5 text-gray-400   "/>
-          <span className=" pl-2 text-base">Pause notification</span>
+      <li className=" hover:bg-gray-100 px-2 py-3">
+        <Link
+          href={"#"}
+          className="flex flex-row justify-start items-center cursor-not-allowed disabled"
+          title="TBA"
+        >
+          <LockOpenIcon className=" w-4 h-4 text-gray-500   " />
+          <span className=" pl-2 text-sm">Pause notification</span>
         </Link>
       </li>
-      <li key={7} className=" hover:bg-gray-200 p-2">
-        <LogoutButton />
+      <li className=" hover:bg-gray-100 px-2 py-3">
+        <Link className=" flex flex-row items-center" href={"/api/auth/logout"}>
+          <ArrowRightStartOnRectangleIcon className=" w-4 h-4 text-gray-400   " />
+          <span className=" pl-2 text-sm">Log Out</span>
+        </Link>
       </li>
-
     </ul>
-  )
+  );
 }

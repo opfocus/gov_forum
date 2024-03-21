@@ -12,7 +12,7 @@ export default function UserSecurity() {
     <main className=" md:w-1/2">
       <section className=" mt-8">
         <label className=" text-xl font-bold text-gray-500">
-          Export your data
+        Password
         </label>
         <button
           className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
@@ -23,11 +23,11 @@ export default function UserSecurity() {
           title="TBA"
         >
           <EnvelopeIcon className=" w-5 h-5" />
-          Request archive
+          Send Password Reset Email
         </button>
       </section>
       <section className=" mt-8">
-        <label className=" text-xl font-bold text-gray-500">Password</label>
+        <label className=" text-xl font-bold text-gray-500">Passkeys</label>
         <p className=" text-xs text-gray-500 mt-2">
           Passkeys are password replacements that validate your identity
           biometrically (e.g. touch, faceID) or via a device PIN/password.

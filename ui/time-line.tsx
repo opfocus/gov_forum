@@ -58,7 +58,7 @@ export default function TimeLine({
   };
   const handleMouseLeave = () => {
     setIsDragging(false);
-    console.log("hello")
+  
     setNextPostIndex(
       `post-${Math.floor(
         scrollerPosition / (sideScrollAreaHeight / postCount)

@@ -120,7 +120,7 @@ export default function ReplyEditor({
   return (
     <div
       className={clsx(
-        " bg-white transition-height transform origin-bottom fixed w-screen bottom-0  left-0 duration-300 z-20",
+        " bg-white transition-height transform origin-bottom fixed w-screen bottom-0  left-0 duration-300 z-10",
         {
            "h-0": !isOpenReplyEdior,
           " h-full": isZoomEditorTextarea,

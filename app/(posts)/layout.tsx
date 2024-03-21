@@ -10,7 +10,7 @@ export const metadata:Metadata = {
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className=" space-y-6">
+    <div className=" mt-8 space-y-6">
       <div className="flex justify-between items-center flex-wrap">
         <FilterBars />
         <NewTopicButton />

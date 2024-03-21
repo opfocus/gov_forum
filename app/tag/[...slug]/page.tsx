@@ -18,12 +18,14 @@ export async function generateMetadata({params}: {
 export default function Page({
   params
 }: {
-  params: {name: string}
+  params: {slug: string[]}
 }) {
+  const length = params.slug.length
+  const name = params.slug[length-1]
 
   return (
     <Suspense fallback={<Processing />}>
-    <TopicsList   queryFrom = {"tags"} queryValue = {params.name}/>
+    <TopicsList   queryFrom = {"tags"} queryValue = {name}/>
     </Suspense>
   )
 }

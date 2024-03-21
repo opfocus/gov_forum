@@ -16,17 +16,9 @@ export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
   const [searchedTags, setSearchedTags] = useState<[] | undefined>(undefined);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/tags');
-        const tags = await response.json();
-        setSearchedTags(tags);
-      } catch (error) {
-        console.error("Error fetching tags:", error);
-      }
-    };
-
-    fetchData();
+    fetch("/api/tags")
+      .then((res) => res.json())
+      .then((data) => setSearchedTags(data.top_tags));
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +27,7 @@ export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
 
   const data = searchedTags?.filter(
     (item: any) =>
-      item.name.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+      item.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
   );
 
   const handleClick = (name: string) => {
@@ -108,7 +100,7 @@ export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
                   </div>
                 ) : (
                   data.map((item: any) => (
-                    <Menu.Item key={item.index}>
+                    <Menu.Item key={item}>
                       {({ active }) => (
                         <button
                           className={classNames(
@@ -117,10 +109,10 @@ export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
                               : "text-gray-700",
                             "block px-2 py-2 w-full text-left text-sm"
                           )}
-                          onClick={() => handleClick(item.name)}
+                          onClick={() => handleClick(item)}
                         >
                           <div className=" text-sm text-gray-700">
-                            {item.name}
+                            {item}
                           </div>
                         </button>
                       )}
