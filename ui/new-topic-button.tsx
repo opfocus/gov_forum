@@ -18,7 +18,7 @@ export default function NewTopicButton() {
 
   if (user)
   return (
-    <button className=" flex items-center px-2 py-1 bg-sky-600 text-white hover:bg-sky-700"
+    <button className=" flex items-center px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 my-2"
       onClick={() => setIsOpen(true)}
     >
       <PlusIcon className="pr-1 w-6 h-6" />
@@ -26,7 +26,7 @@ export default function NewTopicButton() {
     </button>
   )
   return (
-    <Link className=" flex items-center px-2 py-1 bg-sky-600 text-white hover:bg-sky-700"
+    <Link className=" flex items-center px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 my-2"
     href={"/api/auth/login"}
   >
     <PlusIcon className="pr-1 w-6 h-6" />

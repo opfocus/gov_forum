@@ -90,7 +90,7 @@ export default function MenuPanel() {
         const resT = await fetch('/api/tags')
         const tData = await resT.json();
 
-        setTags(tData)
+        setTags(tData.top_tags)
         setCategories(CData);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -177,10 +177,10 @@ export default function MenuPanel() {
               </summary>
               <ul className=" grid grid-cols-2 gap-1 mt-2">
                 {tags?.map((tag: any) => (
-                  <Menu.Item key={tag.index}>
+                  <Menu.Item key={tag}>
                     {({ active }) => (
                       <Link
-                        href={`/tag/${tag.name}`}
+                        href={`/tag/${tag}`}
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -191,7 +191,7 @@ export default function MenuPanel() {
                         <div className=" flex flex-row items-center">
                           <TagIcon className=" w-4 h-4" />
                           <span>
-                            {tag.name}
+                            {tag}
                           </span>
                         </div>
                       </Link>

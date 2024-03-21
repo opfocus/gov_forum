@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
-import type { Tag } from "@/lib/type";
 import Processing from "./processing";
 import clsx from "clsx";
 
@@ -13,8 +12,7 @@ export default function FilterDropdownBarAllTags() {
   const pramas = useParams();
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [searchedTags, setSearchedTags] = useState<[] | undefined>(undefined);
-  const [tags, setTags] = useState<Tag[] | undefined>(undefined);
+  const [tags, setTags] = useState<string[] | undefined>(undefined);
 
 
     // Listen click event
@@ -37,8 +35,7 @@ export default function FilterDropdownBarAllTags() {
     fetch("/api/tags")
       .then((res) => res.json())
       .then((data) => {
-        setTags(data);
-        setSearchedTags(data);
+        setTags(data.top_tags);
       });
   }, []);
 
@@ -48,17 +45,18 @@ export default function FilterDropdownBarAllTags() {
   };
 
   // searched
-  const data = searchedTags?.filter(
+  const data = tags?.filter(
     (item: any) =>
-      item.name.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+      item.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
   );
 
   // selected
   let name: string = "tags";
+  let length = pramas.slug?.length
 
-  if (tags && pramas.name !== undefined) {
-    const [item] = tags.filter((tag) => tag.name === pramas.name);
-    if (item) name = item.name;
+  if (tags && pramas.slug !== undefined) {
+    const item = tags.find((tag) => tag === pramas.slug[length-1]);
+    if (item) name = item;
   }
 
   return (
@@ -81,7 +79,7 @@ export default function FilterDropdownBarAllTags() {
         )}
       </button>
       {isOpen && (
-        <div className=" absolute border-gray-200 border border-solid">
+        <div className=" bg-white absolute border-gray-200 border border-solid">
           <div className="py-1 w-[218px]">
             <div className="w-full flex flex-row px-2 py-1 text-gray-700 border-gray-100 border-solid border">
               <input
@@ -97,15 +95,15 @@ export default function FilterDropdownBarAllTags() {
               {data == undefined ? (
                 <Processing />
               ) : (
-                data.map((item: any) => (
+                data.map((tag: any) => (
                   <Link
-                    key={item.slug}
-                    href={`/tag/${item.name}`}
+                    key={tag}
+                    href={`/tag/${tag}`}
                     className={
-                      " bg-white hover:bg-gray-100 hover:text-gray-900 text-gray-700 block px-2 py-2 text-sm"
+                      " hover:bg-gray-100 hover:text-gray-900 text-gray-700 block px-2 py-2 text-sm"
                     }
                   >
-                    <div className=" text-sm text-gray-700">{item.name}</div>
+                    <div className=" text-sm text-gray-700">{tag}</div>
                   </Link>
                 ))
               )}

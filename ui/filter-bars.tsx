@@ -6,6 +6,7 @@ import FilterDropdownBarCategories from "@/ui/filter-dropdown-bar-categories";
 import FilterDropdownBarAllTags from "@/ui/filter-dropdown-bar-all-tags";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useSelectedLayoutSegment } from "next/navigation";
+import FilterDropdownBarSubCategories from "./filter-dropdown-bar-sub-categories";
 
 export default function FilterBars() {
   const { user, error, isLoading } = useUser();
@@ -13,8 +14,9 @@ export default function FilterBars() {
 
   return (
     <nav className=" bg-white z-20">
-      <ul className="flex flex-row  gap-2 text-gray-700">
+      <ul className="flex flex-row  gap-2 text-gray-700 my-2">
         <FilterDropdownBarCategories />
+        <FilterDropdownBarSubCategories />
         <FilterDropdownBarAllTags />
         <li>
           <Link

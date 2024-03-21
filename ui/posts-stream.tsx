@@ -32,9 +32,6 @@ export default function PostsStream() {
     getPostStream();
   }, []);
 
-
-  console.log(`act: ${activePostId}`);
-
   useEffect(() => {
     const handleScroll = () => {
       const allElements = document.querySelectorAll("[id^='post']");
