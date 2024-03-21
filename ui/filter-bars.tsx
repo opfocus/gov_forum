@@ -13,7 +13,7 @@ export default function FilterBars() {
   const segment = useSelectedLayoutSegment();
 
   return (
-    <nav className=" bg-white z-20">
+    <nav className=" bg-white">
       <ul className="flex flex-row  gap-2 text-gray-700 my-2">
         <FilterDropdownBarCategories />
         <FilterDropdownBarSubCategories />

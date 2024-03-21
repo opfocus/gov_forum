@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Login() {
   return (
-    <div className=" max-w-4xl flex flex-row gap-8 bg-white">
+    <div className=" mt-8 max-w-4xl flex flex-row gap-8 bg-white">
       <div className=" p-12 overflow-auto">
         <div className=" grid grid-cols-2 items-center">
           <h1 className=" font-semibold whitespace-nowrap">Welcome back</h1>
@@ -42,7 +42,7 @@ export default function Login() {
               <label
                 htmlFor="email-or-username"
                 className=" px-1 absolute  text-base text-gray-400 bg-white
-              duration-150 transform  scale-75 -translate-y-3 z-10 origin-[0] 
+              duration-150 transform  scale-75 -translate-y-3  origin-[0] 
                left-3 top-0
                peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-3
                peer-focus:scale-75 peer-focus:-translate-y-3"
@@ -70,7 +70,7 @@ export default function Login() {
               <label
                 htmlFor="password"
                 className=" px-1 absolute  text-base text-gray-400 bg-white
-              duration-150 transform  scale-75 -translate-y-3 z-10 origin-[0] 
+              duration-150 transform  scale-75 -translate-y-3 origin-[0] 
                left-3 top-0
                peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-3
                peer-focus:scale-75 peer-focus:-translate-y-3"

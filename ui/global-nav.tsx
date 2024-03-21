@@ -6,7 +6,7 @@ import MenuButton from "./menu-button";
 
 export default async function GlobalNav() {
   return (
-    <header className=" bg-white sticky top-0 w-full  shadow-lg z-40 border-t border-solid border-gray-100">
+    <header className=" bg-white sticky top-0 w-full  shadow-lg z-20 border-t border-solid border-gray-100">
       <nav className=" flex flex-row mx-auto max-w-[1110px] h-[60px]  px-[10px] items-center">
         <Link href={"/"}>
           <Image

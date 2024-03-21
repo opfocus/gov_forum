@@ -9,7 +9,7 @@ export default function Modal({children}: {
   const router = useRouter()
 
   return (
-    <div className=" fixed z-20 top-0 w-full h-full bg-black bg-opacity-40 flex items-center justify-center">
+    <div className=" fixed z-40 top-0 w-full h-full bg-black bg-opacity-40 flex items-center justify-center">
       <button
         onClick={() => router.back()}
         className=" absolute p-2 top-0 right-0"
