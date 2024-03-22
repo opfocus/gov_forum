@@ -4,7 +4,6 @@ import NewTopicButton from "@/ui/new-topic-button";
 import TagNotificationButton from "@/ui/tag-notifications-button";
 
 
-
 export  default function layout({ children }: { children: React.ReactNode }) {
 
   return (
