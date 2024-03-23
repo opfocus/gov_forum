@@ -51,15 +51,38 @@ export default function FilterDropdownBarCategories() {
   );
 
   // selected
-  let name: string = "calegories";
-  let length = pramas.slug?.length
 
-  if (categories && pramas.slug !== undefined) {
-    const item = categories.find(
-      (category: any) => category.id === Number(pramas.slug[length-1])
-    );
-    if (item) name = item.name;
-  }
+  const getSelectedCategoryName = () => {
+    // condition: path in "/"
+    if (pramas.slug === undefined)
+      return "categories"
+    // condition: path in c/... latest topics
+    else if (pramas.slug.length <= 3) {
+        const item = categories?.find(
+          (category: any) => category.slug === pramas.slug[0]
+        );
+        return item? item.name: "categories"
+      }
+    // condition: path in tag/.../tagName latest topics
+    else {
+      const item = categories?.find(
+        (category: any) => category.slug === pramas.slug[1]
+      );
+      return item? item.name: "categories"
+    }
+  };
+
+    // href
+    let herfPrefix:string = ''
+    let herfSuffix: string = ''
+    let length = pramas.slug?.length
+    // condition: path in "/"
+    if ( (2 <= length && length <= 3) || length === undefined )
+      herfPrefix = `/c`
+    else if (1 == length || (length <= 5 && length >=4)) {
+      herfPrefix = `/tag/c`
+      herfSuffix = pramas.slug[length-1]
+    }
 
   return (
     <li id="categories-dropdown">
@@ -73,7 +96,7 @@ export default function FilterDropdownBarCategories() {
         )}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {name}
+        {getSelectedCategoryName()}
         {isOpen ? (
           <ChevronDownIcon className=" w-4 h-4 ml-1" />
         ) : (
@@ -100,13 +123,16 @@ export default function FilterDropdownBarCategories() {
                 data.map((item: any) => (
                   <li key={item.slug}>
                     <Link
-                      href={`/c/${item.slug}/${item.id}`}
+                      href={`${herfPrefix}/${item.slug}/${item.id}/${herfSuffix}`}
                       className={
                         " bg-white hover:bg-gray-100 hover:text-gray-900 text-gray-700 block px-2 py-2 text-sm"
                       }
                     >
                       <div className="w-full flex flex-row gap-1 items-center">
-                        <div className=" w-2 h-2" style={{backgroundColor: `#${item.color}`}}></div>
+                        <div
+                          className=" w-2 h-2"
+                          style={{ backgroundColor: `#${item.color}` }}
+                        ></div>
                         <div className=" text-sm text-gray-700">
                           {item.name}
                         </div>
