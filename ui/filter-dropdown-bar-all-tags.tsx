@@ -100,7 +100,7 @@ export default function FilterDropdownBarAllTags() {
     <li id="tag-dropdown">
       <button
         className={clsx(
-          "relative flex flex-row items-center justify-between px-2 py-1 border-solid  text-sm",
+          "relative flex flex-row items-center justify-between px-2 py-1 border-solid text-sm whitespace-nowrap",
           {
             "border-sky-600 border": isOpen,
             "border-gray-400 border": !isOpen,
@@ -116,7 +116,7 @@ export default function FilterDropdownBarAllTags() {
         )}
       </button>
       {isOpen && (
-        <div className=" bg-white absolute border-gray-200 border border-solid">
+        <div className=" z-10 bg-white absolute border-gray-200 border border-solid">
           <div className="py-1 w-[218px]">
             <div className="w-full flex flex-row px-2 py-1 text-gray-700 border-gray-100 border-solid border">
               <input

@@ -14,7 +14,7 @@ export default function FilterBars() {
 
   return (
     <nav className=" bg-white">
-      <ul className="flex flex-row  gap-2 text-gray-700 my-2">
+      <ul className="flex flex-row flex-wrap  gap-2 text-gray-700 my-2">
         <FilterDropdownBarCategories />
         <FilterDropdownBarSubCategories />
         <FilterDropdownBarAllTags />

@@ -1,8 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import { subCategories } from "@/lib/sub-categories";
 
-export default async function TopicsLatest({topics}: {
-  topics:any[]
+export default async function TopicsLatest({
+  topics,
+  categories,
+}: {
+  topics: any[];
+  categories: any[];
 }) {
   const formatTimeSince = (timestamp: string): string => {
     const lastPostDate = new Date(timestamp) as Date;
@@ -19,6 +24,29 @@ export default async function TopicsLatest({topics}: {
     } else {
       return "just now";
     }
+  };
+
+  const fetchCategoryDetailsById = (id: number) => {
+    let matchedCategory = categories?.find(
+      (category: any) => category.id === id
+    );
+    if (matchedCategory !== undefined)
+      return {
+        id: matchedCategory.id,
+        color: matchedCategory.color,
+        href: `/c/${matchedCategory.slug}/${matchedCategory.id}`,
+      };
+    matchedCategory = subCategories.find(
+      (subCategory: any) => subCategory.id === id
+    );
+    let parentCategory = categories?.find(
+      (category: any) => category.id === matchedCategory.id
+    );
+    return {
+      id: matchedCategory?.id,
+      color: matchedCategory?.color,
+      href: `/c/${parentCategory?.slug}/${matchedCategory?.slug}/${matchedCategory?.id}`,
+    };
   };
 
   return (
@@ -38,15 +66,36 @@ export default async function TopicsLatest({topics}: {
             height={48}
             className="rounded-full mr-3"
           ></img>
-          <div className="flex flex-col grow">
+          <div className="flex flex-col grow gap-[2px]">
             <Link
               href={"t/" + topic.slug + "/" + topic.id.toString()}
               scroll={false}
             >
               <div className=" text-gray-700">{topic.title}</div>
             </Link>
-            <div className=" text-sm text-gray-400 font-light">
-              {`${topic.category_name} ${topic.tags.join(",")}`}
+            <div className=" text-sm text-gray-400 flex flex-row gap-2">
+              <Link
+                href={fetchCategoryDetailsById(topic.category_id).href}
+                title={`Link to ${topic.category_name}`}
+                className=" flex flex-row gap-1 items-center"
+              >
+                <span
+                  className=" w-2 h-2"
+                  style={{
+                    backgroundColor: `#${
+                      fetchCategoryDetailsById(topic.category_id).color
+                    }`,
+                  }}
+                ></span>
+                <span>{topic.category_name}</span>
+              </Link>
+              <span className=" flex flex-row gap-1">
+                {topic.tags.map((tagName: string) => (
+                  <Link href={`/tag/${tagName}`} title={`Link to ${tagName}`}>
+                    {tagName}
+                  </Link>
+                ))}
+              </span>
             </div>
           </div>
           <div className=" flex flex-col gap-1">

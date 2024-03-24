@@ -4,6 +4,8 @@ import NewTopicButton from "@/ui/new-topic-button";
 
 import type { Metadata } from "next";
 
+export const revalidate = 1800
+
 export const metadata:Metadata = {
   title: "topics",
 }

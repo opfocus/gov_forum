@@ -30,7 +30,7 @@ export default async function Page() {
         </div>
         <div className=" w-full lg:flex-1">
           <Suspense fallback={<Processing />}>
-            <TopicsLatest topics={topics}/>
+            <TopicsLatest topics={topics} categories={categories}/>
           </Suspense>
         </div>
     </main>

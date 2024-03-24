@@ -124,7 +124,7 @@ export default function FilterDropdownBarSubCategories() {
       <li id="subcategories-dropdown">
         <button
           className={clsx(
-            "relative flex flex-row items-center justify-between px-2 py-1 border-solid  text-sm",
+            "relative flex flex-row items-center justify-between px-2 py-1 border-solid  text-sm whitespace-nowrap",
             {
               "border-sky-600 border": isOpen,
               "border-gray-400 border": !isOpen,
@@ -140,7 +140,7 @@ export default function FilterDropdownBarSubCategories() {
           )}
         </button>
         {isOpen && (
-          <div className=" absolute border-gray-200 border border-solid bg-white">
+          <div className=" z-10 absolute border-gray-200 border border-solid bg-white">
             <div className="py-1 max-w-[598px]">
               <div className=" w-full flex flex-row px-2 py-1 text-gray-700 border-gray-100 border-solid border">
                 <input
