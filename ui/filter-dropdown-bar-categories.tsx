@@ -52,37 +52,37 @@ export default function FilterDropdownBarCategories() {
 
   // selected
 
-  const getSelectedCategoryName = () => {
+  const getSelectedCategory= () => {
     // condition: path in "/"
-    if (pramas.slug === undefined)
-      return "categories"
+    if (pramas.slug === undefined) return undefined;
     // condition: path in c/... latest topics
-    else if (pramas.slug.length <= 3) {
-        const item = categories?.find(
-          (category: any) => category.slug === pramas.slug[0]
-        );
-        return item? item.name: "categories"
-      }
+    else if (pramas.slug.length <= 4) {
+      const item = categories?.find(
+        (category: any) => category.slug === pramas.slug[0]
+      );
+      return item;
+    }
     // condition: path in tag/.../tagName latest topics
     else {
       const item = categories?.find(
         (category: any) => category.slug === pramas.slug[1]
       );
-      return item? item.name: "categories"
+      return item;
     }
   };
 
-    // href
-    let herfPrefix:string = ''
-    let herfSuffix: string = ''
-    let length = pramas.slug?.length
-    // condition: path in "/"
-    if ( (2 <= length && length <= 3) || length === undefined )
-      herfPrefix = `/c`
-    else if (1 == length || (length <= 5 && length >=4)) {
-      herfPrefix = `/tag/c`
-      herfSuffix = pramas.slug[length-1]
-    }
+  // href
+  let herfPrefix: string = "";
+  let herfSuffix: string = "";
+  let length = pramas.slug?.length;
+  // condition: path in "/"
+  if ((3 <= length && length <= 4) || length === undefined) {
+    herfPrefix = `/c`;
+    herfSuffix = "latest";
+  } else if (2 == length || (length <= 6 && length >= 5)) {
+    herfPrefix = `/tag/c`;
+    herfSuffix = (pramas.slug as string[]).slice(-2,).join('/')
+  }
 
   return (
     <li id="categories-dropdown">
@@ -96,7 +96,19 @@ export default function FilterDropdownBarCategories() {
         )}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {getSelectedCategoryName()}
+        {getSelectedCategory() === undefined ? (
+          "categories"
+        ) : (
+          <div className="flex flex-row gap-1 items-center">
+            <div
+              className=" w-2 h-2"
+              style={{ backgroundColor: `#${getSelectedCategory().color}` }}
+            ></div>
+            <div className=" text-sm text-gray-700">
+              {getSelectedCategory().name}
+            </div>
+          </div>
+        )}
         {isOpen ? (
           <ChevronDownIcon className=" w-4 h-4 ml-1" />
         ) : (

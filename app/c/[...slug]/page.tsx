@@ -32,7 +32,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
 
   // pramas.slug?.[length-1] the category/subCategory id
   const length = params.slug.length;
-  const id = params.slug[length - 1];
+  const id = params.slug[length - 2];
 
   return (
     <Suspense fallback={<Processing />}>

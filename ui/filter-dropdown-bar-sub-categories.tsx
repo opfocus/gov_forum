@@ -40,57 +40,54 @@ export default function FilterDropdownBarSubCategories() {
       });
   }, []);
 
-  // selected
-  const getSelectedSubCategoryName = () => {
+  // selected subcategory
+  const getSelectedSubCategory = () => {
     let subCategoryLocation;
 
     if (pramas.slug !== undefined)
-      if (pramas.slug.length === 3) {
+      if (pramas.slug.length === 4) {
         // condition: path in c/... latest topics
         subCategoryLocation = subCategories.find(
           (sub) => pramas.slug?.[2] === String(sub.id)
         );
-        return subCategoryLocation?.name;
+        return subCategoryLocation;
       }
       // condition: path in tag/.../tagName latest topics
-      else if (pramas.slug.length === 5) {
+      else if (pramas.slug.length === 6) {
         subCategoryLocation = subCategories.find(
           (sub) => pramas.slug?.[3] === String(sub.id)
         );
-        return subCategoryLocation?.name;
-      } else return "subcategories";
+        return subCategoryLocation;
+      } else return undefined;
   };
 
   // sub-categories options
   const getSubCategoriesOptions = () => {
-    let categorySelected:any
+    let categorySelected: any;
     let subCatogoriesOptions;
 
     if (pramas.slug !== undefined) {
       // condition: path in c/... latest topics
-      if (pramas.slug.length <= 3) {
+      if (pramas.slug.length <= 4) {
         categorySelected = categories?.find(
           (category: any) => pramas.slug?.[0] === category.slug
         );
         subCatogoriesOptions = subCategories.filter((sub) =>
-        categorySelected?.subcategory_ids.includes(sub.id)
+          categorySelected?.subcategory_ids.includes(sub.id)
         );
-        return subCatogoriesOptions
+        return subCatogoriesOptions;
       }
-    // condition: path in tag/.../tagName latest topics
-      else if (pramas.slug.length === 5 || pramas.slug.length === 4 ) {
+      // condition: path in tag/.../tagName latest topics
+      else if (pramas.slug.length === 5 || pramas.slug.length === 6) {
         categorySelected = categories?.find(
           (category: any) => pramas.slug?.[1] === category.slug
         );
         subCatogoriesOptions = subCategories.filter((sub) =>
-        categorySelected?.subcategory_ids.includes(sub.id)
+          categorySelected?.subcategory_ids.includes(sub.id)
         );
-        return subCatogoriesOptions
-      }
-      else 
-        return undefined
-    }
-    else return undefined
+        return subCatogoriesOptions;
+      } else return undefined;
+    } else return undefined;
   };
 
   // search input handle
@@ -105,21 +102,25 @@ export default function FilterDropdownBarSubCategories() {
         .toLowerCase()
         .indexOf(searchValue.toLowerCase()) !== -1
   );
-  console.log(getSubCategoriesOptions()?.length)
+  // console.log(getSubCategoriesOptions()?.length)
 
   // href
-  let herfPrefix:string = ''
-  let herfSuffix: string = ''
-  let length = pramas.slug?.length
+  let herfPrefix: string = "";
+  let herfSuffix: string = "";
+  let length = pramas.slug?.length;
   // condition: path in "/"
-  if ( 2 <= length && length <= 3 )
-    herfPrefix = `/c/${pramas.slug[0]}`
-  else if (4 <= length && length <= 5 ) {
-    herfPrefix = `/tag/c/${pramas.slug[1]}`
-    herfSuffix = pramas.slug[length-1]
+  if (3 <= length && length <= 4) {
+    herfPrefix = `/c/${pramas.slug[0]}`;
+    herfSuffix = "latest";
+  } else if (5 <= length && length <= 6) {
+    herfPrefix = `/tag/c/${pramas.slug[1]}`;
+    herfSuffix = (pramas.slug as string[]).slice(-2,).join('/')
   }
-  
-  if ((getSubCategoriesOptions() !== undefined ) && getSubCategoriesOptions()!.length !== 0)
+
+  if (
+    getSubCategoriesOptions() !== undefined &&
+    getSubCategoriesOptions()!.length !== 0
+  )
     return (
       <li id="subcategories-dropdown">
         <button
@@ -132,7 +133,21 @@ export default function FilterDropdownBarSubCategories() {
           )}
           onClick={() => setIsOpen(!isOpen)}
         >
-         {getSelectedSubCategoryName()}
+          {getSelectedSubCategory() === undefined ? (
+            "subcategories"
+          ) : (
+            <div className="flex flex-row gap-1 items-center">
+              <div
+                className=" w-2 h-2"
+                style={{
+                  backgroundColor: `#${getSelectedSubCategory()!.color}`,
+                }}
+              ></div>
+              <div className=" text-sm text-gray-700">
+                {getSelectedSubCategory()!.name}
+              </div>
+            </div>
+          )}
           {isOpen ? (
             <ChevronDownIcon className=" w-4 h-4 ml-1" />
           ) : (

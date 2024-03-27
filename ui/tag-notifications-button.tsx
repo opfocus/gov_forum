@@ -16,7 +16,7 @@ export default function TagNotificationButton() {
         <BellIcon className="w-5 h-5" />
       </button>
       {isOpen && (
-        <section className=" absolute md:right-0 md:w-96 shadow-md bg-white mt-2">
+        <section className=" absolute w-full right-0 sm:w-96  shadow-md bg-white mt-2">
           <ul title="[TBA]">
             <li className=" flex flex-row p-2 hover:bg-gray-100">
               <div className=" pr-1">

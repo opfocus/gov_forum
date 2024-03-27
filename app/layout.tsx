@@ -7,6 +7,7 @@ import TopicCreate from "@/ui/topic-create";
 
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import React from "react";
+import Banner from "@/ui/banner";
 
 export const metadata: Metadata = {
   generator: "Next.js",
@@ -60,6 +61,7 @@ export default function RootLayout({
         <body className="pb-36 overflow-y-scroll">
             <GlobalNav />
             <div className="mx-auto max-w-[1110px] px-[10px]">
+              <Banner />
               <OpenEditorProvider>
                 {children} 
                 <TopicCreate />

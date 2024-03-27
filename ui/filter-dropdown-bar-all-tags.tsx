@@ -54,7 +54,7 @@ export default function FilterDropdownBarAllTags() {
     // condition: path in tag name
     else if (pramas.slug.length === 1) return tags;
     // condition: path in category latest topics
-    else if (pramas.slug.length === 2) {
+    else if (pramas.slug.length === 3) {
       categoryLocationId = Number(pramas.slug[1]);
       mappingTags = mapping.category_tags_mapping.find(
         (item) => item.category_id === categoryLocationId
@@ -71,7 +71,7 @@ export default function FilterDropdownBarAllTags() {
     }
   };
 
-  console.log(getMappingTags())
+  // console.log(getMappingTags())
 
   // searched
   const data = getMappingTags()?.filter(
@@ -83,15 +83,15 @@ export default function FilterDropdownBarAllTags() {
   let length = pramas.slug?.length;
 
   if (tags && pramas.slug !== undefined) {
-    const item = tags.find((tag) => tag === pramas.slug[length - 1]);
+    const item = tags.find((tag) => tag === pramas.slug[length - 2]);
     if (item) name = item;
   }
 
       // href
       let herfSolt = ''
-      // condition: path in "/c"
-      if ( 2 <= length && length <= 3 )
-        herfSolt = `c/${(pramas.slug as string[]).join("/")}`
+      // condition: path in "/c/..."
+      if ( 3 <= length && length <= 4 )
+        herfSolt = `c/${(pramas.slug.slice(0, length-1) as string[]).join("/")}`
       else if (4 <= length && length <= 5 ) {
         herfSolt = `${(pramas.slug.slice(0,length-1) as string[]).join("/")}`
       }
@@ -137,7 +137,7 @@ export default function FilterDropdownBarAllTags() {
                 data.map((tagName: any) => (
                   <Link
                     key={tagName}
-                    href={`/tag/${herfSolt}/${tagName}`}
+                    href={`/tag/${herfSolt}/${tagName}/latest`}
                     className={
                       " hover:bg-gray-100 hover:text-gray-900 text-gray-700 block px-2 py-2 text-sm"
                     }

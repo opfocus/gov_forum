@@ -21,7 +21,7 @@ export default function Page({
   params: {slug: string[]}
 }) {
   const length = params.slug.length
-  const name = params.slug[length-1]
+  const name = params.slug[length-2]
 
   return (
     <Suspense fallback={<Processing />}>

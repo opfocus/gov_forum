@@ -9,7 +9,7 @@ export default function Banner() {
 
   if (isOpenBanner)
     return (
-        <section className=" relative prose prose-sm prose-invert max-w-none text-black p-4 pr-8 bg-[#d1f0ff]">
+        <section className=" mt-8 relative prose prose-sm prose-invert max-w-none text-black p-4 pr-8 bg-[#d1f0ff]">
             <p>
             Welcome to the Optimism Collective! You can learn more about the Collective's Vision and Governance Processes here.
             </p>
