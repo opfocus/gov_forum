@@ -32,12 +32,12 @@ export default function UserAccount() {
               id="username"
               name="username"
               type="text"
-              className=" p-1 w-1/2 my-2 text-gray-700  border-2 border-gray-200 border-solid focus:outline-none focus:border-blue-400"
+              className=" my-2 w-1/2 border-2 border-solid  border-gray-200 p-1 text-gray-700 focus:border-blue-400 focus:outline-none"
               value={data.username}
             />
-            <div className=" text-sm mt-2 space-x-2">
+            <div className=" mt-2 space-x-2 text-sm">
               <button
-                className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+                className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
                 title="TBA"
               >
                 change
@@ -52,16 +52,16 @@ export default function UserAccount() {
           </div>
         ) : (
           <div>
-            <div className=" flex flex-row mt-2 items-center">
-              <div className=" text-sm pr-2">{data.username}</div>
+            <div className=" mt-2 flex flex-row items-center">
+              <div className=" pr-2 text-sm">{data.username}</div>
               <button
                 className=" bg-gray-200 p-2 text-gray-500 hover:bg-gray-400 hover:text-white"
                 onClick={() => setIsEditUsername(true)}
               >
-                <PencilIcon className="w-4 h-4" />
+                <PencilIcon className="h-4 w-4" />
               </button>
             </div>
-            <p className=" text-xs text-gray-500 mt-2">
+            <p className=" mt-2 text-xs text-gray-500">
               People can mention you as @chooose
             </p>
           </div>
@@ -73,9 +73,9 @@ export default function UserAccount() {
         </label>
         <br />
         {isEditUserAvatar ? (
-          <div className=" text-sm mt-2 space-x-2">
+          <div className=" mt-2 space-x-2 text-sm">
             <button
-              className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+              className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
               title="TBA"
             >
               change
@@ -100,7 +100,7 @@ export default function UserAccount() {
               className=" bg-gray-200 p-2 text-gray-500 hover:bg-gray-400 hover:text-white"
               onClick={() => setIsEditUserAvatar(true)}
             >
-              <PencilIcon className="w-4 h-4" />
+              <PencilIcon className="h-4 w-4" />
             </button>
           </div>
         )}
@@ -114,12 +114,12 @@ export default function UserAccount() {
               id="email"
               name="email"
               type="email"
-              className=" p-1 w-1/2 my-2 text-gray-700  border-2 border-gray-200 border-solid focus:outline-none focus:border-blue-400"
+              className=" my-2 w-1/2 border-2 border-solid  border-gray-200 p-1 text-gray-700 focus:border-blue-400 focus:outline-none"
               value={data.email}
             />
-            <div className=" text-sm mt-2 space-x-2">
+            <div className=" mt-2 space-x-2 text-sm">
               <button
-                className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+                className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
                 title="TBA"
               >
                 change
@@ -134,25 +134,25 @@ export default function UserAccount() {
           </div>
         ) : (
           <div>
-            <div className=" flex flex-row mt-2 items-center">
-              <div className=" text-sm pr-2">{data.email}</div>
+            <div className=" mt-2 flex flex-row items-center">
+              <div className=" pr-2 text-sm">{data.email}</div>
               <button
                 className=" bg-gray-200 p-2 text-gray-500 hover:bg-gray-400 hover:text-white"
                 onClick={() => setIsEditUserEmail(true)}
               >
-                <PencilIcon className="w-4 h-4" />
+                <PencilIcon className="h-4 w-4" />
               </button>
             </div>
-            <p className=" text-green-700 font-semibold">primary</p>
-            <div className=" w-1/2 flex flex-row items-center justify-between">
-              <p className=" text-xs text-gray-500 mt-2">
+            <p className=" font-semibold text-green-700">primary</p>
+            <div className=" flex w-1/2 flex-row items-center justify-between">
+              <p className=" mt-2 text-xs text-gray-500">
                 Never shown to the public.
               </p>
               <button
-                className=" flex flex-row items-center text-sky-600 disabled cursor-not-allowed"
+                className=" disabled flex cursor-not-allowed flex-row items-center text-sky-600"
                 title="TBA"
               >
-                <PlusIcon className="w-5 h-5 inline-block" />
+                <PlusIcon className="inline-block h-5 w-5" />
                 Add Alternate Email
               </button>
             </div>
@@ -166,7 +166,7 @@ export default function UserAccount() {
           id="name"
           name="name"
           type="text"
-          className=" p-1 w-1/2 my-2 text-gray-700  border-2 border-gray-200 border-solid focus:outline-none focus:border-blue-400"
+          className=" my-2 w-1/2 border-2 border-solid  border-gray-200 p-1 text-gray-700 focus:border-blue-400 focus:outline-none"
         />
         <p className=" text-xs text-gray-500">Never shown to the public.</p>
       </section>
@@ -175,23 +175,23 @@ export default function UserAccount() {
           Export your data
         </label>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-         hover:text-white 
-         flex flex-row gap-1 items-center
-          disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+         gap-1 
+         bg-gray-200 px-2 py-1 text-gray-700
+          hover:bg-gray-400 hover:text-white
          "
           title="TBA"
         >
-          <CloudArrowDownIcon className=" w-5 h-5" />
+          <CloudArrowDownIcon className=" h-5 w-5" />
           Request archive
         </button>
-        <p className=" text-xs text-gray-500 mt-2">
+        <p className=" mt-2 text-xs text-gray-500">
           Never shown to the public.
         </p>
       </section>
       <section className=" mt-8">
         <button
-          className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+          className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
           title="TBA"
         >
           Save Changes

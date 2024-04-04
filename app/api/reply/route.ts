@@ -1,10 +1,10 @@
 import "server-only";
 import * as Realm from "realm-web";
 import { NextRequest } from "next/server";
-import { withApiAuthRequired} from "@auth0/nextjs-auth0";
+import { withApiAuthRequired } from "@auth0/nextjs-auth0";
 
 export const POST = withApiAuthRequired(async function POST(
-  request: NextRequest
+  request: NextRequest,
 ) {
   const newPost = await request.json();
   const apiKey = process.env.REALM_API_KEY!;
@@ -21,9 +21,9 @@ export const POST = withApiAuthRequired(async function POST(
 
   collection = mongo.db("forum_demo").collection("topics_demo");
   const updateResult = await collection.updateMany(
-    {id: newPost.topic_id}, 
-    { $push: { stream: newPost.id } }
- );
+    { id: newPost.topic_id },
+    { $push: { stream: newPost.id } },
+  );
 
   if (incertResult.insertedId && updateResult.modifiedCount) {
     // If matchedCount is 1, it means the update was successful
@@ -31,12 +31,17 @@ export const POST = withApiAuthRequired(async function POST(
       message: `Post inserted reply post and update topic stream successfully, _id: ${incertResult.insertedId}`,
       status: 200,
     });
-  } else if (incertResult){
+  } else if (incertResult) {
     return Response.json({ message: "Update stream fail", status: 500 });
-  }
-  else if (updateResult) {
-    return Response.json({ message: "Incert reply post stream fail", status: 500 });
+  } else if (updateResult) {
+    return Response.json({
+      message: "Incert reply post stream fail",
+      status: 500,
+    });
   } else {
-    return Response.json({ message: "Incert reply post and update topic  stream fail", status: 500 });
+    return Response.json({
+      message: "Incert reply post and update topic  stream fail",
+      status: 500,
+    });
   }
 });

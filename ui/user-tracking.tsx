@@ -5,12 +5,12 @@ export default function UserTracking() {
     <main>
       <section className=" mt-8">
         <label className=" text-xl font-bold text-gray-500">Topics</label>
-        <p className=" text-sm text-gray-500 mt-2">Consider topics new when</p>
+        <p className=" mt-2 text-sm text-gray-500">Consider topics new when</p>
         <select
           name="topics-new-when"
           id="topics-new-when"
-          className="px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-     text-gray-700 focus:border-sky-600
+          className="mt-2 block border border-solid border-gray-200 px-2 py-1 text-gray-700
+     focus:border-sky-600 focus:outline-none
     "
         >
           <option value="I haven't viewed them yet">
@@ -32,14 +32,14 @@ export default function UserTracking() {
             created since I was here last
           </option>
         </select>
-        <p className=" text-sm text-gray-500 mt-2">
+        <p className=" mt-2 text-sm text-gray-500">
           Automatically track topics I enter
         </p>
         <select
           name="track-when-enter"
           id="track-when-enter"
-          className="px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-     text-gray-700 focus:border-sky-600
+          className="mt-2 block border border-solid border-gray-200 px-2 py-1 text-gray-700
+     focus:border-sky-600 focus:outline-none
     "
         >
           <option value="never">never</option>
@@ -53,14 +53,14 @@ export default function UserTracking() {
           <option value="after 5 minute">after 5 minute</option>
           <option value="after 10 minute">after 10 minute</option>
         </select>
-        <p className=" text-sm text-gray-500 mt-2">
+        <p className=" mt-2 text-sm text-gray-500">
           When I post in a topic, set that topic to
         </p>
         <select
           name="after-post-track-this-topic"
           id="after-post-track-this-topic"
-          className="px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-     text-gray-700 focus:border-sky-600
+          className="mt-2 block border border-solid border-gray-200 px-2 py-1 text-gray-700
+     focus:border-sky-600 focus:outline-none
     "
         >
           <option value="Watching">Watching</option>
@@ -69,16 +69,16 @@ export default function UserTracking() {
         </select>
       </section>
       <div className=" grid grid-cols-2 gap-4">
-        <section className=" flex flex-col gap-3 justify-start mt-8">
+        <section className=" mt-8 flex flex-col justify-start gap-3">
           <label className=" text-xl font-bold text-gray-500">Categories</label>
-          <div className=" flex flex-row gap-1 items-center">
-            <BellIcon className=" w-4 h-4 text-sky-600" />
-            <div className=" text-sm text-gray-500 mt-2">Watched</div>
+          <div className=" flex flex-row items-center gap-1">
+            <BellIcon className=" h-4 w-4 text-sky-600" />
+            <div className=" mt-2 text-sm text-gray-500">Watched</div>
           </div>
           <div
-            className="px-2 py-1  border border-gray-200 border-solid
-     text-gray-700 focus:border-sky-600
-      flex flex-row justify-between
+            className="flex flex-row  justify-between border border-solid
+     border-gray-200 px-2
+      py-1 text-gray-700 focus:border-sky-600
     "
           >
             <input
@@ -87,19 +87,19 @@ export default function UserTracking() {
               className=" focus:outline-none"
               placeholder="[TBA]"
             />
-            <PlusIcon className=" w-5 h-5" />
+            <PlusIcon className=" h-5 w-5" />
           </div>
         </section>
-        <section className=" flex flex-col gap-3 justify-start mt-8">
+        <section className=" mt-8 flex flex-col justify-start gap-3">
           <label className=" text-xl font-bold text-gray-500">Tags</label>
-          <div className=" flex flex-row gap-1 items-center">
-            <BellIcon className=" w-4 h-4 text-sky-600" />
-            <div className=" text-sm text-gray-500 mt-2">Watched</div>
+          <div className=" flex flex-row items-center gap-1">
+            <BellIcon className=" h-4 w-4 text-sky-600" />
+            <div className=" mt-2 text-sm text-gray-500">Watched</div>
           </div>
           <div
-            className="px-2 py-1  border border-gray-200 border-solid
-     text-gray-700 focus:border-sky-600
-      flex flex-row justify-between
+            className="flex flex-row  justify-between border border-solid
+     border-gray-200 px-2
+      py-1 text-gray-700 focus:border-sky-600
     "
           >
             <input
@@ -108,14 +108,14 @@ export default function UserTracking() {
               className=" focus:outline-none"
               placeholder="[TBA]"
             />
-            <PlusIcon className=" w-5 h-5" />
+            <PlusIcon className=" h-5 w-5" />
           </div>
         </section>
       </div>
 
       <section className=" mt-8">
         <button
-          className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+          className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
           title="TBA"
         >
           Save Changes

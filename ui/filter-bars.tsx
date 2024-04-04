@@ -26,7 +26,7 @@ export default function FilterBars({ tabs }: { tabs: any[] }) {
 
   return (
     <nav className=" bg-white">
-      <ul className="flex flex-row flex-wrap  gap-2 text-gray-700 my-2">
+      <ul className="my-2 flex flex-row  flex-wrap gap-2 text-gray-700">
         <FilterDropdownBarCategories />
         <FilterDropdownBarSubCategories />
         <FilterDropdownBarAllTags />
@@ -35,7 +35,7 @@ export default function FilterBars({ tabs }: { tabs: any[] }) {
             <Link
               href={tab.segment}
               className={clsx("px-2 py-1 text-lg font-medium", {
-                " hover:text-red-400 hover:bg-red-100 ":
+                " hover:bg-red-100 hover:text-red-400 ":
                   tab.segment !== segment,
                 "bg-red-400 text-white": tab.segment === segment,
               })}

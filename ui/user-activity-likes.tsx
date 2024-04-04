@@ -3,19 +3,21 @@ import Link from "next/link";
 import { matchCategory } from "@/utils/common";
 import { HeartIcon } from "@heroicons/react/16/solid";
 
-export default function UserActivityLikes({likes, categories}: {
+export default function UserActivityLikes({
+  likes,
+  categories,
+}: {
   likes: any[];
   categories: any[];
 }) {
-  
   return (
     <main>
       <section className=" mt-8">
-      <ul>
+        <ul>
           {likes.map((item: any) => (
             <li
               key={item.post_id}
-              className=" border-b border-gray-200 border-solid px-2 py-4"
+              className=" border-b border-solid border-gray-200 px-2 py-4"
             >
               <div className=" flex flex-row items-start">
                 <Image
@@ -32,17 +34,19 @@ export default function UserActivityLikes({likes, categories}: {
                   >
                     {item.title}
                   </Link>
-                  <div className=" flex flex-row gap-1 items-center">
-                    <div className=" w-2 h-2" style={{
-                      backgroundColor: `#${matchCategory(item.category_id, categories).color}`
-                    }}
+                  <div className=" flex flex-row items-center gap-1">
+                    <div
+                      className=" h-2 w-2"
+                      style={{
+                        backgroundColor: `#${matchCategory(item.category_id, categories).color}`,
+                      }}
                     ></div>
                     <span className=" text-xs text-gray-400">
                       {matchCategory(item.category_id, categories).name}
                     </span>
                   </div>
                 </div>
-                <div className=" text-xs text-gray-400 whitespace-nowrap">
+                <div className=" whitespace-nowrap text-xs text-gray-400">
                   {new Date(item.created_at).toLocaleString("default", {
                     month: "short",
                   })}
@@ -50,22 +54,24 @@ export default function UserActivityLikes({likes, categories}: {
                   {""} {new Date(item.created_at).getFullYear()}
                 </div>
               </div>
-              <p className=" mt-4 text-sm text-gray-700" dangerouslySetInnerHTML={{__html: item.excerpt}}></p>
+              <p
+                className=" mt-4 text-sm text-gray-700"
+                dangerouslySetInnerHTML={{ __html: item.excerpt }}
+              ></p>
               <div className=" mt-2 flex flex-row gap-1">
-                <HeartIcon className=" w-4 h-4 text-red-400" />
+                <HeartIcon className=" h-4 w-4 text-red-400" />
                 <Image
                   src={item.acting_avatar_template}
                   alt="user avatar"
                   width={24}
                   height={24}
                   className=" rounded-full"
-                >
-                </Image>
+                ></Image>
               </div>
             </li>
           ))}
         </ul>
       </section>
     </main>
-  )
+  );
 }

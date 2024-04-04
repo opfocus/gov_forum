@@ -3,22 +3,25 @@
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { MagnifyingGlassIcon} from "@heroicons/react/16/solid";
+import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function TopicEditorCategories({categorySelected, setCategorySelected}: any) {
+export default function TopicEditorCategories({
+  categorySelected,
+  setCategorySelected,
+}: any) {
   const [searchValue, setSearchValue] = useState("");
   const [searchedCategories, setSearchedCategories] = useState<[] | undefined>(
-    undefined
+    undefined,
   );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/categories');
+        const response = await fetch("/api/categories");
         const categories = await response.json();
         setSearchedCategories(categories);
       } catch (error) {
@@ -37,15 +40,16 @@ export default function TopicEditorCategories({categorySelected, setCategorySele
     (item: any) =>
       (item.name + item.description)
         .toLowerCase()
-        .indexOf(searchValue.toLowerCase()) !== -1
+        .indexOf(searchValue.toLowerCase()) !== -1,
   );
 
-
   return (
-    <Menu as="div" className="relative inline-block text-left w-full">
+    <Menu as="div" className="relative inline-block w-full text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-between  px-2 py-1 border border-solid border-gray-400 text-sm hover:bg-gray-50">
-          <span>{categorySelected? categorySelected.name : "all categories"}</span>
+        <Menu.Button className="inline-flex w-full justify-between  border border-solid border-gray-400 px-2 py-1 text-sm hover:bg-gray-50">
+          <span>
+            {categorySelected ? categorySelected.name : "all categories"}
+          </span>
           <ChevronDownIcon
             className="-mr-1 h-5 w-5 text-gray-400"
             aria-hidden="true"
@@ -62,21 +66,21 @@ export default function TopicEditorCategories({categorySelected, setCategorySele
         >
           <Menu.Items className="absolute left-0 z-10 mt-2 w-56  origin-top-right  bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:w-96">
             <div className="py-1">
-              <div className="w-full flex flex-row px-2 py-1 text-gray-400">
+              <div className="flex w-full flex-row px-2 py-1 text-gray-400">
                 <input
                   type="text"
-                  className=" focus:outline-none grow"
+                  className=" grow focus:outline-none"
                   placeholder="Search..."
                   onChange={(e) => handleChange(e)}
                   value={searchValue}
                 />
-                <MagnifyingGlassIcon className="w-5 h-5" />
+                <MagnifyingGlassIcon className="h-5 w-5" />
               </div>
-              <div className=" overflow-y-auto h-52 ">
+              <div className=" h-52 overflow-y-auto ">
                 {data === undefined ? (
                   <div className="flex flex-row p-2 text-gray-700">
                     <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
+                      className="-ml-1 mr-3 h-5 w-5 animate-spin text-black"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -106,11 +110,16 @@ export default function TopicEditorCategories({categorySelected, setCategorySele
                             active
                               ? "bg-gray-100 text-gray-900"
                               : "text-gray-700",
-                            "block w-full text-left px-2 py-2 text-sm"
+                            "block w-full px-2 py-2 text-left text-sm",
                           )}
-                          onClick = {()=> setCategorySelected({id: item.id, name:item.name})}
+                          onClick={() =>
+                            setCategorySelected({
+                              id: item.id,
+                              name: item.name,
+                            })
+                          }
                         >
-                          <div className="w-full flex flex-col gap-1">
+                          <div className="flex w-full flex-col gap-1">
                             <div className=" text-sm text-gray-700">
                               {item.name}
                             </div>

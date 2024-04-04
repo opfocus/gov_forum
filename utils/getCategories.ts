@@ -1,6 +1,6 @@
-import 'server-only'
+import "server-only";
 import * as Realm from "realm-web";
-import { cache } from 'react'
+import { cache } from "react";
 
 export const getCategories = cache(async () => {
   const apiKey = process.env.REALM_API_KEY!;
@@ -16,7 +16,9 @@ export const getCategories = cache(async () => {
   const collection = mongo.db("forum_demo").collection("categories_demo");
 
   // Use plants.findOne to query the database
-  const data = (await collection.find({})).sort((a, b) => a.position - b.position);
-  
-  return data
-})
+  const data = (await collection.find({})).sort(
+    (a, b) => a.position - b.position,
+  );
+
+  return data;
+});

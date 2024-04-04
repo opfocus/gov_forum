@@ -1,4 +1,4 @@
-import type {Topic} from "@/lib/type"
+import type { Topic } from "@/lib/type";
 
 export function createTopic(
   id: number,
@@ -6,7 +6,6 @@ export function createTopic(
   created_at: string,
   stream: number[],
   slug: string,
-
 
   user_id: string,
   username: string,
@@ -22,39 +21,38 @@ export function createTopic(
   reply_count = 0,
 
   visible = true,
-  closed= true,
+  closed = true,
   archived = true,
-  has_summary= false,
+  has_summary = false,
   archetype = null,
-
 
   deleted_at = null,
 
-  pinned_globally= false,
-  pinned_at=null,
-  pinned_until=null,
+  pinned_globally = false,
+  pinned_at = null,
+  pinned_until = null,
 
-  draft=null,
+  draft = null,
   draft_key = null,
-  draft_sequence =null,
+  draft_sequence = null,
   unpinned = null,
   pinned = false,
 
   current_post_number = 0,
   highest_post_number = 0,
   deleted_by = null,
-  bookmarks = null, 
+  bookmarks = null,
   topic_timer = null,
   message_bus_last_id = null,
   participant_count = 1,
   show_read_indicator = true,
-  thumbnails = null, 
-  summarizable= true,
+  thumbnails = null,
+  summarizable = true,
   details = {
     notification_level: 1,
-    participants:[user_id],
+    participants: [user_id],
     links: null,
-  }
+  },
 ): Topic {
   return {
     id,
@@ -98,5 +96,5 @@ export function createTopic(
     thumbnails,
     summarizable,
     details,
-  }
+  };
 }

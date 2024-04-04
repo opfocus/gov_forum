@@ -1,30 +1,30 @@
-import { MetadataRoute } from 'next'
- 
+import { MetadataRoute } from "next";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: '/',
+      url: "/",
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: '/c',
+      url: "/c",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: '/tag',
+      url: "/tag",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
-      url: '/t',
+      url: "/t",
       lastModified: new Date(),
-      changeFrequency: 'always',
+      changeFrequency: "always",
       priority: 0.5,
     },
-  ]
+  ];
 }

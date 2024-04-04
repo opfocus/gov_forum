@@ -11,36 +11,34 @@ export default function UserSecurity() {
   return (
     <main className=" md:w-1/2">
       <section className=" mt-8">
-        <label className=" text-xl font-bold text-gray-500">
-        Password
-        </label>
+        <label className=" text-xl font-bold text-gray-500">Password</label>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-         hover:text-white 
-         flex flex-row gap-1 items-center
-          disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+         gap-1 
+         bg-gray-200 px-2 py-1 text-gray-700
+          hover:bg-gray-400 hover:text-white
          "
           title="TBA"
         >
-          <EnvelopeIcon className=" w-5 h-5" />
+          <EnvelopeIcon className=" h-5 w-5" />
           Send Password Reset Email
         </button>
       </section>
       <section className=" mt-8">
         <label className=" text-xl font-bold text-gray-500">Passkeys</label>
-        <p className=" text-xs text-gray-500 mt-2">
+        <p className=" mt-2 text-xs text-gray-500">
           Passkeys are password replacements that validate your identity
           biometrically (e.g. touch, faceID) or via a device PIN/password.
         </p>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-         hover:text-white 
-         flex flex-row gap-1 items-center
-          disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+         gap-1 
+         bg-gray-200 px-2 py-1 text-gray-700
+          hover:bg-gray-400 hover:text-white
          "
           title="TBA"
         >
-          <PlusIcon className=" w-5 h-5" />
+          <PlusIcon className=" h-5 w-5" />
           Add Passkey
         </button>
       </section>
@@ -49,17 +47,17 @@ export default function UserSecurity() {
           Two-Factor Authentication
         </label>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-         hover:text-white 
-         flex flex-row gap-1 items-center
-          disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+         gap-1 
+         bg-gray-200 px-2 py-1 text-gray-700
+          hover:bg-gray-400 hover:text-white
          "
           title="TBA"
         >
-          <LockClosedIcon className=" w-5 h-5" />
+          <LockClosedIcon className=" h-5 w-5" />
           Manage Two-Factor Authentication
         </button>
-        <p className=" text-xs text-gray-500 mt-2">
+        <p className=" mt-2 text-xs text-gray-500">
           Never shown to the public.
         </p>
       </section>
@@ -67,11 +65,11 @@ export default function UserSecurity() {
         <label className=" text-xl font-bold text-gray-500">
           Recently Used Devices
         </label>
-        <p className=" text-xs text-gray-500 mt-2">
+        <p className=" mt-2 text-xs text-gray-500">
           This is a list of devices that have recently logged into your account.
         </p>
-        <div className=" mt-2 py-2 flex flex-row gap-2 border-t border-solid border-gray-200">
-          <ComputerDesktopIcon className=" w-12 h-12 text-gray-400" />
+        <div className=" mt-2 flex flex-row gap-2 border-t border-solid border-gray-200 py-2">
+          <ComputerDesktopIcon className=" h-12 w-12 text-gray-400" />
           <div>
             <div>
               <span className=" font-semibold">Windows Computer </span>-
@@ -86,15 +84,19 @@ export default function UserSecurity() {
             </div>
           </div>
         </div>
-        <div className=" flex flex-row justify-between mt-2">
-          <button className="flex flex-row gap-1 items-center text-sky-600 disabled cursor-not-allowed"
-          title="TBA">
-            <ChevronDownIcon className=" w-4 h-4" />
+        <div className=" mt-2 flex flex-row justify-between">
+          <button
+            className="disabled flex cursor-not-allowed flex-row items-center gap-1 text-sky-600"
+            title="TBA"
+          >
+            <ChevronDownIcon className=" h-4 w-4" />
             <span className=" text-sm">Show all(3)</span>
           </button>
-          <button className="flex flex-row gap-1 items-center text-sky-600 disabled cursor-not-allowed"
-          title="TBA">
-            <ArrowRightStartOnRectangleIcon className="w-4 h-4" />
+          <button
+            className="disabled flex cursor-not-allowed flex-row items-center gap-1 text-sky-600"
+            title="TBA"
+          >
+            <ArrowRightStartOnRectangleIcon className="h-4 w-4" />
             <span className=" text-sm">Log out all</span>
           </button>
         </div>

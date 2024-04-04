@@ -57,10 +57,9 @@
 //     cache: new InMemoryCache(),
 //   });
 //   console.log(app === null)
-  
+
 //   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 // }
-
 
 // // 4. Consumer of provider and query
 // function PlantInformation({ index }: {

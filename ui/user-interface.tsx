@@ -3,14 +3,14 @@ export default function UserInterface() {
     <main className=" md:w-1/2">
       <section className=" mt-8">
         <label className=" text-xl font-bold text-gray-500">Email</label>
-        <div className=" flex flex-row gap-4 mt-2">
+        <div className=" mt-2 flex flex-row gap-4">
           <div>
             <span className="text-sm text-gray-500">Regular</span>
             <select
               name="theme"
               id="theme"
-              className="px-2 py-1 text-sm block focus:outline-none border border-gray-200 border-solid
-         text-gray-700 focus:border-sky-600
+              className="block border border-solid border-gray-200 px-2 py-1 text-sm text-gray-700
+         focus:border-sky-600 focus:outline-none
         "
             >
               <option value="Theme default">Theme default</option>
@@ -21,8 +21,8 @@ export default function UserInterface() {
             <select
               name="dark-mode"
               id="dark-mode"
-              className="px-2 py-1 text-sm block focus:outline-none border border-gray-200 border-solid
-         text-gray-700 focus:border-sky-600
+              className="block border border-solid border-gray-200 px-2 py-1 text-sm text-gray-700
+         focus:border-sky-600 focus:outline-none
         "
             >
               <option value="Same as regular">Same as regular</option>
@@ -39,8 +39,8 @@ export default function UserInterface() {
         <select
           name="text-size"
           id="text-size"
-          className="px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-         text-gray-700 focus:border-sky-600
+          className="mt-2 block border border-solid border-gray-200 px-2 py-1 text-gray-700
+         focus:border-sky-600 focus:outline-none
         "
         >
           <option value="Normal">Normal</option>
@@ -122,26 +122,26 @@ export default function UserInterface() {
             </span>
           </li>
         </ul>
-        <p className=" text-sm text-gray-500 mt-2">
+        <p className=" mt-2 text-sm text-gray-500">
           Background page title displays count of:
         </p>
         <select
           name="count-of"
           id="count-of"
-          className="px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-         text-gray-700 focus:border-sky-600
+          className="mt-2 block border border-solid border-gray-200 px-2 py-1 text-gray-700
+         focus:border-sky-600 focus:outline-none
         "
         >
           <option value="New notifications">New notifications</option>
         </select>
-        <p className=" text-sm text-gray-500 mt-2">
+        <p className=" mt-2 text-sm text-gray-500">
           After a bookmark reminder notification is sent:
         </p>
         <select
           name="after-bookmark"
           id="after-bookmark"
-          className="px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-         text-gray-700 focus:border-sky-600
+          className="mt-2 block border border-solid border-gray-200 px-2 py-1 text-gray-700
+         focus:border-sky-600 focus:outline-none
         "
         >
           <option value="Keep bookmark and clear reminder">
@@ -161,9 +161,9 @@ export default function UserInterface() {
           </span>
         </div>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-       hover:text-white 
-        disabled cursor-not-allowed
+          className=" disabled mt-2 cursor-not-allowed bg-gray-200 px-2 py-1
+       text-gray-700 
+        hover:bg-gray-400 hover:text-white
        "
           title="TBA"
         >
@@ -172,7 +172,7 @@ export default function UserInterface() {
       </section>
       <section className=" mt-8">
         <button
-          className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+          className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
           title="TBA"
         >
           Save Changes

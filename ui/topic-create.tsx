@@ -83,7 +83,7 @@ export default function TopicCreate() {
   };
 
   const handleCreate = async () => {
-    const res = await fetch('api/counters');
+    const res = await fetch("api/counters");
     const [newPostIdCounter, newTopicIdCounter] = await res.json();
 
     // topic construct
@@ -91,7 +91,7 @@ export default function TopicCreate() {
     const topiciId = newTopicIdCounter.sequence_value;
 
     const inputElement = document.getElementById(
-      "topic-input"
+      "topic-input",
     ) as HTMLInputElement;
 
     title = inputElement.value;
@@ -125,7 +125,7 @@ export default function TopicCreate() {
       category_id,
       category_name,
       last_posted_at,
-      avatar_template
+      avatar_template,
     );
     //post construct
     //post id
@@ -144,11 +144,11 @@ export default function TopicCreate() {
       create_at,
       cooked,
       topiciId,
-      topicSlug
+      topicSlug,
     );
 
     //for testing... (not complete)
-    fetch('/api/posts', {
+    fetch("/api/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -159,7 +159,7 @@ export default function TopicCreate() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
     });
-    fetch('api/topic', {
+    fetch("api/topic", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -179,32 +179,32 @@ export default function TopicCreate() {
   return (
     <div
       className={clsx(
-        " bg-white transition-height transform origin-bottom fixed w-screen bottom-0  left-0 duration-300 z-10",
+        " transition-height fixed bottom-0 left-0 z-10 w-screen origin-bottom  transform bg-white duration-300",
         {
           "h-0": !isOpen,
           " h-full": isZoomEditorTextarea,
           " h-96": !isZoomEditorTextarea && isOpen,
-        }
+        },
       )}
     >
       <div
         className={clsx(
-          "transition-width transform origin-center mx-auto shadow-2xl h-full duration-300  flex flex-col",
+          "transition-width mx-auto flex h-full origin-center transform flex-col  shadow-2xl duration-300",
           {
-            " w-full over": isZoomEditorTextarea,
+            " over w-full": isZoomEditorTextarea,
             " w-3/5": !isZoomEditorTextarea,
-          }
+          },
         )}
       >
         <div className=" h-2 bg-blue-400"></div>
-        <div className=" px-2 py-2 flex flex-col gap-2 overflow-y-auto">
+        <div className=" flex flex-col gap-2 overflow-y-auto px-2 py-2">
           <TopicCreateControlPanel
             isZoomEditorTextarea={isZoomEditorTextarea}
             handleZoom={handleZoom}
             hiddenEditor={hiddenEditor}
           />
-          <div className="w-full flex flex-row gap-4 grow">
-            <div className="w-full flex flex-col gap-2 h-full">
+          <div className="flex w-full grow flex-row gap-4">
+            <div className="flex h-full w-full flex-col gap-2">
               <div
                 className={clsx("w-full", {
                   hidden: isZoomEditorTextarea,
@@ -217,7 +217,7 @@ export default function TopicCreate() {
                   setTagSelected={setTagSelected}
                 />
               </div>
-              <div className="  border border-solid border-gray-400 growo">
+              <div className="  growo border border-solid border-gray-400">
                 <Editor
                   setMyString={setMyString}
                   isZoomEditorTextarea={isZoomEditorTextarea}

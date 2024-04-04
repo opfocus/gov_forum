@@ -16,7 +16,7 @@ export default function UserActionsList({
           {data.map((item: any) => (
             <li
               key={item.post_id}
-              className=" border-b border-gray-200 border-solid px-2 py-4"
+              className=" border-b border-solid border-gray-200 px-2 py-4"
             >
               <div className=" flex flex-row ">
                 <Image
@@ -24,7 +24,7 @@ export default function UserActionsList({
                   alt="user avatar"
                   width={48}
                   height={48}
-                  className=" mr-2 rounded-full self-start"
+                  className=" mr-2 self-start rounded-full"
                 ></Image>
                 <div className=" grow">
                   <Link
@@ -33,9 +33,9 @@ export default function UserActionsList({
                   >
                     {item.title}
                   </Link>
-                  <div className=" flex flex-row gap-1 items-center">
+                  <div className=" flex flex-row items-center gap-1">
                     <div
-                      className=" w-2 h-2"
+                      className=" h-2 w-2"
                       style={{
                         backgroundColor: `#${
                           matchCategory(item.category_id, categories).color
@@ -47,7 +47,7 @@ export default function UserActionsList({
                     </span>
                   </div>
                 </div>
-                <div className=" text-xs text-gray-400 whitespace-nowrap">
+                <div className=" whitespace-nowrap text-xs text-gray-400">
                   {new Date(item.created_at).toLocaleString("default", {
                     month: "short",
                   })}
@@ -55,7 +55,10 @@ export default function UserActionsList({
                   {""} {new Date(item.created_at).getFullYear()}
                 </div>
               </div>
-              <p className=" mt-4 text-sm text-gray-700" dangerouslySetInnerHTML={{__html:item.excerpt}}></p>
+              <p
+                className=" mt-4 text-sm text-gray-700"
+                dangerouslySetInnerHTML={{ __html: item.excerpt }}
+              ></p>
             </li>
           ))}
         </ul>

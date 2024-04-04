@@ -5,7 +5,9 @@ export default function QuickPreview({ index }: { index: number }) {
   return (
     <div>
       <ul className={index !== 0 ? "hidden" : ""}>
-        <li key={1}>RetroPGF 3: Application Review Process Results & Feedback00001</li>
+        <li key={1}>
+          RetroPGF 3: Application Review Process Results & Feedback00001
+        </li>
         <li key={2}>Earned 'Reader'</li>
         <li key={3}>RetroPGF Round 3 Feedback Thread</li>
       </ul>

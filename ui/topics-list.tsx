@@ -14,45 +14,47 @@ export default async function TopicsList({
   let topics: Topic[] | [];
 
   const res = await getTopics(queryFrom, queryValue);
-  topics = JSON.parse(res)
+  topics = JSON.parse(res);
 
   if (topics.length === 0) return <div>No data</div>;
   else {
     return (
       <table className="w-full">
-        <thead className=" border-b-2 border-gray-200 border-solid">
-          <tr >
-            <th className=" text-left text-gray-400 py-3 px-2 text-base font-medium">
+        <thead className=" border-b-[3px] border-solid border-gray-200">
+          <tr>
+            <th className=" px-2 py-3 text-left text-base font-medium text-gray-400">
               Topic
             </th>
-            <th className=" text-gray-400 py-3 px-2 text-base font-medium"></th>
-            <th className=" text-gray-400 py-3 px-2 text-base font-medium">
+            <th className=" px-2 py-3  text-base font-medium text-gray-400"></th>
+            <th className=" px-2 py-3 text-base font-medium text-gray-400">
               Replies
             </th>
-            <th className=" text-gray-400 py-3 px-2 text-base font-medium">
+            <th className=" px-2 py-3 text-base font-medium text-gray-400">
               Views
             </th>
-            <th className=" text-gray-400 py-3 px-2 text-base font-medium">
+            <th className=" px-2 py-3 text-base font-medium text-gray-400">
               Activity
             </th>
           </tr>
         </thead>
         <tbody>
           {topics.map((topic, index) => (
-            <tr
-              key={index}
-              className=" border-b border-gray-100 border-solid"
-            >
-              <td className=" text-left px-2 py-3">
-                <div className=" text-base font-medium text-gray-700 whitespace-nowrap">
-                  <Link href={"/t/"+topic.slug + "/" + topic.id.toString()} scroll={true}>{topic.title}</Link>
+            <tr key={index} className=" border-b border-solid border-gray-100">
+              <td className=" px-2 py-3 text-left">
+                <div className=" whitespace-nowrap text-base font-medium text-gray-700">
+                  <Link
+                    href={"/t/" + topic.slug + "/" + topic.id.toString()}
+                    scroll={true}
+                  >
+                    {topic.title}
+                  </Link>
                 </div>
-                <div className=" flex flex-row gap-1 justify-start text-sm font-normal text-gray-400">
+                <div className=" flex flex-row justify-start gap-1 text-sm font-normal text-gray-400">
                   <span>{topic.category_name}</span>
                   <span>{topic.tags.join(",")}</span>
                 </div>
               </td>
-              <td className="text-center w-40 px-2 py-3  text-base font-normal text-gray-500">
+              <td className="w-40 px-2 py-3 text-center  text-base font-normal text-gray-500">
                 <img
                   src={topic.avatar_template}
                   alt="user avatar"
@@ -61,13 +63,13 @@ export default async function TopicsList({
                   className="rounded-full"
                 ></img>
               </td>
-              <td className="text-center w-20 px-2 py-3  text-base font-normal text-gray-400">
+              <td className="w-20 px-2 py-3 text-center  text-base font-normal text-gray-400">
                 {topic.reply_count}
               </td>
-              <td className="text-center w-20 px-2 py-3  text-base font-normal text-gray-400">
+              <td className="w-20 px-2 py-3 text-center  text-base font-normal text-gray-400">
                 {topic.views}
               </td>
-              <td className="text-center w-20 px-2 py-3  text-base font-normal text-gray-400">
+              <td className="w-20 px-2 py-3 text-center  text-base font-normal text-gray-400">
                 {formatTimeSince(topic.last_posted_at!)}
               </td>
             </tr>

@@ -28,7 +28,7 @@ export default async function TopicsLatest({
 
   const fetchCategoryDetailsById = (id: number) => {
     let matchedCategory = categories?.find(
-      (category: any) => category.id === id
+      (category: any) => category.id === id,
     );
     if (matchedCategory !== undefined)
       return {
@@ -37,10 +37,10 @@ export default async function TopicsLatest({
         href: `/c/${matchedCategory.slug}/${matchedCategory.id}`,
       };
     matchedCategory = subCategories.find(
-      (subCategory: any) => subCategory.id === id
+      (subCategory: any) => subCategory.id === id,
     );
     let parentCategory = categories?.find(
-      (category: any) => category.id === matchedCategory.id
+      (category: any) => category.id === matchedCategory.id,
     );
     return {
       id: matchedCategory?.id,
@@ -51,36 +51,36 @@ export default async function TopicsLatest({
 
   return (
     <div>
-      <div className=" border-b-4 border-gray-200 border-solid">
-        <div className="text-gray-400 text-base font-medium p-2">Latest</div>
+      <div className=" border-b-4 border-solid border-gray-200">
+        <div className="p-2 text-base font-medium text-gray-400">Latest</div>
       </div>
       {topics.map((topic) => (
         <div
           key={topic.name}
-          className=" border-b border-gray-200 border-solid flex flex-row  items-center p-4"
+          className=" flex flex-row items-center border-b border-solid  border-gray-200 p-4"
         >
           <img
             src={topic.avatar_template}
             alt="user avatar"
             width={48}
             height={48}
-            className="rounded-full mr-3"
+            className="mr-3 rounded-full"
           ></img>
-          <div className="flex flex-col grow gap-[2px]">
+          <div className="flex grow flex-col gap-[2px]">
             <Link
               href={"t/" + topic.slug + "/" + topic.id.toString()}
               scroll={false}
             >
               <div className=" text-gray-700">{topic.title}</div>
             </Link>
-            <div className=" text-sm text-gray-400 flex flex-row gap-2">
+            <div className=" flex flex-row gap-2 text-sm text-gray-400">
               <Link
                 href={fetchCategoryDetailsById(topic.category_id).href}
                 title={`Link to ${topic.category_name}`}
-                className=" flex flex-row gap-1 items-center"
+                className=" flex flex-row items-center gap-1"
               >
                 <span
-                  className=" w-2 h-2"
+                  className=" h-2 w-2"
                   style={{
                     backgroundColor: `#${
                       fetchCategoryDetailsById(topic.category_id).color

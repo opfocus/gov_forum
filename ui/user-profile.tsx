@@ -6,21 +6,21 @@ export default function UserProfile() {
     <main>
       <section className=" mt-8">
         <label className=" text-xl font-bold text-gray-500">About me</label>
-        <div className=" mt-2 border border-gray-200 border-solid">
+        <div className=" mt-2 border border-solid border-gray-200">
           <Editor2 />
         </div>
       </section>
       <section className=" mt-8">
         <label className=" text-xl font-bold text-gray-500">Timezone</label>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-         hover:text-white 
-         flex flex-row gap-1 items-center
-          disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+         gap-1 
+         bg-gray-200 px-2 py-1 text-gray-700
+          hover:bg-gray-400 hover:text-white
          "
           title="TBA"
         >
-          <GlobeAltIcon className=" w-5 h-5" />
+          <GlobeAltIcon className=" h-5 w-5" />
           Use Current Timezone
         </button>
       </section>
@@ -28,29 +28,29 @@ export default function UserProfile() {
         <label className=" text-xl font-bold text-gray-500">Location</label>
         <input
           type="text"
-          className=" w-1/2 px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-          text-gray-700 focus:border-sky-600"
+          className=" mt-2 block w-1/2 border border-solid border-gray-200 px-2 py-1 text-gray-700
+          focus:border-sky-600 focus:outline-none"
         />
       </section>
       <section className=" mt-8">
         <label className=" text-xl font-bold text-gray-500">Web Site</label>
         <input
           type="text"
-          className=" w-1/2 px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-          text-gray-700 focus:border-sky-600"
+          className=" mt-2 block w-1/2 border border-solid border-gray-200 px-2 py-1 text-gray-700
+          focus:border-sky-600 focus:outline-none"
         />
       </section>
       <section className=" mt-8">
         <label className=" text-xl font-bold text-gray-500">
           Profile Header
         </label>
-        <div className=" relative mt-2 w-80 h-56 bg-gray-400">
+        <div className=" relative mt-2 h-56 w-80 bg-gray-400">
           <button
-            className=" absolute left-2 top-2 bg-gray-200 p-2  text-gray-700 hover:bg-gray-400
-         hover:text-white  disabled cursor-not-allowed"
+            className=" disabled absolute left-2 top-2 cursor-not-allowed  bg-gray-200 p-2
+         text-gray-700  hover:bg-gray-400 hover:text-white"
             title="TBA"
           >
-            <PhotoIcon className=" w-5 h-5" />
+            <PhotoIcon className=" h-5 w-5" />
           </button>
         </div>
       </section>
@@ -58,13 +58,13 @@ export default function UserProfile() {
         <label className=" text-xl font-bold text-gray-500">
           User Card Background
         </label>
-        <div className=" relative mt-2 w-80 h-56 bg-gray-400">
+        <div className=" relative mt-2 h-56 w-80 bg-gray-400">
           <button
-            className=" absolute left-2 top-2 bg-gray-200 p-2  text-gray-700 hover:bg-gray-400
-         hover:text-white  disabled cursor-not-allowed"
+            className=" disabled absolute left-2 top-2 cursor-not-allowed  bg-gray-200 p-2
+         text-gray-700  hover:bg-gray-400 hover:text-white"
             title="TBA"
           >
-            <PhotoIcon className=" w-5 h-5" />
+            <PhotoIcon className=" h-5 w-5" />
           </button>
         </div>
       </section>
@@ -73,10 +73,10 @@ export default function UserProfile() {
           Featured Topic
         </label>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-         hover:text-white 
-         flex flex-row gap-1 items-center
-          disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+         gap-1 
+         bg-gray-200 px-2 py-1 text-gray-700
+          hover:bg-gray-400 hover:text-white
          "
           title="TBA"
         >
@@ -88,10 +88,10 @@ export default function UserProfile() {
           Featured Topic
         </label>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-         hover:text-white 
-         flex flex-row gap-1 items-center
-          disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+         gap-1 
+         bg-gray-200 px-2 py-1 text-gray-700
+          hover:bg-gray-400 hover:text-white
          "
           title="TBA"
         >
@@ -103,9 +103,15 @@ export default function UserProfile() {
           Featured Topic
         </label>
         <div className=" mt-2 flex flex-row gap-1">
-          <select id="month" name="month" className=" border border-solid border-gray-200 focus:outline-none
-           focus:border-sky-600 text-gray-700">
-          <option value="" selected>{""}</option>
+          <select
+            id="month"
+            name="month"
+            className=" border border-solid border-gray-200 text-gray-700
+           focus:border-sky-600 focus:outline-none"
+          >
+            <option value="" selected>
+              {""}
+            </option>
             <option value="01">January</option>
             <option value="02">February</option>
             <option value="03">March</option>
@@ -119,9 +125,15 @@ export default function UserProfile() {
             <option value="11">November</option>
             <option value="12">December</option>
           </select>
-          <select id="day" name="day" className=" border border-solid border-gray-200 focus:outline-none
-           focus:border-sky-600 text-gray-700">
-          <option value="" selected>{""}</option>
+          <select
+            id="day"
+            name="day"
+            className=" border border-solid border-gray-200 text-gray-700
+           focus:border-sky-600 focus:outline-none"
+          >
+            <option value="" selected>
+              {""}
+            </option>
             <option value="01">1</option>
             <option value="02">2</option>
             <option value="03">3</option>
@@ -158,7 +170,7 @@ export default function UserProfile() {
       </section>
       <section className=" mt-8">
         <button
-          className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+          className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
           title="TBA"
         >
           Save Changes

@@ -1,4 +1,4 @@
-import type {Post} from "@/lib/type";
+import type { Post } from "@/lib/type";
 
 export function createPost(
   id: number,
@@ -23,7 +23,7 @@ export function createPost(
   deleted_at = null,
   user_deleted = false,
   edit_reason = null,
-  likes = []
+  likes = [],
 ): Post {
   return {
     id,

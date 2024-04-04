@@ -1,10 +1,10 @@
 import "server-only";
 import * as Realm from "realm-web";
 import { NextRequest } from "next/server";
-import { withApiAuthRequired} from "@auth0/nextjs-auth0";
+import { withApiAuthRequired } from "@auth0/nextjs-auth0";
 
 export const POST = withApiAuthRequired(async function POST(
-  request: NextRequest
+  request: NextRequest,
 ) {
   const newPost = await request.json();
   const apiKey = process.env.REALM_API_KEY!;
@@ -19,8 +19,6 @@ export const POST = withApiAuthRequired(async function POST(
   const collection = mongo.db("forum_demo").collection("posts");
 
   const incertResult = await collection.insertOne(newPost);
-
-  
 
   if (incertResult.insertedId) {
     // If matchedCount is 1, it means the update was successful

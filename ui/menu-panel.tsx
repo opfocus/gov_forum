@@ -87,10 +87,10 @@ export default function MenuPanel() {
       try {
         const resC = await fetch("/api/categories");
         const CData = await resC.json();
-        const resT = await fetch('/api/tags')
+        const resT = await fetch("/api/tags");
         const tData = await resT.json();
 
-        setTags(tData.top_tags)
+        setTags(tData.top_tags);
         setCategories(CData);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -110,9 +110,9 @@ export default function MenuPanel() {
       leaveTo="transform opacity-0 scale-95"
     >
       <Menu.Items className="absolute right-0 z-10 mt-2 w-80  origin-top-right  bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <div className="py-1 px-2">
-          <div className=" overflow-y-auto h-96 space-y-6">
-            <ul className=" grid grid-cols-2 gap-1 mt-2">
+        <div className="px-2 py-1">
+          <div className=" h-96 space-y-6 overflow-y-auto">
+            <ul className=" mt-2 grid grid-cols-2 gap-1">
               {menuItems.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (
@@ -120,11 +120,11 @@ export default function MenuPanel() {
                       href={item.path}
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-500",
-                        `block px-2 py-1 text-sm ${(item.path === '/') && "cursor-not-allowed"}`
+                        `block px-2 py-1 text-sm ${item.path === "/" && "cursor-not-allowed"}`,
                       )}
-                      title={(item.path === '/')? "TBA" : ''}
+                      title={item.path === "/" ? "TBA" : ""}
                     >
-                      <div className=" flex flex-row gap-2 items-center">
+                      <div className=" flex flex-row items-center gap-2">
                         <item.icon className=" w-4- h-4" />
                         <div>{item.name}</div>
                       </div>
@@ -134,10 +134,10 @@ export default function MenuPanel() {
               ))}
             </ul>
             <details>
-              <summary className=" text-gray-500 px-2 py-1 border-b border-solid border-gray-200">
+              <summary className=" border-b border-solid border-gray-200 px-2 py-1 text-gray-500">
                 Categorries
               </summary>
-              <ul className=" grid grid-cols-2 gap-1 mt-2">
+              <ul className=" mt-2 grid grid-cols-2 gap-1">
                 {categories?.map((category: any) => (
                   <Menu.Item key={category.id}>
                     {({ active }) => (
@@ -147,7 +147,7 @@ export default function MenuPanel() {
                           active
                             ? "bg-gray-100 text-gray-900"
                             : "text-gray-500",
-                          "block px-2 py-1 text-sm"
+                          "block px-2 py-1 text-sm",
                         )}
                       >
                         <div className=" flex flex-row items-center">
@@ -161,7 +161,7 @@ export default function MenuPanel() {
                               }}
                             ></div>
                           </div>
-                          <span className=" pl-1 inline-block truncate">
+                          <span className=" inline-block truncate pl-1">
                             {category.name}
                           </span>
                         </div>
@@ -172,10 +172,10 @@ export default function MenuPanel() {
               </ul>
             </details>
             <details>
-              <summary className=" text-gray-500 px-2 py-1 border-b border-solid border-gray-200">
+              <summary className=" border-b border-solid border-gray-200 px-2 py-1 text-gray-500">
                 Tags
               </summary>
-              <ul className=" grid grid-cols-2 gap-1 mt-2">
+              <ul className=" mt-2 grid grid-cols-2 gap-1">
                 {tags?.map((tag: any) => (
                   <Menu.Item key={tag}>
                     {({ active }) => (
@@ -185,14 +185,12 @@ export default function MenuPanel() {
                           active
                             ? "bg-gray-100 text-gray-900"
                             : "text-gray-500",
-                          "block px-2 py-1 text-sm"
+                          "block px-2 py-1 text-sm",
                         )}
                       >
                         <div className=" flex flex-row items-center">
-                          <TagIcon className=" w-4 h-4" />
-                          <span>
-                            {tag}
-                          </span>
+                          <TagIcon className=" h-4 w-4" />
+                          <span>{tag}</span>
                         </div>
                       </Link>
                     )}
@@ -201,32 +199,27 @@ export default function MenuPanel() {
               </ul>
             </details>
             <details>
-              <summary className=" text-gray-500 px-2 py-1 border-b border-solid border-gray-200">
+              <summary className=" border-b border-solid border-gray-200 px-2 py-1 text-gray-500">
                 Messages
               </summary>
-              <ul className=" grid grid-cols-2 gap-1 mt-2">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        href={"/"}
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-500",
-                          "block px-2 py-1 text-sm cursor-not-allowed"
-                        )}
-                        title="TBA"
-                      >
-                        <div className=" flex flex-row items-center">
-                          <InboxStackIcon className="w-4 h-4" />
-                          <span>
-                            Inbox
-                          </span>
-                        </div>
-                      </Link>
-                    )}
-                  </Menu.Item>
-
+              <ul className=" mt-2 grid grid-cols-2 gap-1">
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      href={"/"}
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-500",
+                        "block cursor-not-allowed px-2 py-1 text-sm",
+                      )}
+                      title="TBA"
+                    >
+                      <div className=" flex flex-row items-center">
+                        <InboxStackIcon className="h-4 w-4" />
+                        <span>Inbox</span>
+                      </div>
+                    </Link>
+                  )}
+                </Menu.Item>
               </ul>
             </details>
           </div>

@@ -17,7 +17,7 @@ export default function UserMenuDropdown() {
     return (
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className=" hover:bg-gray-200 flex items-center p-1">
+          <Menu.Button className=" flex items-center p-1 hover:bg-gray-200">
             <img
               src={user.picture!}
               alt="user avatars"
@@ -37,7 +37,7 @@ export default function UserMenuDropdown() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 z-10 origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none w-80">
+          <Menu.Items className="absolute right-0 z-10 w-80 origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="w-full">
               <Menu.Item>
                 <UserMenDropdownContent ref={ref} />
@@ -47,7 +47,7 @@ export default function UserMenuDropdown() {
         </Transition>
       </Menu>
     );
-    else {
-      return <LoginButton />
-    }
+  else {
+    return <LoginButton />;
+  }
 }

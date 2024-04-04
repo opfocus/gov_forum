@@ -1,4 +1,4 @@
-import type { BarItem } from "./type"
+import type { BarItem } from "./type";
 import {
   UserIcon,
   ListBulletIcon,
@@ -25,31 +25,31 @@ import {
   Bars3Icon,
 } from "@heroicons/react/16/solid";
 
-export const barsItems: BarItem[]  = [
+export const barsItems: BarItem[] = [
   {
     id: 10,
     name: "Summary",
     slug: "summary",
-    icon:UserIcon,
+    icon: UserIcon,
     children: null,
   },
   {
     id: 20,
     name: "Atictity",
-    slug:"activity",
-    icon:ListBulletIcon,
+    slug: "activity",
+    icon: ListBulletIcon,
     children: [
       {
         id: 21,
         name: "All",
         slug: "",
-        icon:ListBulletIcon,
+        icon: ListBulletIcon,
       },
       {
         id: 22,
         name: "Topics",
         slug: "topics",
-        icon:QueueListIcon,
+        icon: QueueListIcon,
       },
       {
         id: 23,
@@ -67,7 +67,7 @@ export const barsItems: BarItem[]  = [
         id: 25,
         name: "Drafts",
         slug: "drafts",
-        icon:PencilIcon,
+        icon: PencilIcon,
       },
       {
         id: 26,
@@ -86,13 +86,12 @@ export const barsItems: BarItem[]  = [
         name: "Solved",
         slug: "solved",
         icon: CheckIcon,
-
       },
       {
         id: 29,
         name: "Votes",
         slug: "votes",
-        icon:HeartIcon,
+        icon: HeartIcon,
       },
     ],
   },
@@ -125,7 +124,6 @@ export const barsItems: BarItem[]  = [
         name: "Mentions",
         slug: "mentions",
         icon: AtSymbolIcon,
-
       },
       {
         id: 35,
@@ -145,7 +143,7 @@ export const barsItems: BarItem[]  = [
     id: 40,
     name: "Messages",
     slug: "messages",
-    icon:EnvelopeIcon,
+    icon: EnvelopeIcon,
     children: [
       {
         id: 41,
@@ -163,13 +161,13 @@ export const barsItems: BarItem[]  = [
         id: 42,
         name: "New",
         slug: "new",
-        icon:ExclamationCircleIcon,
+        icon: ExclamationCircleIcon,
       },
       {
         id: 43,
         name: "Unread",
         slug: "unread",
-        icon:PlusCircleIcon,
+        icon: PlusCircleIcon,
       },
       {
         id: 44,
@@ -177,13 +175,13 @@ export const barsItems: BarItem[]  = [
         slug: "archive",
         icon: ArchiveBoxIcon,
       },
-    {
-      id: 45,
-      name: "New Message",
-      slug: "new-message",
-      icon: EnvelopeIcon,
-    },
-  ],
+      {
+        id: 45,
+        name: "New Message",
+        slug: "new-message",
+        icon: EnvelopeIcon,
+      },
+    ],
   },
   {
     id: 50,
@@ -216,7 +214,6 @@ export const barsItems: BarItem[]  = [
         name: "Security",
         slug: "security",
         icon: LockClosedIcon,
-
       },
       {
         id: 73,
@@ -234,13 +231,13 @@ export const barsItems: BarItem[]  = [
         id: 75,
         name: "Notifications",
         slug: "notifications",
-        icon:BellIcon,
+        icon: BellIcon,
       },
       {
         id: 76,
         name: "Tracking",
         slug: "tracking",
-        icon:PlusIcon,
+        icon: PlusIcon,
       },
       {
         id: 77,
@@ -260,6 +257,6 @@ export const barsItems: BarItem[]  = [
         slug: "navigation-menu",
         icon: Bars3Icon,
       },
-    ]
+    ],
   },
-]
+];

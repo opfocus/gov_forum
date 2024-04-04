@@ -21,15 +21,14 @@ export async function generateMetadata({
   //   description: item?.description,
   // };
 
-//replace to test for response time 
+  //replace to test for response time
   return {
-    title: 'Category topic list' ,
+    title: "Category topic list",
     description: "The leatest topic in this category",
   };
 }
 
 export default function Page({ params }: { params: { slug: string[] } }) {
-
   // pramas.slug?.[length-1] the category/subCategory id
   const length = params.slug.length;
   const id = params.slug[length - 2];

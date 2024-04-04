@@ -20,37 +20,37 @@ export default function TopicCreateBottomControlPanel({
       <div>
         {createable ? (
           <button
-            className="px-2 py-1 flex flex-row gap-1 bg-blue-400 text-white hover:bg-blue-500"
+            className="flex flex-row gap-1 bg-blue-400 px-2 py-1 text-white hover:bg-blue-500"
             onClick={() => {
               handleCreate(), setStatus("creating");
             }}
           >
-            <PlusIcon className=" w-6 h-6" />
+            <PlusIcon className=" h-6 w-6" />
             Create Topic
           </button>
         ) : (
           <button
             disabled={true}
-            className="px-2 py-1 flex flex-row gap-1 bg-blue-400 text-white hover:bg-blue-500 cursor-not-allowed"
+            className="flex cursor-not-allowed flex-row gap-1 bg-blue-400 px-2 py-1 text-white hover:bg-blue-500"
             onClick={() => {
               handleCreate(), setStatus("creating");
             }}
           >
-            <PlusIcon className=" w-6 h-6" />
+            <PlusIcon className=" h-6 w-6" />
             Create Topic
           </button>
         )}
       </div>
     );
   else if (status === "creating") return <Processing />;
-  else 
-  return (
-    <Link
-      className="px-2 py-1 flex flex-row gap-1 bg-blue-400 text-white hover:bg-blue-500"
-      href={"/latest"}
-      onClick={() => setStatus("create")}
-    >
-      Check
-    </Link>
-  );
+  else
+    return (
+      <Link
+        className="flex flex-row gap-1 bg-blue-400 px-2 py-1 text-white hover:bg-blue-500"
+        href={"/latest"}
+        onClick={() => setStatus("create")}
+      >
+        Check
+      </Link>
+    );
 }

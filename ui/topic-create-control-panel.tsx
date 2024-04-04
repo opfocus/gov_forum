@@ -10,9 +10,9 @@ export default function TopicCreateControlPanel({
   handleZoom,
   hiddenEditor,
 }: {
-  isZoomEditorTextarea: boolean,
-  handleZoom: () => void,
-  hiddenEditor: () => void
+  isZoomEditorTextarea: boolean;
+  handleZoom: () => void;
+  hiddenEditor: () => void;
 }) {
   const context = useContext(OpenEditorContext);
 
@@ -20,16 +20,16 @@ export default function TopicCreateControlPanel({
     throw new Error("Editor context not work in topic-contol-panel");
 
   return (
-    <div className="flex flex-row justify-between   text-gray-400 text-base font-light ">
+    <div className="flex flex-row justify-between   text-base font-light text-gray-400 ">
       <div className="flex flex-row gap-1">
-        <button className=" p-1 border border-gray-400 border-solid hover:bg-gray-200">
-          <PlusIcon className="w-4 h-4" />
+        <button className=" border border-solid border-gray-400 p-1 hover:bg-gray-200">
+          <PlusIcon className="h-4 w-4" />
         </button>
         <div>Create a new Topic</div>
       </div>
       <div className=" flex flex-row gap-2">
         <button
-          className=" p-1 border border-gray-400 border-solid hover:bg-gray-200"
+          className=" border border-solid border-gray-400 p-1 hover:bg-gray-200"
           onClick={() => handleZoom()}
         >
           {!isZoomEditorTextarea ? (
@@ -37,7 +37,7 @@ export default function TopicCreateControlPanel({
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-4 h-4"
+              className="h-4 w-4"
             >
               <path
                 fillRule="evenodd"
@@ -50,7 +50,7 @@ export default function TopicCreateControlPanel({
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-4 h-4"
+              className="h-4 w-4"
             >
               <path
                 fillRule="evenodd"
@@ -61,10 +61,10 @@ export default function TopicCreateControlPanel({
           )}
         </button>
         <button
-          className=" p-1 border border-gray-400 border-solid hover:bg-gray-200"
+          className=" border border-solid border-gray-400 p-1 hover:bg-gray-200"
           onClick={() => hiddenEditor()}
         >
-          <ChevronDownIcon className="w-4 h-4" />
+          <ChevronDownIcon className="h-4 w-4" />
         </button>
       </div>
     </div>

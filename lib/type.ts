@@ -1,31 +1,33 @@
 export type BarItem2 = {
-    id: number;
-    name: string;
-    slug: string;
-    icon: React.ForwardRefExoticComponent<Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
+  id: number;
+  name: string;
+  slug: string;
+  icon: React.ForwardRefExoticComponent<
+    Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
       title?: string | undefined;
       titleId?: string | undefined;
-  } & React.RefAttributes<SVGSVGElement>>,
-  }
-
+    } & React.RefAttributes<SVGSVGElement>
+  >;
+};
 
 export type BarItem = {
   id: number;
   name: string;
   slug: string;
-  icon:React.ForwardRefExoticComponent<Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
-    title?: string | undefined;
-    titleId?: string | undefined;
-} & React.RefAttributes<SVGSVGElement>>,
+  icon: React.ForwardRefExoticComponent<
+    Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
+      title?: string | undefined;
+      titleId?: string | undefined;
+    } & React.RefAttributes<SVGSVGElement>
+  >;
   children: BarItem2[] | null;
 };
 
-
 export type Category = {
-  index: number,
-  name: string,
-  slug: string,
-  description: string,
+  index: number;
+  name: string;
+  slug: string;
+  description: string;
 };
 
 export type Tag = {

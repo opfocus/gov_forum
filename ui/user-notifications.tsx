@@ -15,17 +15,19 @@ export default function UserNotifications({ data }: { data: any[] }) {
         <ul>
           {data.map((item: any, index) => (
             <li key={index} className=" py-3">
-              <div className=" flex flex-row items-center m-1 px-1">
-                <BellIcon className="w-4 h-4 mr-2 text-gray-400" />
-                <Link href={`/t/${item.slug}/${item.topic_id}`}
-                  className=" text-cyan-700 text-sm grow text-clip"
+              <div className=" m-1 flex flex-row items-center px-1">
+                <BellIcon className="mr-2 h-4 w-4 text-gray-400" />
+                <Link
+                  href={`/t/${item.slug}/${item.topic_id}`}
+                  className=" grow text-clip text-sm text-cyan-700"
                 >
                   {item.fancy_title}
                 </Link>
                 <span className=" text-xs text-gray-400">
                   {new Date(item.created_at).toLocaleString("default", {
-                    month: "short"
-                  })}{" "}{new Date(item.created_at).getDay() + 1}
+                    month: "short",
+                  })}{" "}
+                  {new Date(item.created_at).getDay() + 1}
                 </span>
               </div>
             </li>

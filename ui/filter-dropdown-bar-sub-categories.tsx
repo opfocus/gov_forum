@@ -48,14 +48,14 @@ export default function FilterDropdownBarSubCategories() {
       if (pramas.slug.length === 4) {
         // condition: path in c/... latest topics
         subCategoryLocation = subCategories.find(
-          (sub) => pramas.slug?.[2] === String(sub.id)
+          (sub) => pramas.slug?.[2] === String(sub.id),
         );
         return subCategoryLocation;
       }
       // condition: path in tag/.../tagName latest topics
       else if (pramas.slug.length === 6) {
         subCategoryLocation = subCategories.find(
-          (sub) => pramas.slug?.[3] === String(sub.id)
+          (sub) => pramas.slug?.[3] === String(sub.id),
         );
         return subCategoryLocation;
       } else return undefined;
@@ -70,20 +70,20 @@ export default function FilterDropdownBarSubCategories() {
       // condition: path in c/... latest topics
       if (pramas.slug.length <= 4) {
         categorySelected = categories?.find(
-          (category: any) => pramas.slug?.[0] === category.slug
+          (category: any) => pramas.slug?.[0] === category.slug,
         );
         subCatogoriesOptions = subCategories.filter((sub) =>
-          categorySelected?.subcategory_ids.includes(sub.id)
+          categorySelected?.subcategory_ids.includes(sub.id),
         );
         return subCatogoriesOptions;
       }
       // condition: path in tag/.../tagName latest topics
       else if (pramas.slug.length === 5 || pramas.slug.length === 6) {
         categorySelected = categories?.find(
-          (category: any) => pramas.slug?.[1] === category.slug
+          (category: any) => pramas.slug?.[1] === category.slug,
         );
         subCatogoriesOptions = subCategories.filter((sub) =>
-          categorySelected?.subcategory_ids.includes(sub.id)
+          categorySelected?.subcategory_ids.includes(sub.id),
         );
         return subCatogoriesOptions;
       } else return undefined;
@@ -100,7 +100,7 @@ export default function FilterDropdownBarSubCategories() {
     (item: any) =>
       (item.name + item.description)
         .toLowerCase()
-        .indexOf(searchValue.toLowerCase()) !== -1
+        .indexOf(searchValue.toLowerCase()) !== -1,
   );
   // console.log(getSubCategoriesOptions()?.length)
 
@@ -114,7 +114,7 @@ export default function FilterDropdownBarSubCategories() {
     herfSuffix = "latest";
   } else if (5 <= length && length <= 6) {
     herfPrefix = `/tag/c/${pramas.slug[1]}`;
-    herfSuffix = (pramas.slug as string[]).slice(-2,).join('/')
+    herfSuffix = (pramas.slug as string[]).slice(-2).join("/");
   }
 
   if (
@@ -125,20 +125,20 @@ export default function FilterDropdownBarSubCategories() {
       <li id="subcategories-dropdown">
         <button
           className={clsx(
-            "relative flex flex-row items-center justify-between px-2 py-1 border-solid  text-sm whitespace-nowrap",
+            "relative flex flex-row items-center justify-between whitespace-nowrap border-solid px-2  py-1 text-sm",
             {
-              "border-sky-600 border": isOpen,
-              "border-gray-400 border": !isOpen,
-            }
+              "border border-sky-600": isOpen,
+              "border border-gray-400": !isOpen,
+            },
           )}
           onClick={() => setIsOpen(!isOpen)}
         >
           {getSelectedSubCategory() === undefined ? (
             "subcategories"
           ) : (
-            <div className="flex flex-row gap-1 items-center">
+            <div className="flex flex-row items-center gap-1">
               <div
-                className=" w-2 h-2"
+                className=" h-2 w-2"
                 style={{
                   backgroundColor: `#${getSelectedSubCategory()!.color}`,
                 }}
@@ -149,23 +149,23 @@ export default function FilterDropdownBarSubCategories() {
             </div>
           )}
           {isOpen ? (
-            <ChevronDownIcon className=" w-4 h-4 ml-1" />
+            <ChevronDownIcon className=" ml-1 h-4 w-4" />
           ) : (
-            <ChevronRightIcon className=" w-4 h-4 ml-1" />
+            <ChevronRightIcon className=" ml-1 h-4 w-4" />
           )}
         </button>
         {isOpen && (
-          <div className=" z-10 absolute border-gray-200 border border-solid bg-white">
-            <div className="py-1 max-w-[598px]">
-              <div className=" w-full flex flex-row px-2 py-1 text-gray-700 border-gray-100 border-solid border">
+          <div className=" absolute z-10 border border-solid border-gray-200 bg-white">
+            <div className="max-w-[598px] py-1">
+              <div className=" flex w-full flex-row border border-solid border-gray-100 px-2 py-1 text-gray-700">
                 <input
                   type="text"
-                  className=" focus:outline-none grow"
+                  className=" grow focus:outline-none"
                   placeholder="Search..."
                   onChange={(e) => handleChange(e)}
                   value={searchValue}
                 />
-                <MagnifyingGlassIcon className="w-5 h-5" />
+                <MagnifyingGlassIcon className="h-5 w-5" />
               </div>
               <ul className=" overflow-y-auto">
                 {data === undefined ? (
@@ -176,12 +176,12 @@ export default function FilterDropdownBarSubCategories() {
                       <Link
                         href={`${herfPrefix}/${item.slug}/${item.id}/${herfSuffix}`}
                         className={
-                          " bg-white hover:bg-gray-100 hover:text-gray-900 text-gray-700 block px-2 py-2 text-sm"
+                          " block bg-white px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                         }
                       >
-                        <div className="w-full flex flex-row gap-1 items-center">
+                        <div className="flex w-full flex-row items-center gap-1">
                           <div
-                            className=" w-2 h-2"
+                            className=" h-2 w-2"
                             style={{ backgroundColor: `#${item.color}` }}
                           ></div>
                           <div className=" text-sm text-gray-700">

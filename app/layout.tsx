@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   creator: "simple8720",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   title: {
     default: "gov_forum",
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
   description: "Optimism governance forum clone, For sharing and learning",
 
   verification: {
-    google: 'google918a5c421d729bcd',
+    google: "google918a5c421d729bcd",
   },
 
   openGraph: {
     title: 'gov_forum"',
-    url: '/',
+    url: "/",
     description: "Optimism governance forum clone, For sharing and learning",
-    siteName: 'Gov Forum'
+    siteName: "Gov Forum",
   },
   twitter: {
     card: "summary_large_image",
@@ -50,23 +50,24 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children, auth
+  children,
+  auth,
 }: {
   children: React.ReactNode;
-  auth: React.ReactNode
+  auth: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <UserProvider>
-        <body className="pb-36 overflow-y-scroll">
-            <GlobalNav />
-            <div className="mx-auto max-w-[1110px] px-[10px]">
-              <Banner />
-              <OpenEditorProvider>
-                {children} 
-                <TopicCreate />
-              </OpenEditorProvider>
-            </div>
+        <body className="overflow-y-scroll pb-36">
+          <GlobalNav />
+          <div className="mx-auto max-w-[1110px] px-[10px]">
+            <Banner />
+            <OpenEditorProvider>
+              {children}
+              <TopicCreate />
+            </OpenEditorProvider>
+          </div>
           {auth}
         </body>
       </UserProvider>

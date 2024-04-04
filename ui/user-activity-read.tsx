@@ -16,11 +16,11 @@ export default function UserActivityReadTopics({
     <main>
       <section className=" mt-8">
         <table className=" w-full">
-          <thead className=" text-sm text-gray-400 border-b-2  border-gray-400">
+          <thead className=" border-b-2 border-gray-400 text-sm  text-gray-400">
             <tr>
-              <th className=" font-medium py-4 text-left">Topics</th>
-              <th className=" font-medium py-4">Replies</th>
-              <th className=" font-medium py-4">Activity</th>
+              <th className=" py-4 text-left font-medium">Topics</th>
+              <th className=" py-4 font-medium">Replies</th>
+              <th className=" py-4 font-medium">Activity</th>
             </tr>
           </thead>
           <tbody>
@@ -29,7 +29,7 @@ export default function UserActivityReadTopics({
                 key={index}
                 className=" border-b border-solid border-gray-200"
               >
-                <td className=" py-3 px-2">
+                <td className=" px-2 py-3">
                   <div>
                     <Link
                       href={`/t/${item.slug}/${item.topic_id}`}
@@ -37,9 +37,9 @@ export default function UserActivityReadTopics({
                     >
                       {item.title}
                     </Link>
-                    <div className=" flex flex-row gap-1 items-center">
+                    <div className=" flex flex-row items-center gap-1">
                       <div
-                        className=" w-2 h-2"
+                        className=" h-2 w-2"
                         style={{
                           backgroundColor: `#${
                             matchCategory(item.category_id).color
@@ -52,10 +52,10 @@ export default function UserActivityReadTopics({
                     </div>
                   </div>
                 </td>
-                <td className=" text-center py-3 text-red-400 font-bold">
+                <td className=" py-3 text-center font-bold text-red-400">
                   {item.posts_count}
                 </td>
-                <td className=" text-center py-3 whitespace-nowrap text-sm text-gray-400">
+                <td className=" whitespace-nowrap py-3 text-center text-sm text-gray-400">
                   {new Date(item.bumped_at).toLocaleString("default", {
                     month: "short",
                   })}

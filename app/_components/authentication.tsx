@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
 import { useEffect } from "react";
 import * as Realm from "realm-web";
-import { useApp } from "@/hook/useApp"
+import { useApp } from "@/hook/useApp";
 
 export default function Auth() {
   const app = useApp();

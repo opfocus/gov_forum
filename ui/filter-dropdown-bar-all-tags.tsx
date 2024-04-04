@@ -57,7 +57,7 @@ export default function FilterDropdownBarAllTags() {
     else if (pramas.slug.length === 3) {
       categoryLocationId = Number(pramas.slug[1]);
       mappingTags = mapping.category_tags_mapping.find(
-        (item) => item.category_id === categoryLocationId
+        (item) => item.category_id === categoryLocationId,
       )?.tags;
       return mappingTags;
     }
@@ -65,7 +65,7 @@ export default function FilterDropdownBarAllTags() {
     else {
       subCategoryLocationId = Number(pramas.slug[2]);
       mappingTags = mapping.category_tags_mapping.find(
-        (item) => item.category_id === categoryLocationId
+        (item) => item.category_id === categoryLocationId,
       )?.tags;
       return mappingTags;
     }
@@ -75,7 +75,7 @@ export default function FilterDropdownBarAllTags() {
 
   // searched
   const data = getMappingTags()?.filter(
-    (item: any) => item.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+    (item: any) => item.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1,
   );
 
   // selected
@@ -87,65 +87,65 @@ export default function FilterDropdownBarAllTags() {
     if (item) name = item;
   }
 
-      // href
-      let herfSolt = ''
-      // condition: path in "/c/..."
-      if ( 3 <= length && length <= 4 )
-        herfSolt = `c/${(pramas.slug.slice(0, length-1) as string[]).join("/")}`
-      else if (4 <= length && length <= 5 ) {
-        herfSolt = `${(pramas.slug.slice(0,length-1) as string[]).join("/")}`
-      }
+  // href
+  let herfSolt = "";
+  // condition: path in "/c/..."
+  if (3 <= length && length <= 4)
+    herfSolt = `c/${(pramas.slug.slice(0, length - 1) as string[]).join("/")}`;
+  else if (4 <= length && length <= 5) {
+    herfSolt = `${(pramas.slug.slice(0, length - 1) as string[]).join("/")}`;
+  }
 
   return (
     <li id="tag-dropdown">
       <button
         className={clsx(
-          "relative flex flex-row items-center justify-between px-2 py-1 border-solid text-sm whitespace-nowrap",
+          "relative flex flex-row items-center justify-between whitespace-nowrap border-solid px-2 py-1 text-sm",
           {
-            "border-sky-600 border": isOpen,
-            "border-gray-400 border": !isOpen,
-          }
+            "border border-sky-600": isOpen,
+            "border border-gray-400": !isOpen,
+          },
         )}
         onClick={() => setIsOpen(!isOpen)}
       >
         {name}
         {isOpen ? (
-          <ChevronDownIcon className=" w-4 h-4 ml-1" />
+          <ChevronDownIcon className=" ml-1 h-4 w-4" />
         ) : (
-          <ChevronRightIcon className=" w-4 h-4 ml-1" />
+          <ChevronRightIcon className=" ml-1 h-4 w-4" />
         )}
       </button>
       {isOpen && (
-        <div className=" z-10 bg-white absolute border-gray-200 border border-solid">
-          <div className="py-1 w-[218px]">
-            <div className="w-full flex flex-row px-2 py-1 text-gray-700 border-gray-100 border-solid border">
+        <div className=" absolute z-10 border border-solid border-gray-200 bg-white">
+          <div className="w-[218px] py-1">
+            <div className="flex w-full flex-row border border-solid border-gray-100 px-2 py-1 text-gray-700">
               <input
                 type="text"
-                className=" focus:outline-none grow"
+                className=" grow focus:outline-none"
                 placeholder="Search..."
                 onChange={(e) => handleChange(e)}
                 value={searchValue}
               />
-              <MagnifyingGlassIcon className="w-5 h-5" />
+              <MagnifyingGlassIcon className="h-5 w-5" />
             </div>
-            <div className=" overflow-y-auto max-h-96 ">
-              {tags == undefined ? 
+            <div className=" max-h-96 overflow-y-auto ">
+              {tags == undefined ? (
                 <Processing />
-               : data === undefined ? (
-                <div className={" text-sky-600 px-2 py-2 text-sm"}>no tags</div>
-              ) : 
+              ) : data === undefined ? (
+                <div className={" px-2 py-2 text-sm text-sky-600"}>no tags</div>
+              ) : (
                 data.map((tagName: any) => (
                   <Link
                     key={tagName}
                     href={`/tag/${herfSolt}/${tagName}/latest`}
                     className={
-                      " hover:bg-gray-100 hover:text-gray-900 text-gray-700 block px-2 py-2 text-sm"
+                      " block px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                     }
                   >
                     <div className=" text-sm text-gray-700">{tagName}</div>
                   </Link>
                 ))
-              }
+              )}
             </div>
           </div>
         </div>

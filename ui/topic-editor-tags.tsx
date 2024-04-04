@@ -3,15 +3,13 @@
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { MagnifyingGlassIcon} from "@heroicons/react/16/solid";
-
+import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
-
+export default function TopicEditorTags({ tagSelected, setTagSelected }: any) {
   const [searchValue, setSearchValue] = useState("");
   const [searchedTags, setSearchedTags] = useState<[] | undefined>(undefined);
 
@@ -26,26 +24,24 @@ export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
   };
 
   const data = searchedTags?.filter(
-    (item: any) =>
-      item.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+    (item: any) => item.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1,
   );
 
   const handleClick = (name: string) => {
-    if (tagSelected[0] === "") 
-      setTagSelected([name])
+    if (tagSelected[0] === "") setTagSelected([name]);
     else {
       //   need a new array: news, not a quote
-      const news = tagSelected.concat(name)
-      setTagSelected(news)
+      const news = tagSelected.concat(name);
+      setTagSelected(news);
     }
-  }
+  };
 
-  const chose = (tagSelected[0] !== "")? tagSelected.join(',') : "all tags"
+  const chose = tagSelected[0] !== "" ? tagSelected.join(",") : "all tags";
 
   return (
-    <Menu as="div" className="relative inline-block text-left w-full">
+    <Menu as="div" className="relative inline-block w-full text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-between px-2 py-1 border border-solid border-gray-400 text-sm hover:bg-gray-50">
+        <Menu.Button className="inline-flex w-full justify-between border border-solid border-gray-400 px-2 py-1 text-sm hover:bg-gray-50">
           {chose}
           <ChevronDownIcon
             className="-mr-1 h-5 w-5 text-gray-400"
@@ -63,21 +59,21 @@ export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
         >
           <Menu.Items className="absolute left-0 z-10 mt-2 w-56  origin-top-right  bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
-              <div className="w-full flex flex-row px-2 py-1 text-gray-400">
+              <div className="flex w-full flex-row px-2 py-1 text-gray-400">
                 <input
                   type="text"
-                  className=" focus:outline-none grow"
+                  className=" grow focus:outline-none"
                   placeholder="Search..."
                   onChange={(e) => handleChange(e)}
                   value={searchValue}
                 />
-                <MagnifyingGlassIcon className="w-5 h-5" />
+                <MagnifyingGlassIcon className="h-5 w-5" />
               </div>
-              <div className=" overflow-y-auto h-96 ">
+              <div className=" h-96 overflow-y-auto ">
                 {data == undefined ? (
                   <div className="flex flex-row p-2 text-gray-700">
                     <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
+                      className="-ml-1 mr-3 h-5 w-5 animate-spin text-black"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -107,13 +103,11 @@ export default function TopicEditorTags({tagSelected, setTagSelected}: any) {
                             active
                               ? "bg-gray-100 text-gray-900"
                               : "text-gray-700",
-                            "block px-2 py-2 w-full text-left text-sm"
+                            "block w-full px-2 py-2 text-left text-sm",
                           )}
                           onClick={() => handleClick(item)}
                         >
-                          <div className=" text-sm text-gray-700">
-                            {item}
-                          </div>
+                          <div className=" text-sm text-gray-700">{item}</div>
                         </button>
                       )}
                     </Menu.Item>

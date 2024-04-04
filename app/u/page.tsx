@@ -1,13 +1,7 @@
-
-
-
 export default function Page() {
-
   return (
     <div>
-      <h1>
-        [TBA]
-      </h1>
+      <h1>[TBA]</h1>
     </div>
-  )
+  );
 }

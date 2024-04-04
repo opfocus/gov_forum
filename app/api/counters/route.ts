@@ -30,7 +30,7 @@ export const GET = withApiAuthRequired(async function Get() {
   // update the database
   const updateResult = await collection.updateMany(
     {},
-    { $inc: { sequence_value: 1 } }
+    { $inc: { sequence_value: 1 } },
   );
 
   if (!updateResult) {

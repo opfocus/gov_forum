@@ -7,12 +7,12 @@ export default function UserPreferencesNotifications() {
         <label className=" text-xl font-bold text-gray-500">
           Notifications
         </label>
-        <p className=" text-sm text-gray-500 mt-2">Notify when liked</p>
+        <p className=" mt-2 text-sm text-gray-500">Notify when liked</p>
         <select
           name="notify-liked"
           id="notify-liked"
-          className="px-2 py-1 mt-2 block focus:outline-none border border-gray-200 border-solid
-       text-gray-700 focus:border-sky-600
+          className="mt-2 block border border-solid border-gray-200 px-2 py-1 text-gray-700
+       focus:border-sky-600 focus:outline-none
       "
         >
           <option value="Always">Always</option>
@@ -31,33 +31,36 @@ export default function UserPreferencesNotifications() {
           Live Notifications
         </label>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-         hover:text-white 
-         flex flex-row gap-1 items-center
-          disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+         gap-1 
+         bg-gray-200 px-2 py-1 text-gray-700
+          hover:bg-gray-400 hover:text-white
          "
           title="TBA"
         >
-          <BellIcon className=" w-5 h-5" />
+          <BellIcon className=" h-5 w-5" />
           Enable Notifications
         </button>
-        <p className=" text-xs text-gray-500 mt-1">
+        <p className=" mt-1 text-xs text-gray-500">
           Note: You have to change this setting on every browser you use. All
           notifications will be disabled if you pause notifications from user
           menu, regardless of this setting.
         </p>
       </section>
       <section className=" mt-8">
-        <label className=" text-xl font-bold text-gray-500">Activity Summary</label>
+        <label className=" text-xl font-bold text-gray-500">
+          Activity Summary
+        </label>
         <div>
-          <input type="checkbox" name="email-me-summary" value={"excerpt"} />
-            {" "}
-            <span className=" text-sm text-gray-500">Enable custom notification schedule</span>
-            </div>
-        </section>
-        <section className=" mt-8">
+          <input type="checkbox" name="email-me-summary" value={"excerpt"} />{" "}
+          <span className=" text-sm text-gray-500">
+            Enable custom notification schedule
+          </span>
+        </div>
+      </section>
+      <section className=" mt-8">
         <button
-          className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+          className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
           title="TBA"
         >
           Save Changes

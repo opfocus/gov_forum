@@ -177,7 +177,7 @@ export const mapping = {
     "template",
     "cycle-3",
     "cycle-4",
-    "season-1"
+    "season-1",
   ],
   category_tags_mapping: [
     {

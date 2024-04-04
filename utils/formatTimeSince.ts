@@ -1,4 +1,4 @@
-export   const formatTimeSince = (dateString: string): string => {
+export const formatTimeSince = (dateString: string): string => {
   const lastPostDate = new Date(dateString) as Date;
   const currentDate = new Date() as Date;
   const difference =

@@ -6,8 +6,8 @@ import MenuButton from "./menu-button";
 
 export default async function GlobalNav() {
   return (
-    <header className=" bg-white sticky top-0 w-full  shadow-lg z-20 border-t border-solid border-gray-100">
-      <nav className=" flex flex-row mx-auto max-w-[1110px] h-[60px]  px-[10px] items-center">
+    <header className=" sticky top-0 z-20 w-full  border-t border-solid border-gray-100 bg-white shadow-lg">
+      <nav className=" mx-auto flex h-[60px] max-w-[1110px] flex-row  items-center px-[10px]">
         <Link href={"/"}>
           <Image
             src={"/op-logo.png"}
@@ -17,7 +17,7 @@ export default async function GlobalNav() {
             priority={true}
           ></Image>
         </Link>
-        <ul className=" grow  relative flex flex-row  justify-end items-center">
+        <ul className=" relative  flex grow flex-row  items-center justify-end">
           <li>
             <TextSearchButton />
           </li>

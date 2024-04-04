@@ -29,7 +29,7 @@ export default function TimeLine({
   useEffect(() => {
     if (activePostId) {
       setScrollerPosition(
-        parsePostId(activePostId) * (sideScrollAreaHeight / postCount)
+        parsePostId(activePostId) * (sideScrollAreaHeight / postCount),
       );
     }
   }, [activePostId]);
@@ -58,11 +58,11 @@ export default function TimeLine({
   };
   const handleMouseLeave = () => {
     setIsDragging(false);
-  
+
     setNextPostIndex(
       `post-${Math.floor(
-        scrollerPosition / (sideScrollAreaHeight / postCount)
-      )}`
+        scrollerPosition / (sideScrollAreaHeight / postCount),
+      )}`,
     );
   };
 
@@ -74,8 +74,8 @@ export default function TimeLine({
 
       setNextPostIndex(
         `post-${Math.floor(
-          newRelativeTopToParent / (sideScrollAreaHeight / postCount)
-        )}`
+          newRelativeTopToParent / (sideScrollAreaHeight / postCount),
+        )}`,
       );
     }
   };
@@ -96,9 +96,9 @@ export default function TimeLine({
   }
 
   return (
-    <div className=" sticky top-24 right-0 h-full">
+    <div className=" sticky right-0 top-24 h-full">
       <div className=" flex flex-col gap-2 ">
-        <div className=" text-base text-gray-400 font-normal select-none">
+        <div className=" select-none text-base font-normal text-gray-400">
           Aug 2022
         </div>
         <div
@@ -106,13 +106,13 @@ export default function TimeLine({
           style={{ height: `${sideScrollAreaHeight}px` }}
         >
           <div
-            className=" border-l-2 border-solid border-blue-200 cursor-pointer"
+            className=" cursor-pointer border-l-2 border-solid border-blue-200"
             style={{ height: `${scrollerPosition}px` }}
             onClick={handleClick}
           ></div>
           <div
             id="side-scroller"
-            className=" border-l-4 border-solid border-blue-400 flex items-center cursor-ns-resize"
+            className=" flex cursor-ns-resize items-center border-l-4 border-solid border-blue-400"
             style={{
               marginLeft: "-2px",
               height: `${scrollerHeight}px`,
@@ -122,22 +122,26 @@ export default function TimeLine({
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseLeave}
           >
-            <div className=" pl-2 select-none flex flex-col">
+            <div className=" flex select-none flex-col pl-2">
               <div>
                 {Math.floor(
-                  scrollerPosition / (sideScrollAreaHeight / postCount)
+                  scrollerPosition / (sideScrollAreaHeight / postCount),
                 ) + 1}{" "}
                 / {postCount}
               </div>
-              <div className=" text-gray-400 text-base font-normal">
-                {formatDate(postsRecord[Math.floor(
-                  scrollerPosition / (sideScrollAreaHeight / postCount)
-                )].created_at)}
+              <div className=" text-base font-normal text-gray-400">
+                {formatDate(
+                  postsRecord[
+                    Math.floor(
+                      scrollerPosition / (sideScrollAreaHeight / postCount),
+                    )
+                  ].created_at,
+                )}
               </div>
             </div>
           </div>
           <div
-            className=" border-l-2 border-solid border-blue-200 cursor-pointer"
+            className=" cursor-pointer border-l-2 border-solid border-blue-200"
             style={{
               height: `${
                 sideScrollAreaHeight - scrollerHeight - scrollerPosition

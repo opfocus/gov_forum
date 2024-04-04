@@ -1,18 +1,26 @@
-'use client'
+"use client";
 
-import { createContext, useState} from "react"
-import type { OpenEditorContextType } from "@/lib/type"
+import { createContext, useState } from "react";
+import type { OpenEditorContextType } from "@/lib/type";
 
-export const OpenEditorContext = createContext<OpenEditorContextType | undefined>(undefined)
+export const OpenEditorContext = createContext<
+  OpenEditorContextType | undefined
+>(undefined);
 
-export default function OpenEditorProvider({ children }: {
-  children: React.ReactNode
+export default function OpenEditorProvider({
+  children,
+}: {
+  children: React.ReactNode;
 }) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const contextValue = {
     isOpen: isOpen,
-    setIsOpen:setIsOpen
-  }
+    setIsOpen: setIsOpen,
+  };
 
-  return <OpenEditorContext.Provider value = {contextValue}>{children}</OpenEditorContext.Provider>
+  return (
+    <OpenEditorContext.Provider value={contextValue}>
+      {children}
+    </OpenEditorContext.Provider>
+  );
 }

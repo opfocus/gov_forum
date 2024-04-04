@@ -15,19 +15,25 @@ export default function ReplyControlPanel({
   replyWhichPost: Post | undefined;
 }) {
   return (
-    <div className="flex flex-row justify-between   text-gray-400 text-base font-light ">
+    <div className="flex flex-row justify-between   text-base font-light text-gray-400 ">
       <div className="flex flex-row gap-1">
         <div className=" flex flex-row gap-1">
-          <img src={replyWhichPost?.avatar_template} alt="user avatar"  className=" w-6 h-6 rounded-full"/>
-          <span className=" text-sm text-blue-300">{replyWhichPost?.username}</span>
+          <img
+            src={replyWhichPost?.avatar_template}
+            alt="user avatar"
+            className=" h-6 w-6 rounded-full"
+          />
+          <span className=" text-sm text-blue-300">
+            {replyWhichPost?.username}
+          </span>
         </div>
-        <button className=" p-1 border border-gray-400 border-solid hover:bg-gray-200">
-          <ArrowUturnLeftIcon className="w-4 h-4" />
+        <button className=" border border-solid border-gray-400 p-1 hover:bg-gray-200">
+          <ArrowUturnLeftIcon className="h-4 w-4" />
         </button>
       </div>
       <div className=" flex flex-row gap-2">
         <button
-          className=" p-1 border border-gray-400 border-solid hover:bg-gray-200"
+          className=" border border-solid border-gray-400 p-1 hover:bg-gray-200"
           onClick={() => handleZoom()}
         >
           {!isZoomEditorTextarea ? (
@@ -35,7 +41,7 @@ export default function ReplyControlPanel({
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-4 h-4"
+              className="h-4 w-4"
             >
               <path
                 fillRule="evenodd"
@@ -48,7 +54,7 @@ export default function ReplyControlPanel({
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-4 h-4"
+              className="h-4 w-4"
             >
               <path
                 fillRule="evenodd"
@@ -59,10 +65,10 @@ export default function ReplyControlPanel({
           )}
         </button>
         <button
-          className=" p-1 border border-gray-400 border-solid hover:bg-gray-200"
+          className=" border border-solid border-gray-400 p-1 hover:bg-gray-200"
           onClick={() => hiddenEditor()}
         >
-          <ChevronDownIcon className="w-4 h-4" />
+          <ChevronDownIcon className="h-4 w-4" />
         </button>
       </div>
     </div>

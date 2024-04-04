@@ -11,38 +11,38 @@ export default function UserUsers() {
         <label className=" text-xl font-bold text-gray-500">
           Export your data
         </label>
-        <div className=" mt-2 flex flex-row gap-2 items-center text-gray-500">
-          <EyeSlashIcon className=" w-4 h-4" />
+        <div className=" mt-2 flex flex-row items-center gap-2 text-gray-500">
+          <EyeSlashIcon className=" h-4 w-4" />
           <span>Ignored</span>
         </div>
-        <p className=" text-sm text-gray-700 mt-2">
+        <p className=" mt-2 text-sm text-gray-700">
           You have no ignored users.
         </p>
-        <span className=" text-xs text-gray-500 mt-2">
+        <span className=" mt-2 text-xs text-gray-500">
           Suppress all posts, messages, notifications, personal messages, and
           chat direct messages from these users.
         </span>
         <button
-          className=" mt-2 px-2 py-1 bg-gray-200 text-gray-700 hover:bg-gray-400
-       hover:text-white 
-       flex flex-row gap-1 items-center
-        disabled cursor-not-allowed
+          className=" disabled mt-2 flex cursor-not-allowed flex-row items-center
+       gap-1 
+       bg-gray-200 px-2 py-1 text-gray-700
+        hover:bg-gray-400 hover:text-white
        "
           title="TBA"
         >
-          <PlusIcon className=" w-5 h-5" />
+          <PlusIcon className=" h-5 w-5" />
           Add...
         </button>
       </section>
       <section className=" mt-8">
-        <div className=" flex flex-row gap-2 items-center text-gray-500">
-          <BellSlashIcon className=" w-4 h-4" />
+        <div className=" flex flex-row items-center gap-2 text-gray-500">
+          <BellSlashIcon className=" h-4 w-4" />
           <span>Muted</span>
         </div>
         <div
-          className="px-2 py-1  border border-gray-200 border-solid
-     text-gray-700 focus:border-sky-600
-      flex flex-row justify-between
+          className="flex flex-row  justify-between border border-solid
+     border-gray-200 px-2
+      py-1 text-gray-700 focus:border-sky-600
     "
         >
           <input
@@ -51,9 +51,9 @@ export default function UserUsers() {
             className=" focus:outline-none"
             placeholder="[TBA]"
           />
-          <PlusIcon className=" w-5 h-5" />
+          <PlusIcon className=" h-5 w-5" />
         </div>
-        <span className=" text-xs text-gray-500 mt-2">
+        <span className=" mt-2 text-xs text-gray-500">
           Suppress all notifications, personal messages, and chat direct
           messages from these users.
         </span>
@@ -68,15 +68,20 @@ export default function UserUsers() {
           </span>
         </div>
         <div>
-          <input type="checkbox" name="messages-from-special-user" value={"excerpt"} />{" "}
+          <input
+            type="checkbox"
+            name="messages-from-special-user"
+            value={"excerpt"}
+          />{" "}
           <span className=" text-sm text-gray-500">
-          Only allow specific users to send me personal messages or chat direct messages
+            Only allow specific users to send me personal messages or chat
+            direct messages
           </span>
         </div>
       </section>
       <section className=" mt-8">
         <button
-          className=" px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 disabled cursor-not-allowed"
+          className=" disabled cursor-not-allowed bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
           title="TBA"
         >
           Save Changes

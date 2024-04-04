@@ -1,6 +1,6 @@
 "use client";
 
-import { useState} from "react";
+import { useState } from "react";
 import clsx from "clsx";
 
 import ReplyControlPanel from "@/ui/reply-control-panel";
@@ -16,19 +16,17 @@ export default function ReplyEditor({
   isOpenReplyEdior,
   setIsOpenReplyEditor,
   setPostsRecord,
-  postsRecord
+  postsRecord,
 }: {
-  replyWhichPost: Post | undefined,
-  isOpenReplyEdior: boolean,
-  setIsOpenReplyEditor: (isOpen: boolean) => void,
-  setPostsRecord:(post:Post[]) => void
-  postsRecord:Post[]
+  replyWhichPost: Post | undefined;
+  isOpenReplyEdior: boolean;
+  setIsOpenReplyEditor: (isOpen: boolean) => void;
+  setPostsRecord: (post: Post[]) => void;
+  postsRecord: Post[];
 }) {
   const [isZoomEditorTextarea, setIsZoomEditorTextarea] = useState(false);
   const [myString, setMyString] = useState("");
   const { user } = useUser();
-
-
 
   //newPost, setNewPost Reserved for draft, not used yet
   // const [newPost, setNewPost] = useState<NewPost>(
@@ -74,7 +72,7 @@ export default function ReplyEditor({
     }
   };
 
-  const handleReply= async () => {
+  const handleReply = async () => {
     const res = await generatePostId();
     const [newPostIdCounter] = JSON.parse(res);
 
@@ -85,10 +83,10 @@ export default function ReplyEditor({
     const postId = newPostIdCounter.sequence_value;
     const name = user?.name!;
     const cooked = myString;
-    const topicId = replyWhichPost?.topic_id!
+    const topicId = replyWhichPost?.topic_id!;
     //test
-    const topicSlug =replyWhichPost?.topic_slug!;
-    const reply_to_post_number = replyWhichPost?.id!
+    const topicSlug = replyWhichPost?.topic_slug!;
+    const reply_to_post_number = replyWhichPost?.id!;
     const post: Post = createPost(
       postId,
       name,
@@ -102,7 +100,7 @@ export default function ReplyEditor({
       reply_to_post_number,
     );
 
-    fetch('/api/reply', {
+    fetch("/api/reply", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -113,46 +111,46 @@ export default function ReplyEditor({
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
     });
-      const newPosts = [...postsRecord, post]
-      setPostsRecord(newPosts)
+    const newPosts = [...postsRecord, post];
+    setPostsRecord(newPosts);
   };
   const createable: boolean = myString !== "";
   return (
     <div
       className={clsx(
-        " bg-white transition-height transform origin-bottom fixed w-screen bottom-0  left-0 duration-300 z-10",
+        " transition-height fixed bottom-0 left-0 z-10 w-screen origin-bottom  transform bg-white duration-300",
         {
-           "h-0": !isOpenReplyEdior,
+          "h-0": !isOpenReplyEdior,
           " h-full": isZoomEditorTextarea,
           " h-80": !isZoomEditorTextarea && isOpenReplyEdior,
-        }
+        },
       )}
     >
       <div
         className={clsx(
-          "transition-width transform origin-center mx-auto shadow-2xl h-full duration-300  flex flex-col",
+          "transition-width mx-auto flex h-full origin-center transform flex-col  shadow-2xl duration-300",
           {
-            " w-full over": isZoomEditorTextarea,
+            " over w-full": isZoomEditorTextarea,
             " w-3/5": !isZoomEditorTextarea,
-          }
+          },
         )}
       >
         <div className=" h-2 bg-blue-400"></div>
-        <div className=" px-2 py-2 flex flex-col gap-2 ">
+        <div className=" flex flex-col gap-2 px-2 py-2 ">
           <ReplyControlPanel
             isZoomEditorTextarea={isZoomEditorTextarea}
             handleZoom={handleZoom}
             hiddenEditor={hiddenEditor}
             replyWhichPost={replyWhichPost}
           />
-          <div className="w-full flex flex-row gap-4 grow">
-            <div className="w-full flex flex-col gap-2 h-full">
+          <div className="flex w-full grow flex-row gap-4">
+            <div className="flex h-full w-full flex-col gap-2">
               <div
                 className={clsx("w-full", {
                   hidden: isZoomEditorTextarea,
                 })}
               ></div>
-              <div className="  border border-solid border-gray-400 growo">
+              <div className="  growo border border-solid border-gray-400">
                 <Editor
                   setMyString={setMyString}
                   isZoomEditorTextarea={isZoomEditorTextarea}
