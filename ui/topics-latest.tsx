@@ -51,29 +51,33 @@ export default async function TopicsLatest({
 
   return (
     <div>
-      <div className=" border-b-4 border-solid border-gray-200">
-        <div className="p-2 text-base font-medium text-gray-400">Latest</div>
+      <div className=" border-b-4 border-solid border-slate-100 dark:border-slate-600">
+        <div className="p-2 font-medium text-slate-400 dark:text-slate-300">
+          Latest
+        </div>
       </div>
       {topics.map((topic) => (
         <div
           key={topic.name}
-          className=" flex flex-row items-center border-b border-solid  border-gray-200 p-4"
+          className=" flex flex-row items-center border-b border-solid  border-slate-100 p-4 dark:border-slate-600"
         >
           <img
             src={topic.avatar_template}
             alt="user avatar"
             width={48}
             height={48}
-            className="mr-3 rounded-full"
+            className="mr-3 rounded-full shrink-0"
           ></img>
-          <div className="flex grow flex-col gap-[2px]">
+          <div className="flex grow flex-col gap-0.5">
             <Link
               href={"t/" + topic.slug + "/" + topic.id.toString()}
               scroll={false}
             >
-              <div className=" text-gray-700">{topic.title}</div>
+              <div className=" text-slate-500 dark:text-slate-200 ">
+                {topic.title}
+              </div>
             </Link>
-            <div className=" flex flex-row gap-2 text-sm text-gray-400">
+            <div className=" flex flex-row gap-2 text-xs text-slate-500 dark:text-slate-200">
               <Link
                 href={fetchCategoryDetailsById(topic.category_id).href}
                 title={`Link to ${topic.category_name}`}
@@ -99,10 +103,10 @@ export default async function TopicsLatest({
             </div>
           </div>
           <div className=" flex flex-col gap-1">
-            <div className="text-right text-lg font-semibold text-gray-500 ">
+            <div className="text-right text-lg font-semibold text-slate-400 dark:text-slate-300">
               {topic.stream.length}
             </div>
-            <div className=" text-right text-sm font-normal text-gray-400">
+            <div className=" text-right text-sm font-normal text-slate-300 dark:text-slate-400">
               {formatTimeSince(topic.last_posted_at!)}
             </div>
           </div>

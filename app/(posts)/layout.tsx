@@ -1,6 +1,5 @@
 import React from "react";
 import FilterBars from "@/ui/filter-bars";
-import NewTopicButton from "@/ui/new-topic-button";
 
 import type { Metadata } from "next";
 
@@ -34,10 +33,9 @@ const tabs = [
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className=" mt-8 space-y-6">
+    <div className=" bg-inherit mt-8 space-y-6">
       <div className="flex flex-wrap items-center justify-between">
         <FilterBars tabs={tabs} />
-        <NewTopicButton />
       </div>
       {children}
     </div>

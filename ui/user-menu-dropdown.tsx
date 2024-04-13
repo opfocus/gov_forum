@@ -15,9 +15,9 @@ export default function UserMenuDropdown() {
   if (error) return <div>{error.message}</div>;
   if (user)
     return (
-      <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="relative block text-left">
         <div>
-          <Menu.Button className=" flex items-center p-1 hover:bg-gray-200">
+          <Menu.Button className=" flex items-center p-2 hover:scale-125 dark:text-white">
             <img
               src={user.picture!}
               alt="user avatars"
@@ -27,7 +27,6 @@ export default function UserMenuDropdown() {
             />
           </Menu.Button>
         </div>
-
         <Transition
           as={Fragment}
           enter="transition ease-out duration-100"

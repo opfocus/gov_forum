@@ -59,9 +59,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-        <body className="overflow-y-scroll pb-36">
+        <body className=" overflow-y-scroll bg-white pb-36 text-black dark:bg-slate-700 dark:text-white">
           <GlobalNav />
-          <div className="mx-auto max-w-[1110px] px-[10px]">
+          <div className=" bg-inherit mx-auto w-full px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
             <Banner />
             <OpenEditorProvider>
               {children}

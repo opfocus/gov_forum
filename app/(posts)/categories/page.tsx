@@ -20,7 +20,7 @@ export default async function Page() {
   let topics = JSON.parse(res);
 
   return (
-    <main className=" flex flex-col gap-6 lg:flex-row">
+    <main className=" flex flex-col gap-6 max-lg  lg:flex-row">
       <div className=" w-full lg:flex-1">
         <Suspense fallback={<Processing />}>
           <CategoryList categories={categories} />

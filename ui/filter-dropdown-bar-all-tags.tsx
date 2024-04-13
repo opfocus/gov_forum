@@ -6,28 +6,26 @@ import { useEffect, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import Processing from "./processing";
-import clsx from "clsx";
 import { mapping } from "@/lib/mapping_for_test";
 
 export default function FilterDropdownBarAllTags() {
   const pramas = useParams();
-  const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [tags, setTags] = useState<string[] | undefined>(undefined);
 
   // Listen click event
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const dropdown = document.getElementById("tag-dropdown");
-      if (!dropdown!.contains(event.target as Node)) setIsOpen(false);
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     const dropdown = document.getElementById("tag-dropdown");
+  //     if (!dropdown!.contains(event.target as Node)) setIsOpen(!isOpen);
+  //   };
 
-    document.addEventListener("click", handleClickOutside);
+  //   document.addEventListener("click", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener("click", handleClickOutside);
+  //   };
+  // }, []);
 
   // fetch data
   useEffect(() => {
@@ -97,59 +95,46 @@ export default function FilterDropdownBarAllTags() {
   }
 
   return (
-    <li id="tag-dropdown">
-      <button
-        className={clsx(
-          "relative flex flex-row items-center justify-between whitespace-nowrap border-solid px-2 py-1 text-sm",
-          {
-            "border border-sky-600": isOpen,
-            "border border-gray-400": !isOpen,
-          },
-        )}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {name}
-        {isOpen ? (
-          <ChevronDownIcon className=" ml-1 h-4 w-4" />
-        ) : (
-          <ChevronRightIcon className=" ml-1 h-4 w-4" />
-        )}
-      </button>
-      {isOpen && (
-        <div className=" absolute z-10 border border-solid border-gray-200 bg-white">
-          <div className="w-[218px] py-1">
-            <div className="flex w-full flex-row border border-solid border-gray-100 px-2 py-1 text-gray-700">
-              <input
-                type="text"
-                className=" grow focus:outline-none"
-                placeholder="Search..."
-                onChange={(e) => handleChange(e)}
-                value={searchValue}
-              />
-              <MagnifyingGlassIcon className="h-5 w-5" />
-            </div>
-            <div className=" max-h-96 overflow-y-auto ">
-              {tags == undefined ? (
-                <Processing />
-              ) : data === undefined ? (
-                <div className={" px-2 py-2 text-sm text-sky-600"}>no tags</div>
-              ) : (
-                data.map((tagName: any) => (
-                  <Link
-                    key={tagName}
-                    href={`/tag/${herfSolt}/${tagName}/latest`}
-                    className={
-                      " block px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                    }
-                  >
-                    <div className=" text-sm text-gray-700">{tagName}</div>
-                  </Link>
-                ))
-              )}
-            </div>
-          </div>
+    <details id="tag-dropdown" className=" group select-none">
+      <summary className=" list-none">
+        <div className="relative flex cursor-pointer flex-row items-center justify-between gap-1 border  border-solid px-2 py-1 text-sm group-open:border-sky-600 group-open:ring-1 group-open:ring-sky-600">
+          {name}
+          <ChevronDownIcon className=" hidden h-4 w-4 group-open:block" />
+          <ChevronRightIcon className=" block h-4 w-4 group-open:hidden" />
         </div>
-      )}
-    </li>
+      </summary>
+      <div className=" absolute z-10 mt-2 max-w-xs bg-white shadow dark:bg-slate-700 dark:shadow-slate-800">
+        <div className=" flex flex-row items-center border border-solid border-slate-100 text-slate-600 dark:border-slate-600 dark:text-slate-100">
+          <input
+            autoFocus
+            type="text"
+            className="border-none bg-inherit placeholder:text-slate-400 focus:outline-none focus:ring-0"
+            placeholder="Search..."
+            onChange={(e) => handleChange(e)}
+            value={searchValue}
+          />
+          <MagnifyingGlassIcon className="h-5 w-5 shrink-0" />
+        </div>
+        <div className=" scrollbar max-h-96 overflow-y-auto">
+          {tags == undefined ? (
+            <Processing />
+          ) : data === undefined ? (
+            <div className={" px-2 py-2 text-sm text-sky-600"}>no tags</div>
+          ) : (
+            data.map((tagName: any) => (
+              <Link
+                key={tagName}
+                href={`/tag/${herfSolt}/${tagName}/latest`}
+                className={
+                  "block px-2 py-2 text-gray-600 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-600"
+                }
+              >
+                <div className=" text-sm">{tagName}</div>
+              </Link>
+            ))
+          )}
+        </div>
+      </div>
+    </details>
   );
 }

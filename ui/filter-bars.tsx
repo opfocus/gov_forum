@@ -7,6 +7,7 @@ import FilterDropdownBarAllTags from "@/ui/filter-dropdown-bar-all-tags";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useParams, useSelectedLayoutSegment } from "next/navigation";
 import FilterDropdownBarSubCategories from "./filter-dropdown-bar-sub-categories";
+import NewTopicButton from "@/ui/new-topic-button";
 
 export default function FilterBars({ tabs }: { tabs: any[] }) {
   const { user, error, isLoading } = useUser();
@@ -25,11 +26,13 @@ export default function FilterBars({ tabs }: { tabs: any[] }) {
   console.log(displayTabs);
 
   return (
-    <nav className=" bg-white">
-      <ul className="my-2 flex flex-row  flex-wrap gap-2 text-gray-700">
+    <nav className=" my-2 flex w-full flex-row flex-wrap  gap-2 bg-inherit text-gray-700 dark:text-white">
+      <ul className=" bg-inherit flex gap-2">
         <FilterDropdownBarCategories />
         <FilterDropdownBarSubCategories />
         <FilterDropdownBarAllTags />
+      </ul>
+      <ul className=" flex grow gap-2">
         {displayTabs?.map((tab: any) => (
           <li key={tab.index}>
             <Link
@@ -45,6 +48,7 @@ export default function FilterBars({ tabs }: { tabs: any[] }) {
           </li>
         ))}
       </ul>
+      <NewTopicButton />
     </nav>
   );
 }

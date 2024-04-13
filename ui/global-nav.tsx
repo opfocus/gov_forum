@@ -3,12 +3,13 @@ import Link from "next/link";
 import UserMenuDropdown from "./user-menu-dropdown";
 import TextSearchButton from "./text-search-button";
 import MenuButton from "./menu-button";
+import Theme from "./theme";
 
 export default async function GlobalNav() {
   return (
-    <header className=" sticky top-0 z-20 w-full  border-t border-solid border-gray-100 bg-white shadow-lg">
-      <nav className=" mx-auto flex h-[60px] max-w-[1110px] flex-row  items-center px-[10px]">
-        <Link href={"/"}>
+    <header className=" sticky top-0 z-50 w-full border-t border-solid border-gray-100 bg-inherit shadow-lg">
+      <nav className=" mx-auto flex h-16 w-full flex-row items-center px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
+        <Link href={"/"} className=" shrink-0">
           <Image
             src={"/op-logo.png"}
             alt="OP Logo"
@@ -18,6 +19,9 @@ export default async function GlobalNav() {
           ></Image>
         </Link>
         <ul className=" relative  flex grow flex-row  items-center justify-end">
+          <li>
+            <Theme />
+          </li>
           <li>
             <TextSearchButton />
           </li>
