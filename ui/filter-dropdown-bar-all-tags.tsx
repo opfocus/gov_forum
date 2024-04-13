@@ -14,18 +14,22 @@ export default function FilterDropdownBarAllTags() {
   const [tags, setTags] = useState<string[] | undefined>(undefined);
 
   // Listen click event
-  // useEffect(() => {
-  //   const handleClickOutside = (event: MouseEvent) => {
-  //     const dropdown = document.getElementById("tag-dropdown");
-  //     if (!dropdown!.contains(event.target as Node)) setIsOpen(!isOpen);
-  //   };
+  useEffect(() => {
+    function handleClickOutside(event: any) {
+      const details = document.getElementById("tag-dropdown");
+      const targetElement = event.target;
 
-  //   document.addEventListener("click", handleClickOutside);
+      if (details && !details.contains(targetElement)) {
+        details!.removeAttribute("open");
+      }
+    }
 
-  //   return () => {
-  //     document.removeEventListener("click", handleClickOutside);
-  //   };
-  // }, []);
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   // fetch data
   useEffect(() => {
