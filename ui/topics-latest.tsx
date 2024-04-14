@@ -66,16 +66,15 @@ export default async function TopicsLatest({
             alt="user avatar"
             width={48}
             height={48}
-            className="mr-3 rounded-full shrink-0"
+            className="mr-3 shrink-0 rounded-full"
           ></img>
           <div className="flex grow flex-col gap-0.5">
             <Link
               href={"t/" + topic.slug + "/" + topic.id.toString()}
               scroll={false}
+              className=" text-slate-500 dark:text-slate-200 "
             >
-              <div className=" text-slate-500 dark:text-slate-200 ">
-                {topic.title}
-              </div>
+              {topic.title}
             </Link>
             <div className=" flex flex-row gap-2 text-xs text-slate-500 dark:text-slate-200">
               <Link

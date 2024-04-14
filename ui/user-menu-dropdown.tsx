@@ -17,7 +17,7 @@ export default function UserMenuDropdown() {
     return (
       <Menu as="div" className="relative block text-left">
         <div>
-          <Menu.Button className=" flex items-center p-2 hover:scale-125 dark:text-white">
+          <Menu.Button className=" flex items-center p-2 hover:scale-125">
             <img
               src={user.picture!}
               alt="user avatars"

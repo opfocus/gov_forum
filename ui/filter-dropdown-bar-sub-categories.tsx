@@ -17,12 +17,14 @@ export default function FilterDropdownBarSubCategories() {
 
   // Listen click event
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const dropdown = document.getElementById("subcategories-dropdown");
-      if (dropdown !== null) {
-        if (!dropdown.contains(event.target as Node)) setIsOpen(false);
+    function handleClickOutside(event: any) {
+      const details = document.getElementById("subcategories-dropdown");
+      const targetElement = event.target;
+
+      if (details && !details.contains(targetElement)) {
+        details!.removeAttribute("open");
       }
-    };
+    }
 
     document.addEventListener("click", handleClickOutside);
 
@@ -122,80 +124,70 @@ export default function FilterDropdownBarSubCategories() {
     getSubCategoriesOptions()!.length !== 0
   )
     return (
-      <li id="subcategories-dropdown">
-        <button
-          className={clsx(
-            "relative flex flex-row items-center justify-between whitespace-nowrap border-solid px-2  py-1 text-sm",
-            {
-              "border border-sky-600": isOpen,
-              "border border-gray-400": !isOpen,
-            },
-          )}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {getSelectedSubCategory() === undefined ? (
-            "subcategories"
-          ) : (
-            <div className="flex flex-row items-center gap-1">
-              <div
-                className=" h-2 w-2"
-                style={{
-                  backgroundColor: `#${getSelectedSubCategory()!.color}`,
-                }}
-              ></div>
-              <div className=" text-sm text-gray-700">
-                {getSelectedSubCategory()!.name}
-              </div>
+      <li>
+        <details id="subcategories-dropdown" className=" group select-none">
+          <summary className=" list-none">
+            <div
+              className="relative flex cursor-pointer flex-row items-center justify-between gap-1
+          border  border-solid border-slate-300 px-2 py-1 text-sm text-slate-600 
+          group-open:border-sky-600 group-open:ring-1 group-open:ring-sky-600 
+          dark:border-slate-400 dark:text-slate-100"
+            >
+              {getSelectedSubCategory() === undefined ? (
+                "subcategories"
+              ) : (
+                <div className="flex flex-row items-center gap-1">
+                  <div
+                    className=" h-2 w-2"
+                    style={{
+                      backgroundColor: `#${getSelectedSubCategory()!.color}`,
+                    }}
+                  ></div>
+                  <div>{getSelectedSubCategory()!.name}</div>
+                </div>
+              )}
+              <ChevronDownIcon className=" hidden h-4 w-4 group-open:block" />
+              <ChevronRightIcon className=" block h-4 w-4 group-open:hidden" />
             </div>
-          )}
-          {isOpen ? (
-            <ChevronDownIcon className=" ml-1 h-4 w-4" />
-          ) : (
-            <ChevronRightIcon className=" ml-1 h-4 w-4" />
-          )}
-        </button>
-        {isOpen && (
-          <div className=" absolute z-10 border border-solid border-gray-200 bg-white">
-            <div className="max-w-[598px] py-1">
-              <div className=" flex w-full flex-row border border-solid border-gray-100 px-2 py-1 text-gray-700">
-                <input
-                  type="text"
-                  className=" grow focus:outline-none"
-                  placeholder="Search..."
-                  onChange={(e) => handleChange(e)}
-                  value={searchValue}
-                />
-                <MagnifyingGlassIcon className="h-5 w-5" />
-              </div>
-              <ul className=" overflow-y-auto">
-                {data === undefined ? (
-                  <Processing />
-                ) : (
-                  data.map((item: any) => (
-                    <li key={item.slug}>
-                      <Link
-                        href={`${herfPrefix}/${item.slug}/${item.id}/${herfSuffix}`}
-                        className={
-                          " block bg-white px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                        }
-                      >
-                        <div className="flex w-full flex-row items-center gap-1">
-                          <div
-                            className=" h-2 w-2"
-                            style={{ backgroundColor: `#${item.color}` }}
-                          ></div>
-                          <div className=" text-sm text-gray-700">
-                            {item.name}
-                          </div>
+          </summary>
+          <div className=" absolute z-10 mt-2 max-w-xl bg-white shadow dark:bg-slate-700 dark:shadow-slate-800">
+            <div className=" flex flex-row items-center border border-solid border-slate-100 text-slate-600 dark:border-slate-600 dark:text-slate-100">
+              <input
+                autoFocus
+                type="text"
+                className=" grow border-none bg-inherit placeholder:text-slate-400 focus:outline-none focus:ring-0"
+                placeholder="Search..."
+                onChange={(e) => handleChange(e)}
+                value={searchValue}
+              />
+              <MagnifyingGlassIcon className="h-5 w-5" />
+            </div>
+            <ul className=" scrollbar max-h-96 overflow-y-auto">
+              {data === undefined ? (
+                <Processing />
+              ) : (
+                data.map((item: any) => (
+                  <li key={item.slug}>
+                    <Link
+                      href={`${herfPrefix}/${item.slug}/${item.id}/${herfSuffix}`}
+                      className="block px-2 py-2 text-gray-600 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-600"
+                    >
+                      <div className="flex w-full flex-row items-center gap-1">
+                        <div
+                          className=" h-2 w-2"
+                          style={{ backgroundColor: `#${item.color}` }}
+                        ></div>
+                        <div className=" text-sm">
+                          {item.name}
                         </div>
-                      </Link>
-                    </li>
-                  ))
-                )}
-              </ul>
-            </div>
+                      </div>
+                    </Link>
+                  </li>
+                ))
+              )}
+            </ul>
           </div>
-        )}
+        </details>
       </li>
     );
   return null;

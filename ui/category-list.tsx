@@ -12,7 +12,7 @@ export default async function CategoryList({
     <table className="w-full">
       <thead className=" border-b-4 border-solid border-slate-100 dark:border-slate-600">
         <tr>
-          <th className=" p-2 text-left font-medium text-slate-400 dark:text-slate-200">
+          <th className=" p-2 text-left font-medium text-slate-400 dark:text-slate-300">
             Category
           </th>
           <th className=" whitespace-nowrap  p-2 text-right font-medium text-slate-400 dark:text-slate-300">

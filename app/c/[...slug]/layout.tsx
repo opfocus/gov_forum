@@ -1,5 +1,5 @@
 import React from "react";
-import FilterBars from "@/ui/filter-bars";
+import FilterBars from "@/ui/filter-nav";
 import NewTopicButton from "@/ui/new-topic-button";
 import TagNotificationButton from "@/ui/tag-notifications-button";
 

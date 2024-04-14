@@ -23,6 +23,12 @@
   }
 }
 
+@media (max-width: 639px) {
+  .sm-hidden {
+    display: none;
+  }
+}
+
 .other h2 {
   font-size: 18px;
   color: #444;

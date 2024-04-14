@@ -21,19 +21,19 @@ export default function NewTopicButton() {
   if (user)
     return (
       <button
-        className=" flex items-center bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
+        className=" flex items-center gap-1 bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
         onClick={() => setIsOpen(true)}
       >
-        <PlusIcon className="h-6 w-6 pr-1" />
+        <PlusIcon className="h-6 w-6 shrink-0" />
         <div className=" text-base font-medium">New Topic</div>
       </button>
     );
   return (
     <Link
-      className=" flex items-center bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
+      className=" flex items-center gap-1 bg-sky-600 px-2 py-1 text-white hover:bg-sky-700"
       href={"/api/auth/login"}
     >
-      <PlusIcon className="h-6 w-6 pr-1" />
+      <PlusIcon className="h-6 w-6 shrink-0" />
       <div className=" text-base font-medium">New Topic</div>
     </Link>
   );

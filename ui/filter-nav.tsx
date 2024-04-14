@@ -9,7 +9,7 @@ import { useParams, useSelectedLayoutSegment } from "next/navigation";
 import FilterDropdownBarSubCategories from "./filter-dropdown-bar-sub-categories";
 import NewTopicButton from "@/ui/new-topic-button";
 
-export default function FilterBars({ tabs }: { tabs: any[] }) {
+export default function FilterNav({ tabs }: { tabs: any[] }) {
   const { user, error, isLoading } = useUser();
   const params = useParams();
   const length = params.slug?.length;
@@ -26,13 +26,13 @@ export default function FilterBars({ tabs }: { tabs: any[] }) {
   console.log(displayTabs);
 
   return (
-    <nav className=" my-2 flex w-full flex-row flex-wrap  gap-2 bg-inherit text-gray-700 dark:text-white">
-      <ul className=" bg-inherit flex gap-2">
+    <nav className=" my-2 flex w-full flex-row items-center flex-wrap  gap-2 bg-inherit text-gray-600 dark:text-slate-100">
+      <ul className=" flex gap-2 bg-inherit">
         <FilterDropdownBarCategories />
         <FilterDropdownBarSubCategories />
         <FilterDropdownBarAllTags />
       </ul>
-      <ul className=" flex grow gap-2">
+      <ul className=" flex grow items-center gap-2">
         {displayTabs?.map((tab: any) => (
           <li key={tab.index}>
             <Link
@@ -40,7 +40,7 @@ export default function FilterBars({ tabs }: { tabs: any[] }) {
               className={clsx("px-2 py-1 text-lg font-medium", {
                 " hover:bg-red-100 hover:text-red-400 ":
                   tab.segment !== segment,
-                "bg-red-400 text-white": tab.segment === segment,
+                "bg-red-400 text-slate-100": tab.segment === segment,
               })}
             >
               {tab.name}

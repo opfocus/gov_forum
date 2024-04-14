@@ -101,7 +101,12 @@ export default function FilterDropdownBarAllTags() {
   return (
     <details id="tag-dropdown" className=" group select-none">
       <summary className=" list-none">
-        <div className="relative flex cursor-pointer flex-row items-center justify-between gap-1 border  border-solid px-2 py-1 text-sm group-open:border-sky-600 group-open:ring-1 group-open:ring-sky-600">
+        <div
+          className="relative flex cursor-pointer flex-row items-center justify-between gap-1
+          border  border-solid border-slate-300 px-2 py-1 text-sm text-slate-600 
+          group-open:border-sky-600 group-open:ring-1 group-open:ring-sky-600 
+          dark:border-slate-400 dark:text-slate-100"
+        >
           {name}
           <ChevronDownIcon className=" hidden h-4 w-4 group-open:block" />
           <ChevronRightIcon className=" block h-4 w-4 group-open:hidden" />
@@ -119,25 +124,24 @@ export default function FilterDropdownBarAllTags() {
           />
           <MagnifyingGlassIcon className="h-5 w-5 shrink-0" />
         </div>
-        <div className=" scrollbar max-h-96 overflow-y-auto">
+        <ul className=" scrollbar max-h-96 overflow-y-auto">
           {tags == undefined ? (
             <Processing />
           ) : data === undefined ? (
-            <div className={" px-2 py-2 text-sm text-sky-600"}>no tags</div>
+            <li className={" px-2 py-2 text-sm text-sky-600"}>no tags</li>
           ) : (
             data.map((tagName: any) => (
-              <Link
-                key={tagName}
-                href={`/tag/${herfSolt}/${tagName}/latest`}
-                className={
-                  "block px-2 py-2 text-gray-600 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-600"
-                }
-              >
-                <div className=" text-sm">{tagName}</div>
-              </Link>
+              <li key={tagName}>
+                <Link
+                  href={`/tag/${herfSolt}/${tagName}/latest`}
+                  className="block px-2 py-2 text-gray-600 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-600"
+                >
+                  <div className=" text-sm">{tagName}</div>
+                </Link>
+              </li>
             ))
           )}
-        </div>
+        </ul>
       </div>
     </details>
   );

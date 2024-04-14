@@ -3,6 +3,8 @@ import React from "react";
 import { getTopics } from "@/utils/actions";
 import type { Topic } from "@/lib/type";
 import { formatTimeSince } from "@/utils/formatTimeSince";
+import { getCategories } from "@/utils/getCategories";
+import { subCategories } from "@/lib/sub-categories";
 
 export default async function TopicsList({
   queryFrom,
@@ -12,6 +14,30 @@ export default async function TopicsList({
   queryValue: string | undefined;
 }) {
   let topics: Topic[] | [];
+  let categories = await getCategories();
+
+  const fetchCategoryDetailsById = (id: number) => {
+    let matchedCategory = categories?.find(
+      (category: any) => category.id === id,
+    );
+    if (matchedCategory !== undefined)
+      return {
+        id: matchedCategory.id,
+        color: matchedCategory.color,
+        href: `/c/${matchedCategory.slug}/${matchedCategory.id}`,
+      };
+    matchedCategory = subCategories.find(
+      (subCategory: any) => subCategory.id === id,
+    );
+    let parentCategory = categories?.find(
+      (category: any) => category.id === matchedCategory.id,
+    );
+    return {
+      id: matchedCategory?.id,
+      color: matchedCategory?.color,
+      href: `/c/${parentCategory?.slug}/${matchedCategory?.slug}/${matchedCategory?.id}`,
+    };
+  };
 
   const res = await getTopics(queryFrom, queryValue);
   topics = JSON.parse(res);
@@ -20,56 +46,83 @@ export default async function TopicsList({
   else {
     return (
       <table className="w-full">
-        <thead className=" border-b-[3px] border-solid border-gray-200">
+        <thead className=" border-b-4 border-solid border-slate-100 dark:border-slate-600">
           <tr>
-            <th className=" px-2 py-3 text-left text-base font-medium text-gray-400">
+            <th className=" p-2 text-left font-medium text-slate-400 dark:text-slate-300">
               Topic
             </th>
-            <th className=" px-2 py-3  text-base font-medium text-gray-400"></th>
-            <th className=" px-2 py-3 text-base font-medium text-gray-400">
+            <th className=" p-2 font-medium text-slate-400 dark:text-slate-300 sm-hidden"></th>
+            <th className=" p-2 font-medium text-slate-400 dark:text-slate-300">
               Replies
             </th>
-            <th className=" px-2 py-3 text-base font-medium text-gray-400">
+            <th className=" p-2 font-medium text-slate-400 dark:text-slate-300 sm-hidden">
               Views
             </th>
-            <th className=" px-2 py-3 text-base font-medium text-gray-400">
+            <th className=" p-2 font-medium text-slate-400 dark:text-slate-300">
               Activity
             </th>
           </tr>
         </thead>
         <tbody>
           {topics.map((topic, index) => (
-            <tr key={index} className=" border-b border-solid border-gray-100">
-              <td className=" px-2 py-3 text-left">
-                <div className=" whitespace-nowrap text-base font-medium text-gray-700">
+            <tr
+              key={index}
+              className=" border-b border-solid border-slate-100 dark:border-slate-600"
+            >
+              <td className=" p-4 text-left">
+                <div className="flex grow flex-col gap-0.5">
                   <Link
                     href={"/t/" + topic.slug + "/" + topic.id.toString()}
                     scroll={true}
+                    className=" text-slate-500 dark:text-slate-200 "
                   >
                     {topic.title}
                   </Link>
-                </div>
-                <div className=" flex flex-row justify-start gap-1 text-sm font-normal text-gray-400">
-                  <span>{topic.category_name}</span>
-                  <span>{topic.tags.join(",")}</span>
+                  <div className=" flex flex-row flex-wrap gap-1 text-xs text-slate-500 dark:text-slate-200">
+                    <Link
+                      href={fetchCategoryDetailsById(topic.category_id).href}
+                      title={`Link to ${topic.category_name}`}
+                      className=" flex flex-row items-center gap-1 whitespace-nowrap"
+                    >
+                      <span
+                        className=" h-2 w-2"
+                        style={{
+                          backgroundColor: `#${
+                            fetchCategoryDetailsById(topic.category_id).color
+                          }`,
+                        }}
+                      ></span>
+                      <span>{topic.category_name}</span>
+                    </Link>
+                    <span className=" flex flex-row gap-1">
+                      {topic.tags.map((tagName: string) => (
+                        <Link
+                          href={`/tag/${tagName}`}
+                          title={`Link to ${tagName}`}
+                        >
+                          {tagName}
+                        </Link>
+                      ))}
+                    </span>
+                  </div>
                 </div>
               </td>
-              <td className="w-40 px-2 py-3 text-center  text-base font-normal text-gray-500">
+              <td className="w-40 p-4 text-left sm-hidden">
                 <img
                   src={topic.avatar_template}
                   alt="user avatar"
                   width={24}
                   height={24}
-                  className="rounded-full"
+                  className="rounded-full m-auto"
                 ></img>
               </td>
-              <td className="w-20 px-2 py-3 text-center  text-base font-normal text-gray-400">
+              <td className="px-2 py-3 text-center  text-base font-normal text-slate-400 dark:text-slate-30 ">
                 {topic.reply_count}
               </td>
-              <td className="w-20 px-2 py-3 text-center  text-base font-normal text-gray-400">
+              <td className="px-2 py-3 text-center  text-base font-normal text-slate-400 dark:text-slate-300 sm-hidden">
                 {topic.views}
               </td>
-              <td className="w-20 px-2 py-3 text-center  text-base font-normal text-gray-400">
+              <td className="px-2 py-3 text-center  text-base font-normal text-slate-400 dark:text-slate-300 ">
                 {formatTimeSince(topic.last_posted_at!)}
               </td>
             </tr>
