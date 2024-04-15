@@ -8,8 +8,8 @@ export default function TextSearchButton() {
   return (
     <Menu as="div" className="inline-block ">
       <div>
-        <Menu.Button className=" p-1 text-gray-400 hover:scale-125 hover:text-gray-700 dark:text-white">
-          <MagnifyingGlassIcon className=" block w-8" />
+        <Menu.Button className="p-1 text-gray-400 hover:scale-125 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white">
+          <MagnifyingGlassIcon className="w-8" />
         </Menu.Button>
         <TextSearch />
       </div>

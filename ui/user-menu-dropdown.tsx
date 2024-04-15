@@ -15,7 +15,7 @@ export default function UserMenuDropdown() {
   if (error) return <div>{error.message}</div>;
   if (user)
     return (
-      <Menu as="div" className="relative block text-left">
+      <Menu as="div" className=" block text-left">
         <div>
           <Menu.Button className=" flex items-center p-2 hover:scale-125">
             <img
@@ -36,8 +36,8 @@ export default function UserMenuDropdown() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 z-10 w-80 origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="w-full">
+          <Menu.Items className="absolute right-0 z-10 w-full border border-solid border-gray-100 bg-white shadow-lg dark:border-slate-600 dark:bg-slate-700 md:w-80">
+            <div>
               <Menu.Item>
                 <UserMenDropdownContent ref={ref} />
               </Menu.Item>

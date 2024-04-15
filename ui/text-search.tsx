@@ -31,12 +31,12 @@ export default function TextSearch() {
       leaveFrom="transform opacity-100 scale-100"
       leaveTo="transform opacity-0 scale-95"
     >
-      <Menu.Items className="absolute right-0 z-10 mt-2 w-96  origin-top-right  bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <form action={formAction} className="px-2 py-1">
-          <div className="flex w-full flex-row border-2 border-solid border-blue-300 px-2 py-1 text-gray-400">
+      <Menu.Items className="absolute right-0 w-full z-10 mt-2 md:w-96  origin-top-right bg-white dark:bg-slate-700 shadow-lg p-4">
+        <form action={formAction} className=" py-1">
+          <div className=" px-1 flex w-full flex-row items-center border border-solid border-slate-300 focus-within:border-sky-600 text-gray-400 p-1 focus-within:ring-1 focus-within:ring-sky-600">
             <input
               type="text"
-              className=" grow focus:outline-none"
+              className=" grow focus:outline-none focus:ring-0 border-none dark:bg-slate-700 dark:placeholder:text-slate-300"
               placeholder="Search..."
               onChange={(e) => handleChange(e)}
               value={searchValue}
@@ -74,12 +74,12 @@ export default function TextSearch() {
                   <Link
                     href={`/t/${post.topic_slug}/${post.topic_id}`}
                     className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block px-2 text-sm",
+                      active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                      "block p-2 text-sm",
                     )}
                   >
                     <div
-                      className=" text-sm text-gray-700"
+                      className=" text-sm"
                       dangerouslySetInnerHTML={{ __html: post.cooked }}
                     ></div>
                   </Link>

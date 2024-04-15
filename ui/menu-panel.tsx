@@ -109,18 +109,18 @@ export default function MenuPanel() {
       leaveFrom="transform opacity-100 scale-100"
       leaveTo="transform opacity-0 scale-95"
     >
-      <Menu.Items className="absolute right-0 z-10 mt-2 w-80  origin-top-right  bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <div className="px-2 py-1">
+      <Menu.Items className="absolute right-0 z-10 mt-2 w-full origin-top-right  bg-white p-4 shadow-lg dark:bg-slate-700 md:w-96">
+        <div className="px-2 py-1 text-slate-500 dark:text-slate-200">
           <div className=" h-96 space-y-6 overflow-y-auto">
-            <ul className=" mt-2 grid grid-cols-2 gap-1">
+            <ul className="grid grid-cols-2 gap-1">
               {menuItems.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (
                     <Link
                       href={item.path}
                       className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-500",
-                        `block px-2 py-1 text-sm ${item.path === "/" && "cursor-not-allowed"}`,
+                        active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                        `block p-2 text-sm ${item.path === "/" && "cursor-not-allowed"}`,
                       )}
                       title={item.path === "/" ? "TBA" : ""}
                     >
@@ -134,7 +134,7 @@ export default function MenuPanel() {
               ))}
             </ul>
             <details>
-              <summary className=" border-b border-solid border-gray-200 px-2 py-1 text-gray-500">
+              <summary className=" broder-slate-100 border-b border-solid px-2 py-1 dark:border-slate-600">
                 Categorries
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">
@@ -144,10 +144,8 @@ export default function MenuPanel() {
                       <Link
                         href={`/c/${category.slug}/${category.id}`}
                         className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-500",
-                          "block px-2 py-1 text-sm",
+                          active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                          "block p-2 text-sm",
                         )}
                       >
                         <div className=" flex flex-row items-center">
@@ -172,7 +170,7 @@ export default function MenuPanel() {
               </ul>
             </details>
             <details>
-              <summary className=" border-b border-solid border-gray-200 px-2 py-1 text-gray-500">
+              <summary className=" broder-slate-100 border-b border-solid px-2 py-1 dark:border-slate-600">
                 Tags
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">
@@ -182,10 +180,8 @@ export default function MenuPanel() {
                       <Link
                         href={`/tag/${tag}`}
                         className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-500",
-                          "block px-2 py-1 text-sm",
+                          active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                          "block p-2 text-sm",
                         )}
                       >
                         <div className=" flex flex-row items-center">
@@ -199,7 +195,7 @@ export default function MenuPanel() {
               </ul>
             </details>
             <details>
-              <summary className=" border-b border-solid border-gray-200 px-2 py-1 text-gray-500">
+              <summary className=" broder-slate-100 border-b border-solid px-2 py-1 dark:border-slate-600">
                 Messages
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">
@@ -208,8 +204,8 @@ export default function MenuPanel() {
                     <Link
                       href={"/"}
                       className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-500",
-                        "block cursor-not-allowed px-2 py-1 text-sm",
+                        active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                        "block cursor-not-allowed p-2 text-sm",
                       )}
                       title="TBA"
                     >

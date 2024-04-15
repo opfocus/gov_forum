@@ -25,13 +25,13 @@ export default function Theme() {
 
   return (
     <button
-      className="p-1 text-gray-400 dark:text-white hover:scale-125 hover:text-gray-700"
+      className="p-1 text-gray-400 hover:scale-125 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
       onClick={toggleTheme}
     >
       {theme === "dark" ? (
-        <SunIcon className="block w-8" />
+        <SunIcon className="w-8" />
       ) : (
-        <MoonIcon className="block w-8" />
+        <MoonIcon className="w-8" />
       )}
     </button>
   );
