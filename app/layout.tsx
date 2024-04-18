@@ -61,16 +61,17 @@ export default function RootLayout({
       <UserProvider>
         <body className=" overflow-y-scroll bg-white pb-36 text-black dark:bg-slate-700 dark:text-white">
           <GlobalNav />
-          <div className=" bg-inherit mx-auto w-full px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
+          <main className=" mx-auto w-full bg-inherit px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
             <Banner />
             <OpenEditorProvider>
               {children}
               <TopicCreate />
             </OpenEditorProvider>
-          </div>
-          {auth}
+            {auth}
+          </main>
         </body>
       </UserProvider>
     </html>
   );
 }
+
