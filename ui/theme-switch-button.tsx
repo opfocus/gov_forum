@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/16/solid";
 
-export default function Theme() {
+export default function ThemeSwitchButton({style}: {
+  style: {
+    button:string,
+    icon:string
+  }
+}) {
   const [theme, setTheme] = useState("");
 
   useEffect(() => {
@@ -25,13 +30,13 @@ export default function Theme() {
 
   return (
     <button
-      className="p-1 text-gray-400 hover:scale-125 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
+      className={style.button}
       onClick={toggleTheme}
     >
       {theme === "dark" ? (
-        <SunIcon className="w-8" />
+        <SunIcon className={style.icon} />
       ) : (
-        <MoonIcon className="w-8" />
+        <MoonIcon className={style.icon} />
       )}
     </button>
   );

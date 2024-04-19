@@ -1,13 +1,12 @@
-import "style/globals.css";
+import "@/style/globals.css";
 import { Metadata } from "next";
-import GlobalNav from "ui/global-nav";
 
 import OpenEditorProvider from "@/app/_components/open-editor-provider";
-import TopicCreate from "@/ui/topic-create";
-
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import React from "react";
+
+import TopicCreate from "@/ui/topic-create";
 import Banner from "@/ui/banner";
+import GlobalNav from "@/ui/global-nav";
 
 export const metadata: Metadata = {
   generator: "Next.js",

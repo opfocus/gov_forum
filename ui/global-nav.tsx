@@ -1,14 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import UserMenuDropdown from "./user-menu-dropdown";
-import TextSearchButton from "./text-search-button";
-import MenuButton from "./menu-button";
-import Theme from "./theme";
+import UserMenu from "@/ui/user-menu";
+import TextSearchButton from "@/ui/text-search-button";
+import MenuButton from "@/ui/menu-button";
+import ThemeSwitchButton from "@/ui/theme-switch-button";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import LoginButton from "@/ui/login-button";
 
-export default async function GlobalNav() {
+export default function GlobalNav() {
+  const { user, error, isLoading } = useUser();
+  const globalNavButtonStyle = {
+    button:
+      "p-1 text-gray-400 hover:scale-125 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white",
+    icon: "w-8",
+  };
+
   return (
-    <header className=" sticky top-0 z-50 w-full border-t border-solid border-gray-100 bg-inherit shadow-lg">
-      <nav className=" relative mx-auto flex h-16 w-full flex-row items-center px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
+    <header className=" sticky top-0 z-10 w-full border-t border-solid border-gray-100 bg-inherit shadow-lg">
+      <nav className=" relative mx-auto flex h-16 w-full items-center justify-between px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
         <Link href="/" className=" shrink-0">
           <Image
             src={"/op-logo.png"}
@@ -18,20 +29,12 @@ export default async function GlobalNav() {
             priority={true}
           ></Image>
         </Link>
-        <ul className="flex grow flex-row  items-center justify-end">
-          <li>
-            <Theme />
-          </li>
-          <li>
-            <TextSearchButton />
-          </li>
-          <li>
-            <MenuButton />
-          </li>
-          <li>
-            <UserMenuDropdown />
-          </li>
-        </ul>
+        <div className="flex items-center">
+          <ThemeSwitchButton style={globalNavButtonStyle} />
+          <TextSearchButton style={globalNavButtonStyle} />
+          <MenuButton style={globalNavButtonStyle} />
+          {user ? <UserMenu  avantar={user.picture}/> : <LoginButton />}
+        </div>
       </nav>
     </header>
   );
