@@ -1,9 +1,10 @@
 "use client";
+
+import { Bars3Icon } from "@heroicons/react/16/solid";
 import { Fragment, useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, Transition } from "@headlessui/react";
 import type { Tag } from "@/lib/type";
-
 import {
   Square3Stack3DIcon,
   UserIcon,
@@ -16,6 +17,24 @@ import {
   TagIcon,
 } from "@heroicons/react/16/solid";
 
+
+export default function Menu1({style}: {
+  style: {
+    button:string,
+    icon:string
+  }
+}) {
+  return (
+    <Menu as="div" className="inline-block ">
+        <Menu.Button className={style.button}>
+          <Bars3Icon className={style.icon} />
+        </Menu.Button>
+        <MenuDropdown />
+    </Menu>
+  );
+}
+
+//////////////
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
@@ -78,7 +97,7 @@ const menuItems: {
   },
 ];
 
-export default function MenuPanel() {
+function MenuDropdown() {
   const [categories, setCategories] = useState<any[]>();
   const [tags, setTags] = useState<Tag[] | undefined>(undefined);
 
@@ -109,8 +128,8 @@ export default function MenuPanel() {
       leaveFrom="transform opacity-100 scale-100"
       leaveTo="transform opacity-0 scale-95"
     >
-      <Menu.Items className="absolute right-0 z-10 mt-2 w-full origin-top-right  bg-white p-4 shadow-lg dark:bg-slate-700 md:w-96">
-        <div className="px-2 py-1 text-slate-500 dark:text-slate-200">
+      <Menu.Items className="absolute right-0 z-10 mt-2 w-full origin-top-right  bg-white p-4 shadow-lg dark:bg-gray-700 md:w-96">
+        <div className="px-2 py-1 text-gray-500 dark:text-gray-200">
           <div className=" h-96 space-y-6 overflow-y-auto">
             <ul className="grid grid-cols-2 gap-1">
               {menuItems.map((item, index) => (
@@ -119,7 +138,7 @@ export default function MenuPanel() {
                     <Link
                       href={item.path}
                       className={classNames(
-                        active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                        active ? "bg-gray-100 dark:bg-gray-600 " : "",
                         `block p-2 text-sm ${item.path === "/" && "cursor-not-allowed"}`,
                       )}
                       title={item.path === "/" ? "TBA" : ""}
@@ -134,7 +153,7 @@ export default function MenuPanel() {
               ))}
             </ul>
             <details>
-              <summary className=" broder-slate-100 border-b border-solid px-2 py-1 dark:border-slate-600">
+              <summary className=" broder-black-100 border-b border-solid px-2 py-1 dark:border-black-600">
                 Categorries
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">
@@ -144,7 +163,7 @@ export default function MenuPanel() {
                       <Link
                         href={`/c/${category.slug}/${category.id}`}
                         className={classNames(
-                          active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                          active ? "bg-gray-100 dark:bg-gray-600 " : "",
                           "block p-2 text-sm",
                         )}
                       >
@@ -170,7 +189,7 @@ export default function MenuPanel() {
               </ul>
             </details>
             <details>
-              <summary className=" broder-slate-100 border-b border-solid px-2 py-1 dark:border-slate-600">
+              <summary className=" broder-black-100 border-b border-solid px-2 py-1 dark:border-black-600">
                 Tags
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">
@@ -180,7 +199,7 @@ export default function MenuPanel() {
                       <Link
                         href={`/tag/${tag}`}
                         className={classNames(
-                          active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                          active ? "bg-gray-100 dark:bg-gray-600 " : "",
                           "block p-2 text-sm",
                         )}
                       >
@@ -195,7 +214,7 @@ export default function MenuPanel() {
               </ul>
             </details>
             <details>
-              <summary className=" broder-slate-100 border-b border-solid px-2 py-1 dark:border-slate-600">
+              <summary className=" broder-black-100 border-b border-solid px-2 py-1 dark:border-black-600">
                 Messages
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">
@@ -204,7 +223,7 @@ export default function MenuPanel() {
                     <Link
                       href={"/"}
                       className={classNames(
-                        active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                        active ? "bg-gray-100 dark:bg-gray-600 " : "",
                         "block cursor-not-allowed p-2 text-sm",
                       )}
                       title="TBA"

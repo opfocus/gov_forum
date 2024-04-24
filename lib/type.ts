@@ -35,10 +35,7 @@ export type Tag = {
   name: string;
 };
 
-export type OpenEditorContextType = {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
+export type OpenEditorContextType = [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 
 export type Post = {
   id: number;

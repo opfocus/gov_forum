@@ -7,19 +7,19 @@
     @apply w-2;
   }
   .scrollbar::-webkit-scrollbar-track {
-    @apply bg-slate-200;
+    @apply bg-gray-200;
   }
   .scrollbar::-webkit-scrollbar-thumb {
-    @apply cursor-pointer rounded-full bg-slate-400;
+    @apply cursor-pointer rounded-full bg-gray-400;
   }
   .scrollbar::-moz-scrollbar {
     @apply w-2;
   }
   .scrollbar::-moz-scrollbar-track {
-    @apply bg-slate-200;
+    @apply bg-gray-200;
   }
   .scrollbar::-moz-scrollbar-thumb {
-    @apply cursor-pointer rounded-full bg-slate-400;
+    @apply cursor-pointer rounded-full bg-gray-400;
   }
 }
 
@@ -192,7 +192,7 @@ h1 {
 }
 
 .editor-tokenComment {
-  color: slategray;
+  color: blackgray;
 }
 
 .editor-tokenPunctuation {

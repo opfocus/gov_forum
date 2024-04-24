@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import UserMenu from "@/ui/user-menu";
-import TextSearchButton from "@/ui/text-search-button";
-import MenuButton from "@/ui/menu-button";
-import ThemeSwitchButton from "@/ui/theme-switch-button";
+import TextSearch from "@/ui/text-search";
+import Menu from "@/ui/menu";
+import ThemeSwitch from "@/ui/theme-switch";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import LoginButton from "@/ui/login-button";
 
@@ -30,9 +30,9 @@ export default function GlobalNav() {
           ></Image>
         </Link>
         <div className="flex items-center">
-          <ThemeSwitchButton style={globalNavButtonStyle} />
-          <TextSearchButton style={globalNavButtonStyle} />
-          <MenuButton style={globalNavButtonStyle} />
+          <ThemeSwitch style={globalNavButtonStyle} />
+          <TextSearch style={globalNavButtonStyle} />
+          <Menu style={globalNavButtonStyle} />
           {user ? <UserMenu  avantar={user.picture}/> : <LoginButton />}
         </div>
       </nav>

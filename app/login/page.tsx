@@ -4,7 +4,7 @@ import Login from "@/ui/login";
 
 export default function Page() {
   return (
-    <div className=" flex items-center justify-center">
+    <div className=" mt-8 flex h-auto w-full items-center justify-center">
       <Login />
     </div>
   );

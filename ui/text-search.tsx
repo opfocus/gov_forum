@@ -3,17 +3,35 @@ import { Fragment, useState } from "react";
 import { useFormState } from "react-dom";
 import { Menu, Transition } from "@headlessui/react";
 import Link from "next/link";
-import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import { searchPosts } from "@/utils/actions";
 import type { Post } from "@/lib/type";
+import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
+export default function TextSearch({
+  style,
+}: {
+  style: {
+    button: string;
+    icon: string;
+  };
+}) {
+  return (
+    <Menu as="div" className="inline-block ">
+      <Menu.Button className={style.button}>
+        <MagnifyingGlassIcon className={style.icon} />
+      </Menu.Button>
+      <TextSearchDropdown />
+    </Menu>
+  );
+}
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
+//
 let initialState = "";
 
-export default function TextSearch() {
+function TextSearchDropdown() {
   const [searchValue, setSearchValue] = useState("");
   const [state, formAction] = useFormState(searchPosts, initialState);
 
@@ -31,12 +49,12 @@ export default function TextSearch() {
       leaveFrom="transform opacity-100 scale-100"
       leaveTo="transform opacity-0 scale-95"
     >
-      <Menu.Items className="absolute right-0 w-full z-10 mt-2 md:w-96  origin-top-right bg-white dark:bg-slate-700 shadow-lg p-4">
-        <form action={formAction} className=" py-1">
-          <div className=" px-1 flex w-full flex-row items-center border border-solid border-slate-300 focus-within:border-sky-600 text-gray-400 p-1 focus-within:ring-1 focus-within:ring-sky-600">
+      <Menu.Items className="absolute right-0 z-10 mt-2 w-full origin-top-right bg-white p-4 shadow-lg dark:bg-gray-700 md:w-96">
+        <form action={formAction}>
+          <div className=" flex w-full flex-row items-center border border-solid border-black-300 px-1 text-gray-400 focus-within:border-sky-600 focus-within:ring-1 focus-within:ring-sky-600">
             <input
               type="text"
-              className=" grow focus:outline-none focus:ring-0 border-none dark:bg-slate-700 dark:placeholder:text-slate-300"
+              className=" grow border-none focus:outline-none focus:ring-0 dark:bg-gray-700 dark:placeholder:text-gray-300"
               placeholder="Search..."
               onChange={(e) => handleChange(e)}
               value={searchValue}
@@ -56,7 +74,7 @@ export default function TextSearch() {
           {searchValue && (
             <button
               type="submit"
-              className=" flex flex-row items-center gap-1 px-2 py-1"
+              className=" flex flex-row items-center gap-1 px-2 py-1 hover:bg-yellow-100 hover:dark:bg-yellow-600"
             >
               <MagnifyingGlassIcon className=" h-4 w-4" />
               <span>{searchValue}</span>
@@ -74,7 +92,7 @@ export default function TextSearch() {
                   <Link
                     href={`/t/${post.topic_slug}/${post.topic_id}`}
                     className={classNames(
-                      active ? "bg-slate-100 dark:bg-slate-600 " : "",
+                      active ? "bg-gray-100 dark:bg-gray-600 " : "",
                       "block p-2 text-sm",
                     )}
                   >

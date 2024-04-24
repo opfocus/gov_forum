@@ -3,7 +3,7 @@
 "use client";
 
 import { useState, useContext } from "react";
-import { OpenEditorContext } from "@/app/_components/open-editor-provider";
+import { useEditorOpen } from "@/app/context/open-editor-provider";
 import clsx from "clsx";
 
 import TopicCreateControlPanel from "@/ui/topic-create-control-panel";
@@ -19,7 +19,7 @@ import type { Post, Topic } from "@/lib/type";
 
 export default function TopicCreate() {
   const [isZoomEditorTextarea, setIsZoomEditorTextarea] = useState(false);
-  const context = useContext(OpenEditorContext);
+  const [isOpen, setOpen] = useEditorOpen();
   const [myString, setMyString] = useState("");
   const { user } = useUser();
   const [status, setStatus] = useState("create");
@@ -59,10 +59,6 @@ export default function TopicCreate() {
   //   tags: [''],
   //   category_id: 0
   // })
-  if (context === undefined) {
-    throw new Error("Editor context not work in topic-create component");
-  }
-  const { isOpen, setIsOpen } = context;
 
   const handleZoom = () => {
     if (!isZoomEditorTextarea) {
@@ -75,7 +71,7 @@ export default function TopicCreate() {
   };
 
   const hiddenEditor = () => {
-    setIsOpen(false);
+    setOpen(false);
     if (isZoomEditorTextarea) {
       document.documentElement.style.removeProperty("overflow");
       setIsZoomEditorTextarea(false);

@@ -2,8 +2,10 @@
 import * as Realm from "realm-web";
 import { cache } from "react";
 
+export {getTopics, getPosts, incrementLike, generatePostId, searchPosts,}
+
 ////////////////////
-export const getTopics = cache(
+const getTopics = cache(
   async (
     queryFrom: string | undefined = undefined,
     queryValue: string | undefined = undefined,
@@ -44,7 +46,7 @@ export const getTopics = cache(
   },
 );
 ///////////
-export const getPosts = async (topicId: number) => {
+const getPosts = async (topicId: number) => {
   const apiKey = process.env.REALM_API_KEY!;
   const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID! });
 
@@ -63,7 +65,7 @@ export const getPosts = async (topicId: number) => {
   return JSON.stringify(data);
 };
 ///////////
-export const incrementLike = async (id: number, user_id: string) => {
+const incrementLike = async (id: number, user_id: string) => {
   const apiKey = process.env.REALM_API_KEY!;
   const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID! });
 
@@ -85,7 +87,7 @@ export const incrementLike = async (id: number, user_id: string) => {
   }
 };
 ////////
-export const generatePostId = async () => {
+const generatePostId = async () => {
   const apiKey = process.env.REALM_API_KEY!;
   const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID! });
 
@@ -120,7 +122,7 @@ export const generatePostId = async () => {
 };
 //////////////////////////////////////////////
 import type { Post } from "@/app/api/post";
-export const searchPosts = async (prevState: string, formData: FormData) => {
+const searchPosts = async (prevState: string, formData: FormData) => {
   const rawFormData = Object.fromEntries(formData.entries());
 
   const apiKey = process.env.REALM_API_KEY!;

@@ -1,7 +1,7 @@
 import "@/style/globals.css";
 import { Metadata } from "next";
 
-import OpenEditorProvider from "@/app/_components/open-editor-provider";
+import { OpenEditorProvider } from "@/app/context/open-editor-provider";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 import TopicCreate from "@/ui/topic-create";
@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-        <body className=" overflow-y-scroll bg-white pb-36 text-black dark:bg-slate-700 dark:text-white">
+        <body className=" overflow-y-scroll bg-white pb-36 text-black dark:bg-gray-700 dark:text-white">
           <GlobalNav />
           <main className=" mx-auto w-full bg-inherit px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
             <Banner />
@@ -73,4 +73,3 @@ export default function RootLayout({
     </html>
   );
 }
-

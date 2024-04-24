@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/16/solid";
 
-export default function ThemeSwitchButton({style}: {
+export default function ThemeSwitch({style}: {
   style: {
     button:string,
     icon:string

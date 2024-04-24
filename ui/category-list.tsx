@@ -4,38 +4,41 @@ import Link from "next/link";
 import { subCategories } from "@/lib/sub-categories";
 
 export default async function CategoryList({
-  categories,
+  categoriesData,
 }: {
-  categories: any[];
+  categoriesData: Promise<any[]>;
 }) {
+  const categories = await categoriesData
+  console.log(categories)
+
   return (
     <table className="w-full">
-      <thead className=" border-b-4 border-solid border-slate-100 dark:border-slate-600">
+      <thead className=" border-b-4 border-solid border-gray-100 dark:border-gray-600">
         <tr>
-          <th className=" p-2 text-left font-medium text-slate-400 dark:text-slate-300">
+          <th className=" p-2 text-left font-medium text-gray-400 dark:text-gray-300">
             Category
           </th>
-          <th className=" whitespace-nowrap  p-2 text-right font-medium text-slate-400 dark:text-slate-300">
+          <th className=" whitespace-nowrap  p-2 text-right font-medium text-gray-400 dark:text-gray-300">
             Toptic
           </th>
         </tr>
       </thead>
       <tbody>
-        {categories.map((category) => (
+        {categories?.map((category:any) => (
           <tr
             key={category.position}
-            className=" border-b border-l-[6px]  border-solid border-slate-100 dark:border-slate-600"
+            className=" border-b border-l-[6px]  border-solid border-gray-100 dark:border-gray-600"
             style={{
               borderLeftColor: `#${category.color}`,
             }}
           >
             <td className=" space-y-1 py-3 pl-3 pr-1">
-              <h3 className=" text-lg font-semibold text-slate-600 dark:text-slate-100">
+              <h3 className=" text-lg font-semibold text-gray-600 dark:text-gray-100">
                 <Link href={`/c/${category.slug}/${category.id}`}>
                   {category.name}
                 </Link>
               </h3>
-              <p className="text-slate-500 dark:text-slate-200">
+              <p className="text-gray-500 dark:text-gray-200">
                 {category.description}
               </p>
               <div className=" flex flex-row  flex-wrap gap-2">
@@ -52,14 +55,14 @@ export default async function CategoryList({
                         }`,
                       }}
                     ></span>
-                    <span className=" text-xs text-slate-500 dark:text-slate-200">
+                    <span className=" text-xs text-gray-500 dark:text-gray-200">
                       {subCategories.find((each) => each.id === id)!.name}
                     </span>
                   </Link>
                 ))}
               </div>
             </td>
-            <td className=" px-2 py-4 text-right  text-lg font-semibold text-slate-400 dark:text-slate-300">
+            <td className=" px-2 py-4 text-right  text-lg font-semibold text-gray-400 dark:text-gray-300">
               {category.topic_count}
             </td>
           </tr>

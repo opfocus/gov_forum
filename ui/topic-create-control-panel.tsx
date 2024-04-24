@@ -1,8 +1,5 @@
 " use client";
 
-import { useContext } from "react";
-import { OpenEditorContext } from "@/app/_components/open-editor-provider";
-
 import { PlusIcon, ChevronDownIcon } from "@heroicons/react/16/solid";
 
 export default function TopicCreateControlPanel({
@@ -14,10 +11,6 @@ export default function TopicCreateControlPanel({
   handleZoom: () => void;
   hiddenEditor: () => void;
 }) {
-  const context = useContext(OpenEditorContext);
-
-  if (context === undefined)
-    throw new Error("Editor context not work in topic-contol-panel");
 
   return (
     <div className="flex flex-row justify-between   text-base font-light text-gray-400 ">

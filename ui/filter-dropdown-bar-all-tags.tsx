@@ -103,21 +103,21 @@ export default function FilterDropdownBarAllTags() {
       <summary className=" list-none">
         <div
           className="relative flex cursor-pointer flex-row items-center justify-between gap-1
-          border  border-solid border-slate-300 px-2 py-1 text-sm text-slate-600 
+          border  border-solid border-black-300 px-2 py-1 text-sm text-gray-600 
           group-open:border-sky-600 group-open:ring-1 group-open:ring-sky-600 
-          dark:border-slate-400 dark:text-slate-100"
+          dark:border-black-400 dark:text-gray-100"
         >
           {name}
           <ChevronDownIcon className=" hidden h-4 w-4 group-open:block" />
           <ChevronRightIcon className=" block h-4 w-4 group-open:hidden" />
         </div>
       </summary>
-      <div className=" absolute z-10 mt-2 max-w-xs bg-white shadow dark:bg-slate-700 dark:shadow-slate-800">
-        <div className=" flex flex-row items-center border border-solid border-slate-100 text-slate-600 dark:border-slate-600 dark:text-slate-100">
+      <div className=" absolute z-10 mt-2 max-w-xs bg-white shadow dark:bg-gray-700 dark:shadow-black-800">
+        <div className=" flex flex-row items-center border border-solid border-black-100 text-gray-600 dark:border-black-600 dark:text-gray-100">
           <input
             autoFocus
             type="text"
-            className="border-none bg-inherit placeholder:text-slate-400 focus:outline-none focus:ring-0"
+            className="border-none bg-inherit placeholder:text-gray-400 focus:outline-none focus:ring-0"
             placeholder="Search..."
             onChange={(e) => handleChange(e)}
             value={searchValue}
@@ -134,7 +134,7 @@ export default function FilterDropdownBarAllTags() {
               <li key={tagName}>
                 <Link
                   href={`/tag/${herfSolt}/${tagName}/latest`}
-                  className="block px-2 py-2 text-gray-600 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-600"
+                  className="block px-2 py-2 text-gray-600 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-600"
                 >
                   <div className=" text-sm">{tagName}</div>
                 </Link>

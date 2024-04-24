@@ -1,9 +1,9 @@
 "use client";
 
 import { formatTimeSince } from "@/utils/formatTimeSince";
-import { useState, useContext } from "react";
-import { OpenEditorContext } from "@/app/_components/open-editor-provider";
+import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { useEditorOpen } from "@/app/context/open-editor-provider";
 import { usePathname } from "next/navigation";
 import type { Post } from "@/lib/type";
 import { incrementLike } from "@/utils/actions";
@@ -32,14 +32,9 @@ export default function PostC({
 }) {
   const [likes, setLikes] = useState(post.likes.length);
   const { user } = useUser();
-  const context = useContext(OpenEditorContext);
   const path = usePathname();
 
-  //Check whether topic-editor is open. If it is open, it will be closed when reply button is clicked.
-  if (context === undefined) {
-    throw new Error("Editor context not work in topic-create component");
-  }
-  const { setIsOpen } = context;
+  const [, setOpen] = useEditorOpen()
 
   function copyToClipboard(index: number) {
     const text = process.env.NEXT_PUBLIC_BASE_URL + path + `#post-${index}`;
@@ -147,7 +142,7 @@ export default function PostC({
             <button
               className=" flex flex-row p-2 text-base font-medium hover:bg-gray-200 hover:text-gray-700"
               onClick={() => {
-                setIsOpen(false);
+                setOpen(false);
                 setIsOpenReplyEditor(true);
                 setReplyWhichPost(post);
               }}

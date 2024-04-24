@@ -1,20 +1,33 @@
 "use client";
 
-import { XMarkIcon } from "@heroicons/react/16/solid";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import Login from "@/ui/login";
 
-export default function Modal({ children }: { children: React.ReactNode }) {
+export default function Modal() {
   const router = useRouter();
 
+  // Listen click event
+  useEffect(() => {
+    function handleClickOutside(event: any) {
+      const element = document.getElementById("login");
+      const targetElement = event.target;
+
+      if (element && !element.contains(targetElement)) {
+        router.back();
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className=" fixed top-0 z-40 flex h-full w-full items-center justify-center bg-black bg-opacity-40">
-      <button
-        onClick={() => router.back()}
-        className=" absolute right-0 top-0 p-2"
-      >
-        <XMarkIcon className=" h-8 w-8 hover:text-red-500" />
-      </button>
-      <div>{children}</div>
+    <div className=" fixed top-0 left-0 z-40 h-full w-full  bg-gray-600 bg-opacity-40 flex justify-center items-center">
+        <Login />
     </div>
   );
 }

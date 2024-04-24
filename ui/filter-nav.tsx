@@ -26,7 +26,7 @@ export default function FilterNav({ tabs }: { tabs: any[] }) {
   console.log(displayTabs);
 
   return (
-    <nav className=" my-2 flex w-full flex-row items-center flex-wrap  gap-2 bg-inherit text-gray-600 dark:text-slate-100">
+    <nav className=" my-2 flex w-full flex-row items-center flex-wrap  gap-2 bg-inherit text-gray-600 dark:text-gray-100">
       <ul className=" flex gap-2 bg-inherit">
         <FilterDropdownBarCategories />
         <FilterDropdownBarSubCategories />
@@ -40,7 +40,7 @@ export default function FilterNav({ tabs }: { tabs: any[] }) {
               className={clsx("px-2 py-1 text-lg font-medium", {
                 " hover:bg-red-100 hover:text-red-400 ":
                   tab.segment !== segment,
-                "bg-red-400 text-slate-100": tab.segment === segment,
+                "bg-red-400 text-white": tab.segment === segment,
               })}
             >
               {tab.name}

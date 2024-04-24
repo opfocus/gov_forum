@@ -5,7 +5,7 @@ export default function  NotFound() {
   return (
     <div className=" mt-8 space-y-6">
       <h2 className=" text-2xl font-bold">
-        Oops! That page doesn’t exist or is private.
+        [TBA]Oops! That page doesn’t exist or is private.
       </h2>
       <section className=" flex flex-col gap-6 lg:flex-row">
         <div className=" flex-1 space-y-2">
@@ -17,7 +17,7 @@ export default function  NotFound() {
               </Link>
               <Link
                 href={"/"}
-                className=" text-sm text-slate-500 dark:text-slate-200"
+                className=" text-sm text-gray-500 dark:text-gray-200"
               >
                 Category and tag here
               </Link>
@@ -28,7 +28,7 @@ export default function  NotFound() {
               </Link>
               <Link
                 href={"/"}
-                className=" text-sm text-slate-500 dark:text-slate-200"
+                className=" text-sm text-gray-500 dark:text-gray-200"
               >
                 Category and tag here
               </Link>
@@ -44,7 +44,7 @@ export default function  NotFound() {
               </Link>
               <Link
                 href={"/"}
-                className=" text-sm text-slate-500 dark:text-slate-200"
+                className=" text-sm text-gray-500 dark:text-gray-200"
               >
                 Category and tag here
               </Link>
@@ -55,7 +55,7 @@ export default function  NotFound() {
       <form action="/search" className="space-y-2">
         <h2 className=" text-lg font-semibold">Search this site</h2>
         <div className=" flex gap-2">
-          <input type="text" className=" border-solid border-slate-200 border dark:border-slate-500 
+          <input type="text" className=" border-solid border-black-200 border dark:border-black-500 
           focus:border-sky-600 focus:ring-1 focus:ring-sky-600 focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600 bg-inherit"
           name="q"
           />

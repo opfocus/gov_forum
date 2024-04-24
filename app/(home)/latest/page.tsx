@@ -1,9 +1,11 @@
 import TopicsList from "@/ui/topics-list";
 import { Suspense } from "react";
 import Processing from "@/ui/processing";
-export const revalidate = 0;
-
 import type { Metadata } from "next";
+import { getTopics } from "@/utils/getTopics";
+import { getCategories } from "@/utils/getCategories";
+
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   description:
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <Suspense fallback={<Processing />}>
-      <TopicsList queryFrom={undefined} queryValue={undefined} />
+      <TopicsList topicsData={getTopics()} categoriesData={getCategories()} />
     </Suspense>
   );
 }

@@ -14,8 +14,8 @@ export default function SearchPosts() {
   const [state, formAction] = useFormState(searchPosts, initialState);
 
   return (
-    <section className=" mt-8 space-y-6  text-slate-600 dark:text-slate-100">
-      <div className=" space-y-2  bg-slate-100 px-4 py-4 dark:bg-slate-600 lg:px-24">
+    <section className=" mt-8 space-y-6  text-gray-600 dark:text-gray-100">
+      <div className=" space-y-2  bg-gray-100 px-4 py-4 dark:bg-gray-600 lg:px-24">
         <div className=" text-lg font-semibold">
           {state ? `${JSON.parse(state).length} results` : "Search"}
         </div>
@@ -27,15 +27,15 @@ export default function SearchPosts() {
               placeholder="Search"
               id="keyworlds"
               name="q"
-              className=" grow border border-solid border-slate-300
+              className=" grow border border-solid border-black-300
                bg-white focus:border-sky-600 focus:ring-1
-                focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
+                focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
             />
             <select
               id="scope"
               name="search_type"
-              className=" borderr border-solid border-slate-300 bg-white 
-              focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+              className=" borderr border-solid border-black-300 bg-white 
+              focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
               focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
             >
               <option value="Topic_post">Topic/post</option>
@@ -60,8 +60,8 @@ export default function SearchPosts() {
                   name="categories"
                   id="categories"
                   defaultValue="1"
-                  className="borderr w-full border-solid border-slate-300 bg-white 
-                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                  className="borderr w-full border-solid border-black-300 bg-white 
+                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                   focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                 >
                   <option value="1">1</option>
@@ -78,8 +78,8 @@ export default function SearchPosts() {
                   name="topics"
                   id="topics"
                   defaultValue="1"
-                  className="borderr w-full border-solid border-slate-300 bg-white 
-                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                  className="borderr w-full border-solid border-black-300 bg-white 
+                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                   focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                 >
                   <option value="1">1</option>
@@ -95,8 +95,8 @@ export default function SearchPosts() {
                   name="tags"
                   id="tags"
                   defaultValue="1"
-                  className="borderr w-full border-solid border-slate-300 bg-white 
-                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                  className="borderr w-full border-solid border-black-300 bg-white 
+                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                   focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                 >
                   <option value="1">1</option>
@@ -112,8 +112,8 @@ export default function SearchPosts() {
                   name="author"
                   id="author"
                   defaultValue="1"
-                  className="borderr w-full border-solid border-slate-300 bg-white 
-                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                  className="borderr w-full border-solid border-black-300 bg-white 
+                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                   focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                 >
                   <option value="1">1</option>
@@ -130,7 +130,7 @@ export default function SearchPosts() {
                   htmlFor="title"
                   className=" text-sm font-light"
                 >
-                  <input type="checkbox" id="title" name="title" className=" focus:ring-0 focus:ring-offset-0 bg-white dark:bg-slate-700 "/> Matching in
+                  <input type="checkbox" id="title" name="title" className=" focus:ring-0 focus:ring-offset-0 bg-white dark:bg-gray-700 "/> Matching in
                   title only
                 </label>
                 <br />
@@ -138,14 +138,14 @@ export default function SearchPosts() {
                   htmlFor="like"
                   className=" text-sm font-light"
                 >
-                  <input type="checkbox" id="like" name="like" className=" focus:ring-0 focus:ring-offset-0 bg-white dark:bg-slate-700"/> I liked
+                  <input type="checkbox" id="like" name="like" className=" focus:ring-0 focus:ring-offset-0 bg-white dark:bg-gray-700"/> I liked
                 </label>
                 <br />
                 <label
                   htmlFor="owner"
                   className=" text-sm font-light"
                 >
-                  <input type="checkbox" id="owner" name="owner" className="  focus:ring-0 focus:ring-offset-0 bg-white dark:bg-slate-700"/> In my
+                  <input type="checkbox" id="owner" name="owner" className="  focus:ring-0 focus:ring-offset-0 bg-white dark:bg-gray-700"/> In my
                   messages
                 </label>
                 <br />
@@ -153,7 +153,7 @@ export default function SearchPosts() {
                   htmlFor="read"
                   className=" text-sm font-light"
                 >
-                  <input type="checkbox" id="read" name="read" className=" focus:ring-0 focus:ring-offset-0 bg-white dark:bg-slate-700"/> I read
+                  <input type="checkbox" id="read" name="read" className=" focus:ring-0 focus:ring-offset-0 bg-white dark:bg-gray-700"/> I read
                 </label>
                 <br />
               </div>
@@ -169,8 +169,8 @@ export default function SearchPosts() {
                     name="before_after"
                     id="before_after"
                     defaultValue="before"
-                    className="borderr w-full border-solid border-slate-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                    className="borderr w-full border-solid border-black-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   >
                     <option value="before">before</option>
@@ -180,8 +180,8 @@ export default function SearchPosts() {
                     type="date"
                     name="date"
                     id="date"
-                    className="borderr w-full border-solid border-slate-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                    className="borderr w-full border-solid border-black-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   ></input>
                 </div>
@@ -197,8 +197,8 @@ export default function SearchPosts() {
                     placeholder="min"
                     name="posts_min"
                     id="post_min"
-                    className="borderr w-full border-solid border-slate-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                    className="borderr w-full border-solid border-black-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   />
                   <ArrowLongRightIcon className=" h-5 w-5" />
@@ -207,8 +207,8 @@ export default function SearchPosts() {
                     placeholder="max"
                     name="posts_max"
                     id="post_max"
-                    className="borderr w-full border-solid border-slate-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                    className="borderr w-full border-solid border-black-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   />
                 </div>
@@ -224,8 +224,8 @@ export default function SearchPosts() {
                     placeholder="min"
                     id="views_min"
                     name="views_min"
-                    className="borderr w-full border-solid border-slate-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                    className="borderr w-full border-solid border-black-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   />
                   <ArrowLongRightIcon className=" h-5 w-5" />
@@ -234,8 +234,8 @@ export default function SearchPosts() {
                     placeholder="max"
                     name="views_max"
                     id="views_max"
-                    className="borderr w-full border-solid border-slate-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-slate-400 dark:bg-slate-700  
+                    className="borderr w-full border-solid border-black-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   />
                 </div>

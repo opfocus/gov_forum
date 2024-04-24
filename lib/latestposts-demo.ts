@@ -1,4 +1,4 @@
-export const postsLatest: {
+export const postblackst: {
   index: number;
   src: string;
   alt: string;
