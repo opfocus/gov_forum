@@ -5,9 +5,11 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
-import Processing from "./processing";
+import Processing from "../../../ui/processing";
 import clsx from "clsx";
 import { subCategories } from "@/lib/sub-categories";
+import { useDetailsClickOutside } from "@/hook/useDetailsClickOutside";
+import { Route } from "next";
 
 export default function FilterDropdownBarSubCategories() {
   const pramas = useParams();
@@ -15,23 +17,8 @@ export default function FilterDropdownBarSubCategories() {
   const [searchValue, setSearchValue] = useState("");
   const [categories, setCategories] = useState<any[] | undefined>(undefined);
 
-  // Listen click event
-  useEffect(() => {
-    function handleClickOutside(event: any) {
-      const details = document.getElementById("subcategories-dropdown");
-      const targetElement = event.target;
-
-      if (details && !details.contains(targetElement)) {
-        details!.removeAttribute("open");
-      }
-    }
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+  //Listen click outside details
+  useDetailsClickOutside("subcategories-filter");
 
   // fetch data
   useEffect(() => {
@@ -125,13 +112,13 @@ export default function FilterDropdownBarSubCategories() {
   )
     return (
       <li>
-        <details id="subcategories-dropdown" className=" group select-none">
+        <details id="subcategories-filter" className=" group select-none">
           <summary className=" list-none">
             <div
               className="relative flex cursor-pointer flex-row items-center justify-between gap-1
-          border  border-solid border-black-300 px-2 py-1 text-sm text-gray-600 
+          border  border-solid border-gray-300 px-2 py-1 text-sm text-gray-600 
           group-open:border-sky-600 group-open:ring-1 group-open:ring-sky-600 
-          dark:border-black-400 dark:text-gray-100"
+          dark:border-gray-400 dark:text-gray-100"
             >
               {getSelectedSubCategory() === undefined ? (
                 "subcategories"
@@ -150,12 +137,12 @@ export default function FilterDropdownBarSubCategories() {
               <ChevronRightIcon className=" block h-4 w-4 group-open:hidden" />
             </div>
           </summary>
-          <div className=" absolute z-10 mt-2 max-w-xl bg-white shadow dark:bg-gray-700 dark:shadow-black-800">
-            <div className=" flex flex-row items-center border border-solid border-black-100 text-gray-600 dark:border-black-600 dark:text-gray-100">
+          <div className=" absolute z-10 mt-2 max-w-xl bg-white shadow dark:bg-gray-700 dark:shadow-gray-800">
+            <div className="flex flex-row  items-center border border-solid border-gray-100 px-2 py-1 text-gray-600 dark:border-gray-600 dark:text-gray-100">
               <input
                 autoFocus
                 type="text"
-                className=" grow border-none bg-inherit placeholder:text-gray-400 focus:outline-none focus:ring-0"
+                className=" grow border-none bg-inherit p-0  placeholder:text-gray-400 focus:ring-0"
                 placeholder="Search..."
                 onChange={(e) => handleChange(e)}
                 value={searchValue}
@@ -169,7 +156,9 @@ export default function FilterDropdownBarSubCategories() {
                 data.map((item: any) => (
                   <li key={item.slug}>
                     <Link
-                      href={`${herfPrefix}/${item.slug}/${item.id}/${herfSuffix}`}
+                      href={
+                        `${herfPrefix}/${item.slug}/${item.id}/${herfSuffix}` as Route
+                      }
                       className="block px-2 py-2 text-gray-600 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-600"
                     >
                       <div className="flex w-full flex-row items-center gap-1">
@@ -177,9 +166,7 @@ export default function FilterDropdownBarSubCategories() {
                           className=" h-2 w-2"
                           style={{ backgroundColor: `#${item.color}` }}
                         ></div>
-                        <div className=" text-sm">
-                          {item.name}
-                        </div>
+                        <div className=" text-sm">{item.name}</div>
                       </div>
                     </Link>
                   </li>

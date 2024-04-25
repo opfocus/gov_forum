@@ -1,5 +1,5 @@
 import Processing from "@/ui/processing";
-import TopicsList from "@/ui/topics-list";
+import TopicsList from "@/ui/topics-list-table";
 import { Suspense } from "react";
 
 import type { Metadata } from "next";

@@ -1,30 +1,29 @@
-import CategoryList from "@/ui/category-list";
+import { CategoriesList, CategoriesSkeleton } from "@/ui/category-list";
 import TopicsListDiv from "@/ui/topics-list-div";
 import Link from "next/link";
 import React from "react";
-import Processing from "@/ui/processing";
 import { Suspense } from "react";
 
 import { getCategories } from "@/utils/getCategories";
 import { getTopics } from "@/utils/getTopics";
+import { TopicsDivSkeleton } from "@/ui/topics-skeleton";
 
 export const revalidate = 1800;
 
 export default async function Page() {
-
   return (
     <React.Fragment>
       <main className="flex flex-col gap-6 lg:flex-row">
         <section className=" w-full lg:flex-1">
-          <Suspense fallback={<Processing />}>
-            <CategoryList categoriesData={getCategories()} />
+          <Suspense fallback={<CategoriesSkeleton />}>
+            <CategoriesList categoriesData={getCategories()} />
           </Suspense>
         </section>
         <section className=" w-full lg:flex-1">
-          <Suspense fallback={<Processing />}>
+          <Suspense fallback={<TopicsDivSkeleton />}>
             <TopicsListDiv
               topicsData={getTopics()}
-              categoriesData={ getCategories()}
+              categoriesData={getCategories()}
             />
           </Suspense>
         </section>

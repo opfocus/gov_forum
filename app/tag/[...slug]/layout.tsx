@@ -1,5 +1,5 @@
 import React from "react";
-import FilterBars from "@/ui/filter-nav";
+// import FilterBars from "@/ui/filter-nav";
 import NewTopicButton from "@/ui/new-topic-button";
 import TagInfoButton from "@/ui/tag-info-button";
 import TagNotificationButton from "@/ui/tag-notifications-button";
@@ -33,7 +33,7 @@ export default function layout({
   return (
     <div className=" relative mt-8 space-y-6">
       <div className="flex flex-wrap items-center justify-between">
-        <FilterBars tabs={tabs} />
+        {/* <FilterBars tabs={tabs} /> */}
         <div className="flex flex-row gap-2">
           <TagInfoButton />
           <NewTopicButton />

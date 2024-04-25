@@ -3,13 +3,14 @@ import Link from "next/link";
 //for test sub-categories
 import { subCategories } from "@/lib/sub-categories";
 
-export default async function CategoryList({
+export { CategoriesList, CategoriesSkeleton };
+
+async function CategoriesList({
   categoriesData,
 }: {
   categoriesData: Promise<any[]>;
 }) {
-  const categories = await categoriesData
-  console.log(categories)
+  const categories = await categoriesData;
 
   return (
     <table className="w-full">
@@ -24,7 +25,7 @@ export default async function CategoryList({
         </tr>
       </thead>
       <tbody>
-        {categories?.map((category:any) => (
+        {categories?.map((category: any) => (
           <tr
             key={category.position}
             className=" border-b border-l-[6px]  border-solid border-gray-100 dark:border-gray-600"
@@ -69,5 +70,46 @@ export default async function CategoryList({
         ))}
       </tbody>
     </table>
+  );
+}
+
+// Category skeleton
+function CategoriesSkeleton() {
+  return (
+    <table className="w-full">
+      <thead className=" border-b-4 border-solid border-gray-100 dark:border-gray-600">
+        <tr>
+          <th className=" p-2 text-left font-medium text-gray-400 dark:text-gray-300">
+            Category
+          </th>
+          <th className=" whitespace-nowrap  p-2 text-right font-medium text-gray-400 dark:text-gray-300">
+            Toptic
+          </th>
+        </tr>
+      </thead>
+      <tbody className=" animate-pulse">
+        <CategorySkeleton />
+        <CategorySkeleton />
+        <CategorySkeleton />
+        <CategorySkeleton />
+        <CategorySkeleton />
+        <CategorySkeleton />
+      </tbody>
+    </table>
+  );
+}
+
+function CategorySkeleton() {
+  return (
+    <tr className=" border-b border-l-[6px]  border-solid border-gray-100 dark:border-gray-600">
+      <td className=" space-y-1 py-3 pl-3 pr-1 ">
+        <div className=" h-7  w-1/4 rounded-lg bg-gray-300 dark:bg-gray-400"></div>
+        <div className=" h-6 w-2/3 rounded-lg bg-gray-300 dark:bg-gray-400"></div>
+        <div className=" h-4 w-1/2 rounded-lg bg-gray-300 dark:bg-gray-400"></div>
+      </td>
+      <td className=" px-2 py-4 w-1/12">
+        <div className=" h-6 rounded-lg bg-gray-300 dark:bg-gray-400"></div>
+      </td>
+    </tr>
   );
 }
