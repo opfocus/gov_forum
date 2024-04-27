@@ -4,17 +4,15 @@ import Link from "next/link";
 import { Route } from "next";
 
 export default function FilterOptionsCategories({
-  herfPrefix,
-  herfSuffix,
+  href,
   item,
 }: {
-  herfPrefix: string;
-  herfSuffix: string;
+  href:string
   item:any;
 }) {
   return (
     <Link
-      href={`${herfPrefix}/${item.slug}/${item.id}/${herfSuffix}` as Route}
+      href={href as Route}
       className="block px-2 py-2 text-gray-600 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-600"
     >
       <div className="flex flex-row items-center gap-1">

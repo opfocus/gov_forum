@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-export default function  NotFound() {
-
+export default function NotFound() {
   return (
     <div className=" mt-8 space-y-6">
       <h2 className=" text-2xl font-bold">
@@ -55,15 +54,16 @@ export default function  NotFound() {
       <form action="/search" className="space-y-2">
         <h2 className=" text-lg font-semibold">Search this site</h2>
         <div className=" flex gap-2">
-          <input type="text" className=" border-solid border-black-200 border dark:border-black-500 
-          focus:border-sky-600 focus:ring-1 focus:ring-sky-600 focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600 bg-inherit"
-          name="q"
+          <input
+            type="text"
+            className=" border border-solid border-gray-200 bg-inherit focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-500 focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
+            name="q"
           />
-          <button type="submit" className=" bg-sky-600 text-white px-2 py-1" >Search</button>
+          <button type="submit" className=" bg-sky-600 px-2 py-1 text-white">
+            Search
+          </button>
         </div>
       </form>
     </div>
   );
-
-
 }

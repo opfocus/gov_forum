@@ -1,181 +1,103 @@
 "use client";
 
-import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/16/solid";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import Processing from "../../../ui/processing";
-import clsx from "clsx";
 import { subCategories } from "@/lib/sub-categories";
-import { useDetailsClickOutside } from "@/hook/useDetailsClickOutside";
-import { Route } from "next";
+import { useDetailsClickOutside } from "@/hook/myHook";
+import { useFetch } from "@/hook/myHook";
+import FilterDropdownContent from "./filter-dropdown-content";
+import FilterOptionsCategories from "./fiter-options-categories";
+import { URLIngredients, generateNextURL } from "@/utils/url";
 
-export default function FilterDropdownBarSubCategories() {
-  const pramas = useParams();
-  const [isOpen, setIsOpen] = useState(false);
+export default function FilterDropdownBarSubCategories({
+  currentURLIngredients,
+  selectedCategory,
+  selectedSubCategory,
+  setSeleSubctedCategory,
+}: {
+  currentURLIngredients: URLIngredients;
+  selectedCategory: any;
+  selectedSubCategory: any;
+  setSeleSubctedCategory:
+    | React.Dispatch<React.SetStateAction<object>>
+    | React.Dispatch<React.SetStateAction<undefined>>;
+}) {
   const [searchValue, setSearchValue] = useState("");
-  const [categories, setCategories] = useState<any[] | undefined>(undefined);
 
   //Listen click outside details
   useDetailsClickOutside("subcategories-filter");
 
-  // fetch data
-  useEffect(() => {
-    fetch("/api/categories")
-      .then((res) => res.json())
-      .then((data) => {
-        setCategories(data);
-      });
-  }, []);
-
   // selected subcategory
-  const getSelectedSubCategory = () => {
-    let subCategoryLocation;
-
-    if (pramas.slug !== undefined)
-      if (pramas.slug.length === 4) {
-        // condition: path in c/... latest topics
-        subCategoryLocation = subCategories.find(
-          (sub) => pramas.slug?.[2] === String(sub.id),
-        );
-        return subCategoryLocation;
-      }
-      // condition: path in tag/.../tagName latest topics
-      else if (pramas.slug.length === 6) {
-        subCategoryLocation = subCategories.find(
-          (sub) => pramas.slug?.[3] === String(sub.id),
-        );
-        return subCategoryLocation;
-      } else return undefined;
+  const getSelectedSubCategoryBySlug = () => {
+    if (currentURLIngredients.subCategory !== "") {
+      const item: any = subCategories.find(
+        (sub) => currentURLIngredients.subCategory === String(sub.slug),
+      );
+      return item;
+    }
+    return undefined;
   };
 
-  // sub-categories options
+  // sub-categories display options
   const getSubCategoriesOptions = () => {
-    let categorySelected: any;
-    let subCatogoriesOptions;
-
-    if (pramas.slug !== undefined) {
-      // condition: path in c/... latest topics
-      if (pramas.slug.length <= 4) {
-        categorySelected = categories?.find(
-          (category: any) => pramas.slug?.[0] === category.slug,
-        );
-        subCatogoriesOptions = subCategories.filter((sub) =>
-          categorySelected?.subcategory_ids.includes(sub.id),
-        );
-        return subCatogoriesOptions;
-      }
-      // condition: path in tag/.../tagName latest topics
-      else if (pramas.slug.length === 5 || pramas.slug.length === 6) {
-        categorySelected = categories?.find(
-          (category: any) => pramas.slug?.[1] === category.slug,
-        );
-        subCatogoriesOptions = subCategories.filter((sub) =>
-          categorySelected?.subcategory_ids.includes(sub.id),
-        );
-        return subCatogoriesOptions;
-      } else return undefined;
-    } else return undefined;
-  };
-
-  // search input handle
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
+    return subCategories.filter((sub) =>
+      selectedCategory?.subcategory_ids.includes(sub.id),
+    );
   };
 
   //searched
-  const data = getSubCategoriesOptions()?.filter(
+  const data = getSubCategoriesOptions().filter(
     (item: any) =>
       (item.name + item.description)
         .toLowerCase()
         .indexOf(searchValue.toLowerCase()) !== -1,
   );
-  // console.log(getSubCategoriesOptions()?.length)
+  // useEffect (() => 
+  setSeleSubctedCategory(getSelectedSubCategoryBySlug())
+  // ,[])
+  const element: React.ReactNode =
+    selectedSubCategory === undefined ? (
+      "subcategories"
+    ) : (
+      <div className="flex flex-row items-center gap-1">
+        <div
+          className=" h-2 w-2"
+          style={{
+            backgroundColor: `#${selectedSubCategory.color}`,
+          }}
+        ></div>
+        <div>{selectedSubCategory!.name}</div>
+      </div>
+    );
 
-  // href
-  let herfPrefix: string = "";
-  let herfSuffix: string = "";
-  let length = pramas.slug?.length;
-  // condition: path in "/"
-  if (3 <= length && length <= 4) {
-    herfPrefix = `/c/${pramas.slug[0]}`;
-    herfSuffix = "latest";
-  } else if (5 <= length && length <= 6) {
-    herfPrefix = `/tag/c/${pramas.slug[1]}`;
-    herfSuffix = (pramas.slug as string[]).slice(-2).join("/");
-  }
-
-  if (
-    getSubCategoriesOptions() !== undefined &&
-    getSubCategoriesOptions()!.length !== 0
-  )
+  if (getSubCategoriesOptions().length !== 0)
     return (
-      <li>
-        <details id="subcategories-filter" className=" group select-none">
-          <summary className=" list-none">
-            <div
-              className="relative flex cursor-pointer flex-row items-center justify-between gap-1
-          border  border-solid border-gray-300 px-2 py-1 text-sm text-gray-600 
-          group-open:border-sky-600 group-open:ring-1 group-open:ring-sky-600 
-          dark:border-gray-400 dark:text-gray-100"
-            >
-              {getSelectedSubCategory() === undefined ? (
-                "subcategories"
-              ) : (
-                <div className="flex flex-row items-center gap-1">
-                  <div
-                    className=" h-2 w-2"
-                    style={{
-                      backgroundColor: `#${getSelectedSubCategory()!.color}`,
-                    }}
-                  ></div>
-                  <div>{getSelectedSubCategory()!.name}</div>
-                </div>
-              )}
-              <ChevronDownIcon className=" hidden h-4 w-4 group-open:block" />
-              <ChevronRightIcon className=" block h-4 w-4 group-open:hidden" />
-            </div>
-          </summary>
-          <div className=" absolute z-10 mt-2 max-w-xl bg-white shadow dark:bg-gray-700 dark:shadow-gray-800">
-            <div className="flex flex-row  items-center border border-solid border-gray-100 px-2 py-1 text-gray-600 dark:border-gray-600 dark:text-gray-100">
-              <input
-                autoFocus
-                type="text"
-                className=" grow border-none bg-inherit p-0  placeholder:text-gray-400 focus:ring-0"
-                placeholder="Search..."
-                onChange={(e) => handleChange(e)}
-                value={searchValue}
+      <FilterDropdownContent
+        elementId="subcategories-filter"
+        element={element}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      >
+        {data === undefined ? (
+          <Processing />
+        ) : (
+          data.map((item: any) => (
+            <li key={item.name}>
+              <FilterOptionsCategories
+                href={generateNextURL({
+                  ...currentURLIngredients,
+                  category: selectedCategory.slug,
+                  subCategory: item.slug,
+                  id: String(item.id),
+                  categoryRouter: "c",
+                })}
+                item={item}
               />
-              <MagnifyingGlassIcon className="h-5 w-5" />
-            </div>
-            <ul className=" scrollbar max-h-96 overflow-y-auto">
-              {data === undefined ? (
-                <Processing />
-              ) : (
-                data.map((item: any) => (
-                  <li key={item.slug}>
-                    <Link
-                      href={
-                        `${herfPrefix}/${item.slug}/${item.id}/${herfSuffix}` as Route
-                      }
-                      className="block px-2 py-2 text-gray-600 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-600"
-                    >
-                      <div className="flex w-full flex-row items-center gap-1">
-                        <div
-                          className=" h-2 w-2"
-                          style={{ backgroundColor: `#${item.color}` }}
-                        ></div>
-                        <div className=" text-sm">{item.name}</div>
-                      </div>
-                    </Link>
-                  </li>
-                ))
-              )}
-            </ul>
-          </div>
-        </details>
-      </li>
+            </li>
+          ))
+        )}
+      </FilterDropdownContent>
     );
   return null;
 }

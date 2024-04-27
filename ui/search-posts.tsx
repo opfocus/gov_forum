@@ -27,15 +27,15 @@ export default function SearchPosts() {
               placeholder="Search"
               id="keyworlds"
               name="q"
-              className=" grow border border-solid border-black-300
+              className=" grow border border-solid border-gray-300
                bg-white focus:border-sky-600 focus:ring-1
-                focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
+                focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
             />
             <select
               id="scope"
               name="search_type"
-              className=" borderr border-solid border-black-300 bg-white 
-              focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+              className=" borderr border-solid border-gray-300 bg-white 
+              focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
               focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
             >
               <option value="Topic_post">Topic/post</option>
@@ -60,8 +60,8 @@ export default function SearchPosts() {
                   name="categories"
                   id="categories"
                   defaultValue="1"
-                  className="borderr w-full border-solid border-black-300 bg-white 
-                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                  className="borderr w-full border-solid border-gray-300 bg-white 
+                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                   focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                 >
                   <option value="1">1</option>
@@ -78,8 +78,8 @@ export default function SearchPosts() {
                   name="topics"
                   id="topics"
                   defaultValue="1"
-                  className="borderr w-full border-solid border-black-300 bg-white 
-                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                  className="borderr w-full border-solid border-gray-300 bg-white 
+                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                   focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                 >
                   <option value="1">1</option>
@@ -95,8 +95,8 @@ export default function SearchPosts() {
                   name="tags"
                   id="tags"
                   defaultValue="1"
-                  className="borderr w-full border-solid border-black-300 bg-white 
-                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                  className="borderr w-full border-solid border-gray-300 bg-white 
+                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                   focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                 >
                   <option value="1">1</option>
@@ -112,8 +112,8 @@ export default function SearchPosts() {
                   name="author"
                   id="author"
                   defaultValue="1"
-                  className="borderr w-full border-solid border-black-300 bg-white 
-                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                  className="borderr w-full border-solid border-gray-300 bg-white 
+                  focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                   focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                 >
                   <option value="1">1</option>
@@ -169,8 +169,8 @@ export default function SearchPosts() {
                     name="before_after"
                     id="before_after"
                     defaultValue="before"
-                    className="borderr w-full border-solid border-black-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                    className="borderr w-full border-solid border-gray-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   >
                     <option value="before">before</option>
@@ -180,8 +180,8 @@ export default function SearchPosts() {
                     type="date"
                     name="date"
                     id="date"
-                    className="borderr w-full border-solid border-black-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                    className="borderr w-full border-solid border-gray-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   ></input>
                 </div>
@@ -197,8 +197,8 @@ export default function SearchPosts() {
                     placeholder="min"
                     name="posts_min"
                     id="post_min"
-                    className="borderr w-full border-solid border-black-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                    className="borderr w-full border-solid border-gray-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   />
                   <ArrowLongRightIcon className=" h-5 w-5" />
@@ -207,8 +207,8 @@ export default function SearchPosts() {
                     placeholder="max"
                     name="posts_max"
                     id="post_max"
-                    className="borderr w-full border-solid border-black-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                    className="borderr w-full border-solid border-gray-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   />
                 </div>
@@ -224,8 +224,8 @@ export default function SearchPosts() {
                     placeholder="min"
                     id="views_min"
                     name="views_min"
-                    className="borderr w-full border-solid border-black-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                    className="borderr w-full border-solid border-gray-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   />
                   <ArrowLongRightIcon className=" h-5 w-5" />
@@ -234,8 +234,8 @@ export default function SearchPosts() {
                     placeholder="max"
                     name="views_max"
                     id="views_max"
-                    className="borderr w-full border-solid border-black-300 bg-white 
-                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-black-400 dark:bg-gray-700  
+                    className="borderr w-full border-solid border-gray-300 bg-white 
+                    focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   />
                 </div>

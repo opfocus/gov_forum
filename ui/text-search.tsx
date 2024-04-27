@@ -51,7 +51,7 @@ function TextSearchDropdown() {
     >
       <Menu.Items className="absolute right-0 z-10 mt-2 w-full origin-top-right bg-white p-4 shadow-lg dark:bg-gray-700 md:w-96">
         <form action={formAction}>
-          <div className=" flex w-full flex-row items-center border border-solid border-black-300 px-1 text-gray-400 focus-within:border-sky-600 focus-within:ring-1 focus-within:ring-sky-600">
+          <div className=" flex w-full flex-row items-center border border-solid border-gray-200 px-1 text-gray-400 focus-within:border-sky-600 focus-within:ring-1 focus-within:ring-sky-600">
             <input
               type="text"
               className=" grow border-none focus:outline-none focus:ring-0 dark:bg-gray-700 dark:placeholder:text-gray-300"

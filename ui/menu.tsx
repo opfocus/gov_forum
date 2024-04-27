@@ -153,7 +153,7 @@ function MenuDropdown() {
               ))}
             </ul>
             <details>
-              <summary className=" broder-black-100 border-b border-solid px-2 py-1 dark:border-black-600">
+              <summary className=" broder-gray-100 border-b border-solid px-2 py-1 dark:border-gray-600">
                 Categorries
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">
@@ -189,7 +189,7 @@ function MenuDropdown() {
               </ul>
             </details>
             <details>
-              <summary className=" broder-black-100 border-b border-solid px-2 py-1 dark:border-black-600">
+              <summary className=" broder-gray-100 border-b border-solid px-2 py-1 dark:border-gray-600">
                 Tags
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">
@@ -214,7 +214,7 @@ function MenuDropdown() {
               </ul>
             </details>
             <details>
-              <summary className=" broder-black-100 border-b border-solid px-2 py-1 dark:border-black-600">
+              <summary className=" broder-gray-100 border-b border-solid px-2 py-1 dark:border-gray-600">
                 Messages
               </summary>
               <ul className=" mt-2 grid grid-cols-2 gap-1">

@@ -1,7 +1,8 @@
 import Processing from "@/ui/processing";
-import TopicsList from "@/ui/topics-list-table";
+import TopicsListTable from "@/ui/topics-list-table";
 import { Suspense } from "react";
-
+import { getCategories } from "@/utils/getCategories";
+import { getTopics } from "@/utils/getTopics";
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -19,11 +20,14 @@ export async function generateMetadata({
 
 export default function Page({ params }: { params: { slug: string[] } }) {
   const length = params.slug.length;
-  const name = params.slug[length - 2];
+  const name = params.slug[length - 1];
 
   return (
     <Suspense fallback={<Processing />}>
-      <TopicsList queryFrom={"tags"} queryValue={name} />
+      <TopicsListTable
+        topicsData={getTopics("tags", name)}
+        categoriesData={getCategories()}
+      />
     </Suspense>
   );
 }

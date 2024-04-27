@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/16/solid";
+import { HoverScaleButton } from "./button";
 
 export default function ThemeSwitch({style}: {
   style: {
@@ -29,15 +30,24 @@ export default function ThemeSwitch({style}: {
   };
 
   return (
-    <button
-      className={style.button}
-      onClick={toggleTheme}
+    <HoverScaleButton 
+      handle={toggleTheme}
     >
-      {theme === "dark" ? (
+            {theme === "dark" ? (
         <SunIcon className={style.icon} />
       ) : (
         <MoonIcon className={style.icon} />
       )}
-    </button>
+    </HoverScaleButton>
+    // <button
+    //   className={style.button}
+    //   onClick={toggleTheme}
+    // >
+    //   {theme === "dark" ? (
+    //     <SunIcon className={style.icon} />
+    //   ) : (
+    //     <MoonIcon className={style.icon} />
+    //   )}
+    // </button>
   );
 }

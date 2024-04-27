@@ -3,9 +3,7 @@ import TabGroup from "@/ui/tab-group";
 import { homeItems } from "@/lib/tab-group-data";
 import { getSession } from "@auth0/nextjs-auth0";
 import NewTopicButton from "@/ui/new-topic-button";
-import FilterDropdownBarCategories from "@/app/(home)/_components/filter-dropdown-bar-categories";
-import FilterDropdownBarAllTags from "@/app/(home)/_components/filter-dropdown-bar-all-tags";
-import FilterDropdownBarSubCategories from "@/app/(home)/_components/filter-dropdown-bar-sub-categories";
+import FilterDropdownBars from "./_components/filter-dropdown-bars";
 
 import type { Metadata } from "next";
 
@@ -31,11 +29,7 @@ export default async function layout({
   return (
     <div className=" mt-8 space-y-6 bg-inherit">
       <nav className=" my-2 flex w-full flex-row flex-wrap items-center  gap-2 bg-inherit text-gray-600 dark:text-gray-100">
-        <div className=" flex gap-2 bg-inherit">
-          <FilterDropdownBarCategories />
-          <FilterDropdownBarSubCategories />
-          <FilterDropdownBarAllTags />
-        </div>
+        <FilterDropdownBars />
         <TabGroup items={items} path={path} />
         <NewTopicButton />
       </nav>

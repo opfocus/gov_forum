@@ -1,87 +1,60 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FilterDropdownContent from "./filter-dropdown-content";
 import Processing from "../../../ui/processing";
 import { mapping } from "@/lib/mapping_for_test";
-import { useDetailsClickOutside } from "@/hook/useDetailsClickOutside";
+import { useDetailsClickOutside } from "@/hook/myHook";
 import FilterOptionsTags from "./filter-option-tags";
+import { useFetch } from "@/hook/myHook";
+import { URLIngredients, generateNextURL } from "@/utils/url";
 
-export default function FilterDropdownBarAllTags() {
+export default function FilterDropdownBarAllTags({
+  currentURLIngredients,
+  selectedCategory,
+  selectedSubCategory,
+}: {
+  currentURLIngredients: URLIngredients;
+  selectedCategory: any;
+  selectedSubCategory: any;
+}) {
   const pramas = useParams();
   const [searchValue, setSearchValue] = useState("");
-  const [tags, setTags] = useState<string[] | undefined>(undefined);
 
   //Listen click outside details
   useDetailsClickOutside("tags-filter");
-  // fetch data
-  useEffect(() => {
-    fetch("/api/tags")
-      .then((res) => res.json())
-      .then((data) => {
-        setTags(data.top_tags);
-      });
-  }, []);
 
-  // get mapping tags
-  const getMappingTags = () => {
-    let mappingTags;
-    let categoryLocationId: number;
-    let subCategoryLocationId: number;
+  // Fetch tags data from the "/api/tags" endpoint when the component mounts
+  const tagsData: any = useFetch("/api/tags");
+  const tags: any[] | undefined = tagsData?.tags;
 
-    // condition: path in "/"
-    if (pramas.slug === undefined) return tags;
-    // condition: path in tag name
-    else if (pramas.slug.length === 1) return tags;
-    // condition: path in category latest topics
-    else if (pramas.slug.length === 3) {
-      categoryLocationId = Number(pramas.slug[1]);
-      mappingTags = mapping.category_tags_mapping.find(
-        (item) => item.category_id === categoryLocationId,
-      )?.tags;
-      return mappingTags;
+  // selected tag
+  const getSelectedTagsBySlug = () => {
+    if (currentURLIngredients.tagName !== "") {
+      const item = currentURLIngredients.tagName;
+      return item;
     }
-    // condition: path in sub-category latest topics
-    else {
-      subCategoryLocationId = Number(pramas.slug[2]);
-      mappingTags = mapping.category_tags_mapping.find(
-        (item) => item.category_id === categoryLocationId,
-      )?.tags;
-      return mappingTags;
-    }
+    return "tags";
   };
 
-  // console.log(getMappingTags())
+  // tags display options
+  const getTagsOptions = () => {
+    if (currentURLIngredients.id === "") return tags;
+    return mapping.category_tags_mapping.find((item) =>  item.category_id === Number(currentURLIngredients.id))?.tags
+  };
 
   // searched
-  const data = getMappingTags()?.filter(
+  const data = getTagsOptions()?.filter(
     (item: any) => item.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1,
   );
 
-  // selected
-  let name: string = "tags";
-  let length = pramas.slug?.length;
-
-  if (tags && pramas.slug !== undefined) {
-    const item = tags.find((tag) => tag === pramas.slug[length - 2]);
-    if (item) name = item;
-  }
-
-  // href
-  let herfSolt = "";
-  // condition: path in "/c/..."
-  if (3 <= length && length <= 4)
-    herfSolt = `c/${(pramas.slug.slice(0, length - 1) as string[]).join("/")}`;
-  else if (4 <= length && length <= 5) {
-    herfSolt = `${(pramas.slug.slice(0, length - 1) as string[]).join("/")}`;
-  }
-
-  const element: React.ReactNode = name;
+  const selectedTag = getSelectedTagsBySlug();
+  const element: React.ReactNode = selectedTag;
 
   return (
     <FilterDropdownContent
-    elementId="tags-filter"
+      elementId="tags-filter"
       element={element}
       searchValue={searchValue}
       setSearchValue={setSearchValue}
@@ -92,8 +65,12 @@ export default function FilterDropdownBarAllTags() {
         data.map((tagName: any) => (
           <li key={tagName}>
             <FilterOptionsTags
-               herfSolt={ herfSolt}
-               tagName={ tagName}
+              href={generateNextURL({
+                ...currentURLIngredients,
+                tagRoute: "tag",
+                tagName: tagName,
+              })}
+              tagName={tagName}
             />
           </li>
         ))

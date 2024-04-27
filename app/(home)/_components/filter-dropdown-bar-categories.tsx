@@ -1,36 +1,31 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import Processing from "../../../ui/processing";
-import { useDetailsClickOutside } from "@/hook/useDetailsClickOutside";
+import Processing from "@/ui/processing";
+import { useDetailsClickOutside } from "@/hook/myHook";
 import FilterDropdownContent from "./filter-dropdown-content";
 import FilterOptionsCategories from "./fiter-options-categories";
+import { useFetch } from "@/hook/myHook";
+import { URLIngredients, generateNextURL } from "@/utils/url";
 
-export default function FilterDropdownBarCategories() {
-  const pramas = useParams();
-  // const [isOpen, setIsOpen] = useState(false);
+export default function FilterDropdownBarCategories({
+  currentURLIngredients,
+  selectedCategory,
+  setSelectedCategory,
+}: {
+  currentURLIngredients: URLIngredients;
+  selectedCategory: any;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<object>> | React.Dispatch<React.SetStateAction<undefined>> 
+}) {
   const [searchValue, setSearchValue] = useState("");
-  const [categories, setCategories] = useState<any>(undefined);
 
   //Listen click outside details
   useDetailsClickOutside("categories-filter");
 
-  // fetch data
-  useEffect(() => {
-    fetch("/api/categories")
-      .then((res) => res.json())
-      .then((data) => {
-        setCategories(data);
-      });
-  }, []);
+  // Fetch categories data from the "/api/categories" endpoint when the component mounts
+  const categories = useFetch("/api/categories") as undefined | any[];
 
-  // // search input handle
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSearchValue(e.target.value);
-  // };
-
-  //searched
+  // Filter the categories array based on the search value.
   const data = categories?.filter(
     (item: any) =>
       (item.name + item.description)
@@ -38,50 +33,31 @@ export default function FilterDropdownBarCategories() {
         .indexOf(searchValue.toLowerCase()) !== -1,
   );
 
-  // selected
-
-  const getSelectedCategory = () => {
-    // condition: path in "/"
-    if (pramas.slug === undefined) return undefined;
-    // condition: path in c/... latest topics
-    else if (pramas.slug.length <= 4) {
+  //Get the selected category based on the URL.
+  const getSelectedCategoryBySlug = () => {
+    if (currentURLIngredients.category !== "") {
       const item = categories?.find(
-        (category: any) => category.slug === pramas.slug[0],
+        (category: any) => category.slug === currentURLIngredients.category,
       );
       return item;
     }
-    // condition: path in tag/.../tagName latest topics
-    else {
-      const item = categories?.find(
-        (category: any) => category.slug === pramas.slug[1],
-      );
-      return item;
-    }
+    return undefined;
   };
 
-  // href
-  let herfPrefix: string = "";
-  let herfSuffix: string = "";
-  let length = pramas.slug?.length;
-  // condition: path in "/"
-  if ((3 <= length && length <= 4) || length === undefined) {
-    herfPrefix = `/c`;
-    herfSuffix = "latest";
-  } else if (2 == length || (length <= 6 && length >= 5)) {
-    herfPrefix = `/tag/c`;
-    herfSuffix = (pramas.slug as string[]).slice(-2).join("/");
-  }
-
+setSelectedCategory(getSelectedCategoryBySlug())
+console.log(currentURLIngredients.category)
+console.log(selectedCategory)
+console.log(getSelectedCategoryBySlug())
   const element: React.ReactNode =
-    getSelectedCategory() === undefined ? (
+    selectedCategory === undefined ? (
       "categories"
     ) : (
       <div className="flex flex-row items-center gap-1">
         <div
           className=" h-2 w-2"
-          style={{ backgroundColor: `#${getSelectedCategory().color}` }}
+          style={{ backgroundColor: `#${selectedCategory.color}` }}
         ></div>
-        <div>{getSelectedCategory().name}</div>
+        <div>{selectedCategory.name}</div>
       </div>
     );
 
@@ -90,7 +66,7 @@ export default function FilterDropdownBarCategories() {
       element={element}
       searchValue={searchValue}
       setSearchValue={setSearchValue}
-    elementId="categories-filter"
+      elementId="categories-filter"
     >
       {data === undefined ? (
         <Processing />
@@ -98,8 +74,12 @@ export default function FilterDropdownBarCategories() {
         data.map((item: any) => (
           <li key={item.name}>
             <FilterOptionsCategories
-              herfPrefix={herfPrefix}
-              herfSuffix={herfSuffix}
+              href={generateNextURL({
+                ...currentURLIngredients,
+                category: item.slug,
+                id: String(item.id),
+                categoryRouter: "c",
+              })}
               item={item}
             />
           </li>

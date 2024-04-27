@@ -10,7 +10,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import LoginButton from "@/ui/login-button";
 
 export default function GlobalNav() {
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
   const globalNavButtonStyle = {
     button:
       "p-1 text-gray-400 hover:scale-125 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white",

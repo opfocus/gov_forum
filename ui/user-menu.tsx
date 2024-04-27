@@ -50,7 +50,7 @@ export default function UserMenu({ avantar }: { avantar: any }) {
         />
       </button>
       {isOpen ? (
-        <div className="absolute right-0 z-10 w-full border border-solid border-gray-100 bg-white shadow-lg dark:border-black-600 dark:bg-gray-700 md:w-80">
+        <div className="absolute right-0 z-10 w-full border border-solid border-gray-100 bg-white shadow-lg dark:border-gray-600 dark:bg-gray-700 md:w-80">
           <div>
             <UserMenDropdown setIsOpen={setIsopen} />
           </div>
@@ -97,13 +97,13 @@ function UserMenDropdown({
   return (
     <div className=" flex w-full flex-row">
       {/*quick preview*/}
-      <div className=" grow border border-solid  border-black-100 p-2 text-sm dark:border-black-600">
+      <div className=" grow border border-solid  border-gray-100 p-2 text-sm dark:border-gray-600">
         <QuickPreview index={tabActive} />
       </div>
       {/* user menu tab */}
       <div className=" flex flex-col pt-2">
         {/* user menu tab part 1 */}
-        <div className=" flex flex-col border border-solid border-black-200 dark:border-black-600">
+        <div className=" flex flex-col border border-solid border-gray-200 dark:border-gray-600">
           <button
             id="0"
             className={clsx("cursor-not-allowed p-3", {
@@ -197,7 +197,7 @@ function UserMenDropdown({
           </button>
           {/* user menu tab part 2 */}
         </div>
-        <div className=" flex flex-col border border-solid border-black-100 dark:border-black-600">
+        <div className=" flex flex-col border border-solid border-gray-100 dark:border-gray-600">
           <button
             id="6"
             className={clsx("cursor-not-allowed p-3", {

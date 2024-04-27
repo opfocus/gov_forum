@@ -9,7 +9,7 @@
 //   InMemoryCache,
 //   useQuery,
 // } from "@apollo/client";
-// import { useApp } from "@/hook/useApp";
+// import { useApp } from "@/hook/myHook";
 // import React from "react";
 // import { GET_CATEGORY } from '@/utils/graphql'
 // import { useEffect, useState } from "react";
