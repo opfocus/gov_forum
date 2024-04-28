@@ -28,11 +28,11 @@ export default async function layout({
 
   return (
     <div className=" mt-8 space-y-6 bg-inherit">
-      <nav className=" my-2 flex w-full flex-row flex-wrap items-center  gap-2 bg-inherit text-gray-600 dark:text-gray-100">
-        <FilterDropdownBars />
-        <TabGroup items={items} path={path} />
+      {/* <nav className=" my-2 flex w-full flex-row flex-wrap items-center  gap-2 bg-inherit text-gray-600 dark:text-gray-100"> */}
+        <FilterDropdownBars items={items} path={path}/>
+        {/* <TabGroup items={items} path={path} />
         <NewTopicButton />
-      </nav>
+      </nav> */}
       {children}
     </div>
   );

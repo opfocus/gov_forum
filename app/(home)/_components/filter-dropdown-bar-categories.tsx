@@ -15,7 +15,9 @@ export default function FilterDropdownBarCategories({
 }: {
   currentURLIngredients: URLIngredients;
   selectedCategory: any;
-  setSelectedCategory: React.Dispatch<React.SetStateAction<object>> | React.Dispatch<React.SetStateAction<undefined>> 
+  setSelectedCategory:
+    | React.Dispatch<React.SetStateAction<object>>
+    | React.Dispatch<React.SetStateAction<undefined>>;
 }) {
   const [searchValue, setSearchValue] = useState("");
 
@@ -43,11 +45,11 @@ export default function FilterDropdownBarCategories({
     }
     return undefined;
   };
-
-setSelectedCategory(getSelectedCategoryBySlug())
-console.log(currentURLIngredients.category)
-console.log(selectedCategory)
-console.log(getSelectedCategoryBySlug())
+  useEffect(
+    () => setSelectedCategory(getSelectedCategoryBySlug()),
+    [categories],
+  );
+  
   const element: React.ReactNode =
     selectedCategory === undefined ? (
       "categories"
@@ -79,6 +81,8 @@ console.log(getSelectedCategoryBySlug())
                 category: item.slug,
                 id: String(item.id),
                 categoryRouter: "c",
+                excipients:'',
+                sort:""
               })}
               item={item}
             />

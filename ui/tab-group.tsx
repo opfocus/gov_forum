@@ -1,15 +1,16 @@
 "use client";
 
-
-
 import type { Item } from "@/lib/tab-group-data";
 import Tab from "@/ui/tab";
+import { URLIngredients } from "@/utils/url";
 
 export default function TabGroup({
+  currentURLIngredients,
   items,
   path,
   parallelRoutesKey,
 }: {
+  currentURLIngredients: URLIngredients;
   items: Item[];
   path: string;
   parallelRoutesKey?: string;
@@ -24,6 +25,7 @@ export default function TabGroup({
               path={path}
               item={item}
               parallelRoutesKey={parallelRoutesKey}
+              currentURLIngredients={currentURLIngredients}
             />
           </li>
         ))}

@@ -5,26 +5,35 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import type { Route } from 'next';
+import { URLIngredients, generateNextURL } from "@/utils/url";
+import { useParams } from 'next/navigation';
 
 export default function Tab({
+  currentURLIngredients,
   path,
   parallelRoutesKey,
   item,
 }: {
+  currentURLIngredients: URLIngredients;
   path: string;
   parallelRoutesKey?: string;
   item: Item;
+
 }) {
+  const slug = useParams().slug
   const segment = useSelectedLayoutSegment(parallelRoutesKey);
 
-  const href = item.slug ? path + '/' + item.slug : path;
+  // path = dd ? generateNextURL(currentURLIngredients) 
+
+  const href =slug? generateNextURL({...currentURLIngredients, sort: item.slug?  item.slug : "", excipients:"l"}) : item.slug ? path  + item.slug : path;
   
   const isActive =
     // Example home pages e.g. `/`
     (item.name==="Categories" && segment === null) ||
     segment === item.segment ||
     // Nested pages e.g. `/layouts/electronics`
-    segment === item.slug;
+    segment === item.slug ||
+    currentURLIngredients.sort === item.segment || slug && currentURLIngredients.sort === ""&& item.segment === "latest"
 
   return (
     <Link

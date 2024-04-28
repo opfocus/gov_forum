@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useState } from "react";
 import FilterDropdownContent from "./filter-dropdown-content";
 import Processing from "../../../ui/processing";
@@ -12,14 +11,9 @@ import { URLIngredients, generateNextURL } from "@/utils/url";
 
 export default function FilterDropdownBarAllTags({
   currentURLIngredients,
-  selectedCategory,
-  selectedSubCategory,
 }: {
   currentURLIngredients: URLIngredients;
-  selectedCategory: any;
-  selectedSubCategory: any;
 }) {
-  const pramas = useParams();
   const [searchValue, setSearchValue] = useState("");
 
   //Listen click outside details
@@ -69,6 +63,8 @@ export default function FilterDropdownBarAllTags({
                 ...currentURLIngredients,
                 tagRoute: "tag",
                 tagName: tagName,
+                excipients:'',
+                sort:""
               })}
               tagName={tagName}
             />

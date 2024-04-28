@@ -53,9 +53,9 @@ export default function FilterDropdownBarSubCategories({
         .toLowerCase()
         .indexOf(searchValue.toLowerCase()) !== -1,
   );
-  // useEffect (() => 
+  useEffect (() =>
   setSeleSubctedCategory(getSelectedSubCategoryBySlug())
-  // ,[])
+   ,[])
   const element: React.ReactNode =
     selectedSubCategory === undefined ? (
       "subcategories"
@@ -91,6 +91,8 @@ export default function FilterDropdownBarSubCategories({
                   subCategory: item.slug,
                   id: String(item.id),
                   categoryRouter: "c",
+                  excipients:'',
+                  sort:""
                 })}
                 item={item}
               />
