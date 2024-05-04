@@ -31,12 +31,12 @@
 
 .other h2 {
   font-size: 18px;
-  color: #444;
+  /* color: #444; */
   margin-bottom: 7px;
 }
 
 .other a {
-  color: #777;
+  /* color: #777; */
   text-decoration: underline;
   font-size: 14px;
 }
@@ -54,7 +54,7 @@
 
 h1 {
   font-size: 24px;
-  color: #333;
+  /* color: #333; */
 }
 
 .ltr {
@@ -66,7 +66,7 @@ h1 {
 }
 
 .editor-container {
-  color: #000;
+  /* color: #000; */
   position: relative;
   line-height: 20px;
   font-weight: 400;
@@ -74,20 +74,22 @@ h1 {
 }
 
 .editor-inner {
-  background: #fff;
+  /* background: #fff; */
   position: relative;
 }
 
 .editor-input {
   resize: none;
   font-size: 15px;
-  caret-color: rgb(5, 5, 5);
+  /* caret-color: rgb(5, 5, 5); */
   position: relative;
   tab-size: 1;
   outline: 0;
   padding: 15px 10px;
-  caret-color: #444;
+  /* caret-color: #444; */
   overflow-y: auto;
+  @apply text-gray-600 dark:text-gray-100
+
 }
 
 .editor-placeholder {
@@ -124,7 +126,7 @@ h1 {
 }
 
 .editor-text-code {
-  background-color: rgb(240, 242, 245);
+  /* background-color: rgb(240, 242, 245); */
   padding: 1px 0.25rem;
   font-family: Menlo, Consolas, Monaco, monospace;
   font-size: 94%;
@@ -152,7 +154,7 @@ h1 {
 }
 
 .editor-code {
-  background-color: rgb(240, 242, 245);
+  /* background-color: rgb(240, 242, 245); */
   font-family: Menlo, Consolas, Monaco, monospace;
   display: block;
   padding: 8px 8px 8px 52px;
@@ -170,12 +172,12 @@ h1 {
 .editor-code:before {
   content: attr(data-gutter);
   position: absolute;
-  background-color: #eee;
+  /* background-color: #eee; */
   left: 0;
   top: 0;
   border-right: 1px solid #ccc;
   padding: 8px;
-  color: #777;
+  /* color: #777; */
   white-space: pre-wrap;
   text-align: right;
   min-width: 25px;
@@ -188,7 +190,7 @@ h1 {
   font-size: 10px;
   text-transform: uppercase;
   position: absolute;
-  color: rgba(0, 0, 0, 0.5);
+  /* color: rgba(0, 0, 0, 0.5); */
 }
 
 .editor-tokenComment {
@@ -235,7 +237,7 @@ h1 {
 
 .editor-heading-h1 {
   font-size: 24px;
-  color: rgb(5, 5, 5);
+  /* color: rgb(5, 5, 5); */
   font-weight: 400;
   margin: 0;
   margin-bottom: 12px;
@@ -358,11 +360,12 @@ pre::-webkit-scrollbar-thumb {
 .toolbar {
   display: flex;
   margin-bottom: 1px;
-  background: #fff;
+  /* background: #fff; */
   padding: 4px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   vertical-align: middle;
+  @apply flex-wrap
 }
 
 .toolbar button.toolbar-item {
@@ -392,6 +395,7 @@ pre::-webkit-scrollbar-thumb {
   vertical-align: -0.25em;
   display: flex;
   opacity: 0.6;
+  
 }
 
 .toolbar button.toolbar-item:disabled i.format {
@@ -399,7 +403,8 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .toolbar button.toolbar-item.active {
-  background-color: rgba(223, 232, 250, 0.3);
+  /* background-color: rgba(223, 232, 250, 0.3); */
+  @apply bg-gray-100 dark:bg-gray-600
 }
 
 .toolbar button.toolbar-item.active i {
@@ -407,28 +412,34 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .toolbar .toolbar-item:hover:not([disabled]) {
-  background-color: #eee;
+  /* background-color: #eee; */
+  @apply bg-gray-200 dark:bg-gray-500
+
 }
 
 .toolbar .divider {
   width: 1px;
-  background-color: #eee;
   margin: 0 4px;
+  /* background-color: #eee; */
+  @apply bg-gray-300 dark:bg-gray-400
 }
 
 .toolbar select.toolbar-item {
   border: 0;
   display: flex;
-  background: none;
-  border-radius: 10px;
-  padding: 8px;
+  /* background: none; */
+  /* border-radius: 10px; */
+  /* padding: 8px; */
   vertical-align: middle;
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 70px;
   font-size: 14px;
-  color: #777;
+  /* color: #777; */
   text-overflow: ellipsis;
+  @apply text-gray-300 bg-white dark:bg-gray-700
+
+
 }
 
 .toolbar select.code-language {
@@ -442,12 +453,13 @@ pre::-webkit-scrollbar-thumb {
   width: 200px;
   vertical-align: middle;
   font-size: 14px;
-  color: #777;
+  /* color: #777; */
   text-overflow: ellipsis;
   width: 70px;
   overflow: hidden;
   height: 20px;
   text-align: left;
+  @apply text-gray-400 dark:text-gray-300
 }
 
 .toolbar .toolbar-item .icon {
@@ -487,8 +499,10 @@ i.chevron-down {
   background-image: url(/images/icons/chevron-down.svg);
 }
 
+/* test  无效*/
 #block-controls button:hover {
-  background-color: #efefef;
+  /* background-color: #efefef; */
+  @apply bg-blue-600
 }
 
 #block-controls button:focus-visible {
@@ -532,23 +546,26 @@ i.chevron-down {
 }
 
 .dropdown {
-  z-index: 5;
+  z-index: 10;
   display: block;
-  position: absolute;
-  box-shadow:
+  position: fixed;
+  /* box-shadow:
     0 12px 28px 0 rgba(0, 0, 0, 0.2),
     0 2px 4px 0 rgba(0, 0, 0, 0.1),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5); */
   border-radius: 8px;
   min-width: 100px;
   min-height: 40px;
-  background-color: #fff;
+  max-height: 150px;
+  overflow: auto;
+  /* background-color: #fff; */
+  @apply bg-inherit  shadow-lg overscroll-contain
 }
 
 .dropdown .item {
   margin: 0 8px 0 8px;
   padding: 8px;
-  color: #050505;
+  /* color: #050505; */
   cursor: pointer;
   line-height: 16px;
   font-size: 15px;
@@ -557,10 +574,12 @@ i.chevron-down {
   flex-direction: row;
   flex-shrink: 0;
   justify-content: space-between;
-  background-color: #fff;
+  /* background-color: #fff; */
   border-radius: 8px;
   border: 0;
   min-width: 268px;
+  /* @apply text-gray-600 dark:text-gray-100 bg-inherit */
+  @apply text-gray-400 dark:text-gray-300 
 }
 
 .dropdown .item .active {
@@ -579,7 +598,8 @@ i.chevron-down {
 }
 
 .dropdown .item:hover {
-  background-color: #eee;
+  /* background-color: #eee; */
+  @apply bg-gray-100 dark:bg-gray-600
 }
 
 .dropdown .item .text {
@@ -589,6 +609,7 @@ i.chevron-down {
   width: 200px;
 }
 
+/* test 无效 */
 .dropdown .item .icon {
   display: flex;
   width: 20px;
@@ -597,6 +618,7 @@ i.chevron-down {
   margin-right: 12px;
   line-height: 16px;
   background-size: contain;
+  @apply dark:text-white
 }
 
 .link-editor {
@@ -690,38 +712,47 @@ i.undo {
 
 i.redo {
   background-image: url(/images/icons/arrow-clockwise.svg);
+  
 }
 
 .icon.paragraph {
   background-image: url(/images/icons/text-paragraph.svg);
+  /* @apply bg-gray-300 */
 }
 
 .icon.large-heading,
 .icon.h1 {
   background-image: url(/images/icons/type-h1.svg);
+  @apply text-sky-600
+
 }
 
 .icon.small-heading,
 .icon.h2 {
   background-image: url(/images/icons/type-h2.svg);
+  /* @apply bg-gray-300 */
 }
 
 .icon.bullet-list,
 .icon.ul {
   background-image: url(/images/icons/list-ul.svg);
+  /* @apply bg-gray-300 */
 }
 
 .icon.numbered-list,
 .icon.ol {
   background-image: url(/images/icons/list-ol.svg);
+  /* @apply bg-gray-300 */
 }
 
 .icon.quote {
   background-image: url(/images/icons/chat-square-quote.svg);
+  /* @apply bg-gray-300 */
 }
 
 .icon.code {
   background-image: url(/images/icons/code.svg);
+  /* @apply bg-gray-300 */
 }
 
 i.bold {

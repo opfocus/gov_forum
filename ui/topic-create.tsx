@@ -32,7 +32,9 @@ export default function TopicCreate() {
     | undefined
   >();
 
-  const [tagSelected, setTagSelected] = useState([""]);
+  const [tagSelected, setTagSelected] = useState<string[] | undefined>(
+    undefined,
+  );
 
   //newPost, setNewPost Reserved for draft, not used yet
   // const [newPost, setNewPost] = useState<NewPost>(
@@ -171,38 +173,40 @@ export default function TopicCreate() {
 
   let title;
   const createable: boolean =
-    myString !== "" && tagSelected[0] !== "" && categorySelected !== undefined;
+    tagSelected !== undefined &&
+    myString !== "" &&
+    categorySelected !== undefined;
   return (
     <div
       className={clsx(
-        " transition-height fixed bottom-0 left-0 z-10 w-screen origin-bottom  transform bg-white duration-300",
+        " overscroll-contain transition-height fixed bottom-0 left-0 z-10 w-screen origin-bottom  transform  duration-300",
         {
           "h-0": !isOpen,
           " h-full": isZoomEditorTextarea,
-          " h-96": !isZoomEditorTextarea && isOpen,
+          " max-h-96": !isZoomEditorTextarea && isOpen,
         },
       )}
     >
       <div
         className={clsx(
-          "transition-width mx-auto flex h-full origin-center transform flex-col  shadow-2xl duration-300",
+          " transition-width mx-auto flex origin-center transform flex-col bg-white shadow-lg duration-300  dark:bg-gray-700",
           {
-            " over w-full": isZoomEditorTextarea,
-            " w-3/5": !isZoomEditorTextarea,
+            " w-full h-full": isZoomEditorTextarea,
+            " px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl": !isZoomEditorTextarea,
           },
         )}
       >
-        <div className=" h-2 bg-blue-400"></div>
-        <div className=" flex flex-col gap-2 overflow-y-auto px-2 py-2">
+        <div className=" -mt-2 h-2 bg-sky-600"></div>
+        <div className="h-full  flex flex-col gap-2  bg-inherit p-2">
           <TopicCreateControlPanel
             isZoomEditorTextarea={isZoomEditorTextarea}
             handleZoom={handleZoom}
             hiddenEditor={hiddenEditor}
           />
-          <div className="flex w-full grow flex-row gap-4">
-            <div className="flex h-full w-full flex-col gap-2">
+          <div className="flex  grow flex-row gap-4 bg-inherit">
+            <div className="flex w-full flex-col gap-2 bg-inherit">
               <div
-                className={clsx("w-full", {
+                className={clsx("w-full bg-inherit", {
                   hidden: isZoomEditorTextarea,
                 })}
               >
@@ -213,7 +217,7 @@ export default function TopicCreate() {
                   setTagSelected={setTagSelected}
                 />
               </div>
-              <div className="  growo border border-solid border-gray-400">
+              <div className=" border border-solid border-gray-300 bg-inherit dark:border-gray-400">
                 <Editor
                   setMyString={setMyString}
                   isZoomEditorTextarea={isZoomEditorTextarea}

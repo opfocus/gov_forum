@@ -1,142 +1,64 @@
 "use client";
 
-import { ChevronDownIcon } from "@heroicons/react/16/solid";
-import { Fragment, useEffect, useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
+import { useState } from "react";
+import { useDetailsClickOutside } from "@/hook/myHook";
+import { useFetch } from "@/hook/myHook";
+import FilterDropdownContent from "@/app/(home)/_components/filter-dropdown-content";
+import Processing from "@/ui/processing";
+import FilterOptionsCategoriesInEditor from "@/app/(home)/_components/fiter-options-categories-in-editor";
 
 export default function TopicEditorCategories({
   categorySelected,
   setCategorySelected,
 }: any) {
   const [searchValue, setSearchValue] = useState("");
-  const [searchedCategories, setSearchedCategories] = useState<[] | undefined>(
-    undefined,
-  );
+  
+  //Listen click outside details
+  useDetailsClickOutside("categories-filter-in-editor", categorySelected);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/categories");
-        const categories = await response.json();
-        setSearchedCategories(categories);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
-    };
+    // Fetch categories data from the "/api/categories" endpoint when the component mounts
+    const categories = useFetch("/api/categories") as undefined | any[];
 
-    fetchData();
-  }, []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
-
-  const data = searchedCategories?.filter(
+  // Filter the categories array based on the search value.
+  const data = categories?.filter(
     (item: any) =>
       (item.name + item.description)
         .toLowerCase()
         .indexOf(searchValue.toLowerCase()) !== -1,
   );
 
+  const element: React.ReactNode =
+  categorySelected === undefined ? (
+    "categories"
+  ) : (
+    <div className="flex flex-row items-center gap-1">
+      <div
+        className=" h-2 w-2"
+        style={{ backgroundColor: `#${categorySelected.color}` }}
+      ></div>
+      <div>{categorySelected.name}</div>
+    </div>
+  );
+
   return (
-    <Menu as="div" className="relative inline-block w-full text-left">
-      <div>
-        <Menu.Button className="inline-flex w-full justify-between  border border-solid border-gray-400 px-2 py-1 text-sm hover:bg-gray-50">
-          <span>
-            {categorySelected ? categorySelected.name : "all categories"}
-          </span>
-          <ChevronDownIcon
-            className="-mr-1 h-5 w-5 text-gray-400"
-            aria-hidden="true"
-          />
-        </Menu.Button>
-        <Transition
-          as={Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
-        >
-          <Menu.Items className="absolute left-0 z-10 mt-2 w-56  origin-top-right  bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:w-96">
-            <div className="py-1">
-              <div className="flex w-full flex-row px-2 py-1 text-gray-400">
-                <input
-                  type="text"
-                  className=" grow focus:outline-none"
-                  placeholder="Search..."
-                  onChange={(e) => handleChange(e)}
-                  value={searchValue}
-                />
-                <MagnifyingGlassIcon className="h-5 w-5" />
-              </div>
-              <div className=" h-52 overflow-y-auto ">
-                {data === undefined ? (
-                  <div className="flex flex-row p-2 text-gray-700">
-                    <svg
-                      className="-ml-1 mr-3 h-5 w-5 animate-spin text-black"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Loading...
-                  </div>
-                ) : (
-                  data.map((item: any) => (
-                    <Menu.Item key={item.id}>
-                      {({ active }) => (
-                        <button
-                          className={classNames(
-                            active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block w-full px-2 py-2 text-left text-sm",
-                          )}
-                          onClick={() =>
-                            setCategorySelected({
-                              id: item.id,
-                              name: item.name,
-                            })
-                          }
-                        >
-                          <div className="flex w-full flex-col gap-1">
-                            <div className=" text-sm text-gray-700">
-                              {item.name}
-                            </div>
-                            <div className=" text-xs text-gray-400">
-                              {item.description}
-                            </div>
-                          </div>
-                        </button>
-                      )}
-                    </Menu.Item>
-                  ))
-                )}
-              </div>
-            </div>
-          </Menu.Items>
-        </Transition>
-      </div>
-    </Menu>
+    <FilterDropdownContent
+      element={element}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      elementId="categories-filter-in-editor"
+    >
+      {data === undefined ? (
+        <Processing />
+      ) : (
+        data.map((item: any) => (
+          <li key={item.name}>
+            <FilterOptionsCategoriesInEditor
+           setCategorySelected={setCategorySelected}
+              item={item}
+            />
+          </li>
+        ))
+      )}
+    </FilterDropdownContent>
   );
 }

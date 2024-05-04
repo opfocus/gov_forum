@@ -8,16 +8,16 @@ export default async function TopicListDiv({
   topicsData,
   categoriesData,
 }: {
-  topicsData: Promise<any[]>;
-  categoriesData: Promise<any[]>;
+  topicsData: Promise<any[]> | any[];
+  categoriesData: Promise<any[]> | any[];
 }) {
   const [topics, categories] = await Promise.all([topicsData, categoriesData])
-  
+  let data = new Date().toISOString()
   return (
     <div>
       <div className=" border-b-4 border-solid border-gray-100 dark:border-gray-600">
         <div className="p-2 font-medium text-gray-400 dark:text-gray-300">
-          Latest
+          Latest {data}
         </div>
       </div>
       {topics.map((topic) => (

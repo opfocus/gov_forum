@@ -2,15 +2,16 @@ import { CategoriesList, CategoriesSkeleton } from "@/ui/category-list";
 import TopicsListDiv from "@/ui/topics-list-div";
 import React from "react";
 import { Suspense } from "react";
-import { LinkButton } from "@/ui/button";
+import { LinkButton } from "@/ui/custom-compoment";
 
 import { getCategories } from "@/utils/getCategories";
 import { getTopics } from "@/utils/getTopics";
 import { TopicsDivSkeleton } from "@/ui/topics-skeleton";
 
-export const revalidate = 1800;
+export const revalidate = false
 
-export default async function Page() {
+export default async function HomePage() {
+
   return (
     <React.Fragment>
       <main className="flex flex-col gap-6 lg:flex-row">

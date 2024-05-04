@@ -93,17 +93,17 @@ export default function Editor({
     },
   ];
 
-  const height = typeof window !== "undefined" ? window.innerHeight - 150 : 500;
+  const height = typeof window !== "undefined" ? window.innerHeight - 200 : 500;
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className="editor-container">
+      <div className="editor-container bg-inherit text-white">
         <ToolbarPlugin />
-        <div className="editor-inner">
+        <div className="editor-inner bg-inherit">
           {!isZoomEditorTextarea ? (
             <RichTextPlugin
               contentEditable={
-                <ContentEditable className="editor-input h-40" />
+                <ContentEditable className="editor-input max-h-32  bg-inherit" />
               }
               placeholder={<Placeholder />}
               ErrorBoundary={LexicalErrorBoundary}
@@ -112,7 +112,7 @@ export default function Editor({
             <RichTextPlugin
               contentEditable={
                 <ContentEditable
-                  className="editor-input overflow-y-auto"
+                  className="editor-input overflow-y-auto bg-inherit"
                   style={{ height: `${height}px` }}
                 />
               }
@@ -195,7 +195,7 @@ export function Editor2() {
         <ToolbarPlugin />
         <div className="editor-inner">
           <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input h-40" />}
+            contentEditable={<ContentEditable className="editor-input" />}
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />

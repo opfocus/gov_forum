@@ -5,6 +5,7 @@ import * as Realm from "realm-web";
 import { usePathname } from "next/navigation";
 
 export { useApp, useDetailsClickOutside, useFetch };
+
 function useApp(): Realm.App | null {
   const [app, setApp] = useState<Realm.App | null>(null);
   // Run in useEffect so that App is not created in server-side environment
@@ -14,7 +15,7 @@ function useApp(): Realm.App | null {
   return app;
 }
 
-function useDetailsClickOutside(id: string) {
+function useDetailsClickOutside(id: string, state?:any) {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -39,7 +40,7 @@ function useDetailsClickOutside(id: string) {
     if (details) {
       details.removeAttribute("open");
     }
-  }, [pathname]); 
+  }, [pathname, state]); 
 }
 
 function useFetch(url: string) {
@@ -48,6 +49,6 @@ function useFetch(url: string) {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, []);
+  }, [url]);
   return data;
 }

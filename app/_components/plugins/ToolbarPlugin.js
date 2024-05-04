@@ -375,7 +375,7 @@ function BlockOptionsDropdownList({
   };
 
   return (
-    <div className="dropdown" ref={dropDownRef}>
+    <div className="dropdown scrollbar" ref={dropDownRef}>
       <button className="item" onClick={formatParagraph}>
         <span className="icon paragraph" />
         <span className="text">Normal</span>
@@ -587,7 +587,7 @@ export default function ToolbarPlugin() {
       {blockType === "code" ? (
         <>
           <Select
-            className="toolbar-item code-language"
+            className="toolbar-item code-language scrollbar"
             onChange={onCodeLanguageSelect}
             options={codeLanguges}
             value={codeLanguage}

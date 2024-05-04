@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/16/solid";
-import { HoverScaleButton } from "./button";
+import { HoverScaleButton } from "./custom-compoment";
 
 export default function ThemeSwitch({style}: {
   style: {
