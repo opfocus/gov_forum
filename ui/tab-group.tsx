@@ -10,7 +10,7 @@ export default function TabGroup({
   path,
   parallelRoutesKey,
 }: {
-  currentURLIngredients: URLIngredients;
+  currentURLIngredients?: URLIngredients;
   items: Item[];
   path: string;
   parallelRoutesKey?: string;

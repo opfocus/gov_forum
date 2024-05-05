@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-        <body className=" overflow-y-scroll bg-white pb-36 text-black dark:bg-gray-700 dark:text-white">
+        <body className=" overflow-y-scroll bg-white pb-36 text-gray-600 dark:bg-gray-700 dark:text-gray-100">
           <GlobalNav />
           <main className=" mx-auto w-full bg-inherit px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
             <Banner />

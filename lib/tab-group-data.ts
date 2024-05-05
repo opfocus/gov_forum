@@ -6,7 +6,9 @@ export type Item = {
 };
 
 
-export const homeItems:Item[] = [
+  export {homeItems, aboutItems}
+
+ const homeItems:Item[] = [
   {
     name: "Categories",
     slug: "categories",
@@ -26,5 +28,28 @@ export const homeItems:Item[] = [
     name: "Top",
     slug: "top",
     segment:'top',
+  }
+]
+
+const aboutItems:Item[] = [
+  {
+    name: "About",
+    slug: "about",
+    segment: "about",
+  },
+  {
+    name:"FAQ",
+    slug: "faq",
+    segment: "faq",
+  },
+  {
+    name: "Terms of Service",
+    slug: "tos",
+    segment: "tos",
+  },
+  {
+    name: "Privacy",
+    slug: "privacy",
+    segment:'privacy',
   }
 ]

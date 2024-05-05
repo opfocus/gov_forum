@@ -1,12 +1,14 @@
-'use client';
+// TODO: Need optimization, abstraction
 
-import type { Item } from '@/lib/tab-group-data';
-import clsx from 'clsx';
-import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
-import type { Route } from 'next';
+"use client";
+
+import type { Item } from "@/lib/tab-group-data";
+import clsx from "clsx";
+import Link from "next/link";
+import { useSelectedLayoutSegment } from "next/navigation";
+import type { Route } from "next";
 import { URLIngredients, generateNextURL } from "@/utils/url";
-import { useParams } from 'next/navigation';
+import { useParams } from "next/navigation";
 
 export default function Tab({
   currentURLIngredients,
@@ -14,37 +16,55 @@ export default function Tab({
   parallelRoutesKey,
   item,
 }: {
-  currentURLIngredients: URLIngredients;
+  currentURLIngredients?: URLIngredients;
   path: string;
   parallelRoutesKey?: string;
   item: Item;
-
 }) {
-  const slug = useParams().slug
+  const slug = useParams().slug;
   const segment = useSelectedLayoutSegment(parallelRoutesKey);
 
-  // path = dd ? generateNextURL(currentURLIngredients) 
+  // path = dd ? generateNextURL(currentURLIngredients)
+  let href = "";
+  let isActive;
 
-  const href =slug? generateNextURL({...currentURLIngredients, sort: item.slug?  item.slug : "", excipients:"l"}) : item.slug ? path  + item.slug : path;
-  
-  const isActive =
+  if (currentURLIngredients) {
+    href = slug
+      ? generateNextURL({
+          ...currentURLIngredients,
+          sort: item.slug ? item.slug : "",
+          excipients: "l",
+        })
+      : item.slug
+        ? path + item.slug
+        : path;
+
+    isActive =
+      // Example home pages e.g. `/`
+      (item.name === "Categories" && segment === null) ||
+      segment === item.segment ||
+      // Nested pages e.g. `/layouts/electronics`
+      segment === item.slug ||
+      currentURLIngredients.sort === item.segment ||
+      (slug && currentURLIngredients.sort === "" && item.segment === "latest");
+  }
+  else {
+    href = item.slug? path +"/" + item.slug : path
+    isActive =
     // Example home pages e.g. `/`
-    (item.name==="Categories" && segment === null) ||
     segment === item.segment ||
     // Nested pages e.g. `/layouts/electronics`
-    segment === item.slug ||
-    currentURLIngredients.sort === item.segment || slug && currentURLIngredients.sort === ""&& item.segment === "latest"
-
+    segment === item.slug 
+  }
   return (
     <Link
       href={href as Route}
       className={clsx("px-2 py-1 text-lg font-medium", {
-        " hover:bg-red-100 hover:text-red-400 ":
-          !isActive,
+        " hover:bg-red-100 hover:text-red-400 ": !isActive,
         "bg-red-400 text-white": isActive,
       })}
     >
       {item.name}
     </Link>
   );
-};
+}

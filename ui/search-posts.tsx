@@ -169,7 +169,7 @@ export default function SearchPosts() {
                     name="before_after"
                     id="before_after"
                     defaultValue="before"
-                    className="borderr w-full border-solid border-gray-300 bg-white 
+                    className=" appearance-none rounded-none border w-full border-solid border-gray-300 bg-white 
                     focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-gray-400 dark:bg-gray-700  
                     focus:dark:border-sky-600 focus:dark:ring-1 focus:dark:ring-sky-600"
                   >
