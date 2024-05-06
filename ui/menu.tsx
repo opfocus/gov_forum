@@ -86,7 +86,7 @@ function MenuDropdown() {
     {
       name: "Groups",
       icon: UserGroupIcon,
-      path: "/q",
+      path: "/g",
     },
     {
       name: "Badges",
@@ -96,12 +96,12 @@ function MenuDropdown() {
     {
       name: "Anniversaries",
       icon: CakeIcon,
-      path: "/",
+      path: "/cakeday/anniversaries/today",
     },
     {
       name: "Birthdays",
       icon: CakeIcon,
-      path: "/",
+      path: "/cakeday/birthdays/today",
     },
   ];
 
@@ -113,7 +113,7 @@ function MenuDropdown() {
         const resT = await fetch("/api/tags");
         const tData = await resT.json();
 
-        setTags(tData.top_tags);
+        setTags(tData.tags);
         setCategories(CData);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -122,6 +122,7 @@ function MenuDropdown() {
     fetchData();
   }, []);
 
+  console.log(tags)
   return (
     <Transition
       as={Fragment}
@@ -224,7 +225,7 @@ function MenuDropdown() {
               <Menu.Item>
                 {({ active }) => (
                   <Link
-                    href={"/"}
+                    href={"/u/chooose/messages"}
                     className={classNames(
                       active ? "bg-gray-100 dark:bg-gray-600 " : "",
                       "block cursor-not-allowed p-2 text-sm",

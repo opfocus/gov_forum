@@ -76,6 +76,16 @@ function UserMenDropdown({
     false,
     false,
   ]);
+
+  const userMenuItems: Record<string, string> = {
+    0: "/u/chooose/notifications",
+    1: "/u/chooose/notifications/responses",
+    2: "/u/chooose/notifications/likes-received",
+    3: "/u/chooose/messages",
+    4: "/u/chooose/activity/bookmarks",
+    5: "/",
+    6: "/u/chooose/summary"
+  };
   const handleClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
@@ -89,7 +99,8 @@ function UserMenDropdown({
         }),
       );
     } else {
-      router.push("/");
+      const test = userMenuItems[id]
+      router.push(test as __next_route_internal_types__.RouteImpl<string> , {scroll: false});
       setIsOpen(false);
     }
   };
@@ -106,12 +117,11 @@ function UserMenDropdown({
         <div className=" flex flex-col border border-solid border-gray-200 dark:border-gray-600">
           <button
             id="0"
-            className={clsx("cursor-not-allowed p-3", {
+            className={clsx(" p-3", {
               " bg-gray-300 dark:bg-gray-400": isSelected[0],
               " hover:bg-gray-200 dark:hover:bg-gray-400": !isSelected[0],
             })}
             onClick={(event) => handleClick(event)}
-            title="TBA"
           >
             <BellIcon
               className=" h-5 w-5  text-gray-500 dark:text-gray-200"
@@ -121,12 +131,11 @@ function UserMenDropdown({
           </button>
           <button
             id="1"
-            className={clsx("cursor-not-allowed p-3", {
+            className={clsx(" p-3", {
               " bg-gray-300 dark:bg-gray-400": isSelected[1],
               " hover:bg-gray-200 dark:hover:bg-gray-400": !isSelected[1],
             })}
             onClick={(event) => handleClick(event)}
-            title="TBA"
           >
             <MagnifyingGlassIcon
               className=" h-5 w-5  text-gray-500 dark:text-gray-200"
@@ -137,12 +146,11 @@ function UserMenDropdown({
           <button
             id="2"
             role="tab"
-            className={clsx("cursor-not-allowed p-3", {
+            className={clsx(" p-3", {
               " bg-gray-300 dark:bg-gray-400": isSelected[2],
               " hover:bg-gray-200 dark:hover:bg-gray-400": !isSelected[2],
             })}
             onClick={(event) => handleClick(event)}
-            title="TBA"
           >
             <HeartIcon
               className=" h-5 w-5  text-gray-500 dark:text-gray-200"
@@ -152,12 +160,11 @@ function UserMenDropdown({
           </button>
           <button
             id="3"
-            className={clsx("cursor-not-allowed p-3", {
+            className={clsx(" p-3", {
               " bg-gray-300 dark:bg-gray-400": isSelected[3],
               " hover:bg-gray-200 dark:hover:bg-gray-400": !isSelected[3],
             })}
             onClick={(event) => handleClick(event)}
-            title="TBA"
           >
             <EnvelopeIcon
               className=" h-5 w-5  text-gray-500 dark:text-gray-200"
@@ -167,12 +174,11 @@ function UserMenDropdown({
           </button>
           <button
             id="4"
-            className={clsx("cursor-not-allowed p-3", {
+            className={clsx(" p-3", {
               " bg-gray-300 dark:bg-gray-400": isSelected[4],
               " hover:bg-gray-200 dark:hover:bg-gray-400": !isSelected[4],
             })}
             onClick={(event) => handleClick(event)}
-            title="TBA"
           >
             <BookmarkIcon
               className=" h-5 w-5  text-gray-500 dark:text-gray-200"
@@ -182,12 +188,11 @@ function UserMenDropdown({
           </button>
           <button
             id="5"
-            className={clsx("cursor-not-allowed p-3", {
+            className={clsx(" p-3", {
               " bg-gray-300 dark:bg-gray-400": isSelected[5],
               " hover:bg-gray-200 dark:hover:bg-gray-400": !isSelected[5],
             })}
             onClick={(event) => handleClick(event)}
-            title="TBA"
           >
             <PuzzlePieceIcon
               className=" h-5 w-5  text-gray-500 dark:text-gray-200"
@@ -200,7 +205,7 @@ function UserMenDropdown({
         <div className=" flex flex-col border border-solid border-gray-100 dark:border-gray-600">
           <button
             id="6"
-            className={clsx("cursor-not-allowed p-3", {
+            className={clsx(" p-3", {
               " bg-gray-300 dark:bg-gray-400": isSelected[6],
               " hover:bg-gray-200 dark:hover:bg-gray-400": !isSelected[6],
             })}

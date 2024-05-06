@@ -55,7 +55,7 @@ export default function UserMenuButtonProfile() {
       </li>
       <li className=" px-2 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
         <Link
-          href={"/u/me/preferencesd"}
+          href={"/u/me/preferences"}
           className="flex flex-row items-center justify-start"
           title="Test link, not a real one"
         >
