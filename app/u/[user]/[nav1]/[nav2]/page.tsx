@@ -134,7 +134,7 @@ export default async function Page({
         <main>
           <section className="mt-8">
             <div className=" font-semibold">You don’t have any messages</div>
-            <div className=" my-4 text-gray-700 text-sm">
+            <div className=" my-4 text-sm">
               <p>
                 Need to have a direct personal conversation with someone,
                 outside the normal conversational flow? Message them by
@@ -159,7 +159,7 @@ export default async function Page({
         <main>
           <section className="mt-8">
             <div className=" font-semibold">You don’t have any messages</div>
-            <div className=" my-4 text-gray-700 text-sm">
+            <div className=" my-4 text-sm">
               <p>
                 Need to have a direct personal conversation with someone,
                 outside the normal conversational flow? Message them by
@@ -184,7 +184,7 @@ export default async function Page({
         <main>
           <section className="mt-8">
             <div className=" font-semibold">You don’t have any messages</div>
-            <div className=" my-4 text-gray-700 text-sm">
+            <div className=" my-4 text-sm">
               <p>
                 Need to have a direct personal conversation with someone,
                 outside the normal conversational flow? Message them by

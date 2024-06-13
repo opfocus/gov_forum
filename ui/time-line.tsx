@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import type { Post } from "@/lib/type";
 import { formatTimeSince } from "@/utils/formatTimeSince";
 import { formatDate } from "@/utils/formatDate";
+import { Button } from "./custom-compoment";
+import { ArrowUturnLeftIcon, BellIcon } from "@heroicons/react/16/solid";
 
 const sideScrollAreaHeight = 240;
 
@@ -20,7 +22,7 @@ export default function TimeLine({
   postCount: number;
   postsRecord: Post[];
   activePostId: string | undefined;
-  setNextPostIndex: (id: string) => void;
+  setNextPostIndex: any;
 }) {
   const [scrollerPosition, setScrollerPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -96,7 +98,7 @@ export default function TimeLine({
   }
 
   return (
-    <div className=" sticky right-0 top-24 h-full">
+    <div className=" hidden lg:block sticky right-0 top-24 h-full">
       <div className=" flex flex-col gap-2 ">
         <div className=" select-none text-base font-normal text-gray-400">
           Aug 2022
@@ -153,6 +155,14 @@ export default function TimeLine({
         <div className=" text-gray-400">
           {formatTimeSince(postsRecord[postCount - 1].created_at)}
         </div>
+      </div>
+      <div className="mt-4 flex gap-2">
+        <Button handleEvent={()=>console.log("TBA, topic replay")}>
+          <ArrowUturnLeftIcon className=" w-5 h-5" />
+        </Button>
+        <Button handleEvent={() =>console.log("TBA, topic notification")}>
+          <BellIcon className=" w-5 h-5" />
+        </Button>
       </div>
     </div>
   );

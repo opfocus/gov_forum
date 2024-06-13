@@ -1,18 +1,24 @@
-export default function Page() {
-  return <SkeletonCard />;
+
+
+export default async function Page() {
+  const user = await getData()
+  
+  return (
+    <div>
+      {user.name}
+    </div>
+  )
 }
 
-export function SkeletonCard({ isLoading }: { isLoading?: boolean }) {
-  return (
-    <div
-      className="relative overflow-hidden rounded-2xl animate-pulse before:bg-gradient-to-r 
-  "
-    >
-      <div className="space-y-3">
-        <div className="h-14 rounded-lg bg-gray-700" />
-        <div className="h-3 w-11/12 rounded-lg bg-gray-700" />
-        <div className="h-3 w-8/12 rounded-lg bg-gray-700" />
-      </div>
-    </div>
-  );
+
+
+
+async function getData() {
+  const res = await fetch("http://localhost:3000/api/test-api", {next: {revalidate:30}})
+
+  if (!res.ok) {
+    throw new Error("Fail to fetch data: getData()")
+  }
+
+  return res.json()
 }

@@ -56,7 +56,7 @@ export default function UserActionsList({
                 </div>
               </div>
               <p
-                className=" mt-4 text-sm text-gray-700"
+                className=" mt-4 text-sm"
                 dangerouslySetInnerHTML={{ __html: item.excerpt }}
               ></p>
             </li>

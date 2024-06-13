@@ -10,7 +10,7 @@ export default function Posts({
   setPostsRecord,
 }: {
   postsRecord: Post[];
-  setPostsRecord: (post: Post[]) => void;
+  setPostsRecord: any;
 }) {
   const [replyWhichPost, setReplyWhichPost] = useState<Post | undefined>(
     undefined,

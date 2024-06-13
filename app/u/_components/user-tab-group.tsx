@@ -1,5 +1,5 @@
 import type { BarItem, BarItem2 } from "@/lib/type";
-import UserNavTab from "./user-tab";
+import UserNavTab from "@/app/u/_components/user-tab";
 import clsx from "clsx";
 
 export default function UserTabGroup({
@@ -12,7 +12,7 @@ export default function UserTabGroup({
   return (
     <div
       className={clsx(
-        " flex w-full flex-row border-b border-solid border-gray-200",
+        " flex w-full flex-row border-y border-solid border-gray-200",
         {
           "": true,
         },

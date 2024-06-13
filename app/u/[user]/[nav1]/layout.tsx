@@ -1,5 +1,5 @@
 import { barsItems } from "@/lib/user-nav-bars-data";
-import UserTabGroup from "@/ui/user-tab-group";
+import UserTabGroup from "@/app/u/_components/user-tab-group";
 import { notFound } from "next/navigation";
 
 export default function Layout({

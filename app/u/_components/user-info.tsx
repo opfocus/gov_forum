@@ -12,7 +12,7 @@ export default function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className=" w-full">
+    <section className="w-full">
       <div className=" flex flex-row border-b border-solid border-gray-200">
         <Image
           src={"/user-avatar-c.png"}
@@ -21,7 +21,7 @@ export default function UserInfo() {
           height={isOpen ? 144 : 48}
           className=" mb-2 mr-4 rounded-full"
         ></Image>
-        <div className=" grow text-2xl font-semibold text-black">choooose</div>
+        <div className=" grow text-2xl font-semibold">choooose</div>
         <div>
           {!isOpen ? (
             <button
@@ -75,6 +75,6 @@ export default function UserInfo() {
           <div>wangzhsr@gmail.com</div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

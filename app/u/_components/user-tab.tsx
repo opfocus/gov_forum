@@ -1,5 +1,5 @@
 import type { BarItem, BarItem2 } from "@/lib/type";
-import A from "@/app/_components/a";
+import A from "@/app/u/_components/a";
 import clsx from "clsx";
 
 export default function UserNavTab({
@@ -14,7 +14,7 @@ export default function UserNavTab({
     <A path={path} slug={tab.slug} isNav1={tab.children === undefined}>
       <div
         className={clsx(
-          "flex w-full flex-row place-content-center whitespace-nowrap text-gray-500",
+          "flex w-full flex-row place-content-center whitespace-nowrap",
           {
             // @ts-ignore
             " text-sm": tab.children === undefined,

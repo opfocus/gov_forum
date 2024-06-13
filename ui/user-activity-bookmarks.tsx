@@ -13,7 +13,7 @@ export default function UserActivityBookmarks({
             <div className=" font-semibold">
               You have not started any topics yet
             </div>
-            <p className=" py-4 text-sm text-gray-700">
+            <p className=" py-4 text-sm">
               Start bookmarking posts with the{" "}
               <BookmarkIcon className=" inline-block h-4 w-4" /> button and they
               will be listed here for easy reference. You can schedule a

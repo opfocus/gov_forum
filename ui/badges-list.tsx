@@ -20,11 +20,9 @@ export default function BadgesList({
           {userBadges.map((item, index) => (
             <div
               key={index}
-              className=" relative flex flex-row gap-4 bg-gray-100 p-6"
+              className=" relative flex flex-row gap-4 bg-gray-100 p-6 text-gray-500"
             >
-              <div>
-                <CakeIcon className=" h-14 w-14 text-gray-400" />
-              </div>
+              <CakeIcon className=" h-14 w-14 shrink-0" />
               <div>
                 <div className=" font-semibold">
                   {badges.find((badge) => badge.id === item.badge_id).name}

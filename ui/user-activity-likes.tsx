@@ -55,7 +55,7 @@ export default function UserActivityLikes({
                 </div>
               </div>
               <p
-                className=" mt-4 text-sm text-gray-700"
+                className=" mt-4 text-sm"
                 dangerouslySetInnerHTML={{ __html: item.excerpt }}
               ></p>
               <div className=" mt-2 flex flex-row gap-1">

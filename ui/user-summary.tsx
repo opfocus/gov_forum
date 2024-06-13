@@ -1,11 +1,12 @@
 import { HeartIcon, UserIcon } from "@heroicons/react/16/solid";
+import { Route } from "next";
 import Link from "next/link";
 
 export default function UserSummary({ data }: any) {
   return (
     <main>
       <section className=" mt-8 flex flex-col justify-between gap-3">
-        <div className=" text-lg font-semibold text-gray-700">STATS</div>
+        <div className=" text-lg font-semibold ">STATS</div>
         <ul className=" flex flex-row flex-wrap gap-4">
           <li className=" flex flex-row items-baseline gap-1">
             <div className=" text-lg font-medium">{data.days_visited}</div>
@@ -55,7 +56,7 @@ export default function UserSummary({ data }: any) {
       </section>
       <div className=" grid grid-cols-2 gap-4">
         <section className=" mt-8 flex flex-col justify-start gap-3">
-          <div className=" text-lg font-semibold text-gray-700">
+          <div className=" text-lg font-semibold ">
             TOP REPLIES
           </div>
           <ul className=" space-y-4">
@@ -75,13 +76,13 @@ export default function UserSummary({ data }: any) {
                   </div>
                   {/* only test ui here */}
                 </div>
-                <Link href={String(item.topic_id)}>{item.topic_id}</Link>
+                <Link href={String(item.topic_id) as Route}>{item.topic_id}</Link>
               </li>
             ))}
           </ul>
         </section>
         <section className=" mt-8 flex flex-col justify-start gap-3">
-          <div className=" text-lg font-semibold text-gray-700">TOP TOPICS</div>
+          <div className=" text-lg font-semibold ">TOP TOPICS</div>
           {data.topic_ids.length === 0 ? (
             <div className=" text-gary-700">No topics yet.</div>
           ) : (
@@ -94,9 +95,9 @@ export default function UserSummary({ data }: any) {
           )}
         </section>
         <section className=" mt-8 flex flex-col justify-start gap-3">
-          <div className=" text-lg font-semibold text-gray-700">TOP LINKS</div>
+          <div className=" text-lg font-semibold ">TOP LINKS</div>
           {data.links.length === 0 ? (
-            <div className=" text-gray-700">No links yet.</div>
+            <div className=" ">No links yet.</div>
           ) : (
             <ul className=" space-y-4">
               {data.links.map((item: any) => (
@@ -107,11 +108,11 @@ export default function UserSummary({ data }: any) {
           )}
         </section>
         <section className=" mt-8 flex flex-col justify-start gap-3">
-          <div className=" text-lg font-semibold text-gray-700">
+          <div className=" text-lg font-semibold ">
             MOST REPLIED TO
           </div>
           {data.most_replied_to_users.length === 0 ? (
-            <div className=" text-gray-700">No replies yet.</div>
+            <div className=" ">No replies yet.</div>
           ) : (
             <ul className=" space-y-4">
               {data.most_replied_to_users.map((item: any) => (
@@ -122,11 +123,11 @@ export default function UserSummary({ data }: any) {
           )}
         </section>
         <section className=" mt-8 flex flex-col justify-start gap-3">
-          <div className=" text-lg font-semibold text-gray-700">
+          <div className=" text-lg font-semibold ">
             MOST LIKED BY
           </div>
           {data.most_liked_by_users.length === 0 ? (
-            <div className=" text-gray-700">No replies yet.</div>
+            <div className=" ">No replies yet.</div>
           ) : (
             <ul className=" space-y-4">
               {data.most_liked_by_users.map((item: any) => (
@@ -144,7 +145,7 @@ export default function UserSummary({ data }: any) {
                       <div className=" text-sm font-semibold">
                         {item.username}
                       </div>
-                      <div className=" text-sm text-gray-700">{item.name}</div>
+                      <div className=" text-sm ">{item.name}</div>
                       <div className=" flex flex-row items-center gap-1 text-sm">
                         <HeartIcon className=" h-5 w-5 text-red-400" />
                         {item.count}
@@ -157,9 +158,9 @@ export default function UserSummary({ data }: any) {
           )}
         </section>
         <section className=" mt-8 flex flex-col justify-start gap-3">
-          <div className=" text-lg font-semibold text-gray-700">MOST LIKED</div>
+          <div className=" text-lg font-semibold ">MOST LIKED</div>
           {data.most_liked_users.length === 0 ? (
-            <div className=" text-gray-700">No replies yet.</div>
+            <div className=" ">No replies yet.</div>
           ) : (
             <ul className=" space-y-4">
               {data.most_liked_users.map((item: any) => (
@@ -178,7 +179,7 @@ export default function UserSummary({ data }: any) {
                       <div className=" text-sm font-semibold">
                         {item.username}
                       </div>
-                      <div className=" text-sm text-gray-700">{item.name}</div>
+                      <div className=" text-sm ">{item.name}</div>
                       <div className=" flex flex-row items-center gap-1 text-sm">
                         <HeartIcon className=" h-5 w-5 text-red-400" />
                         {item.count}
@@ -191,11 +192,11 @@ export default function UserSummary({ data }: any) {
           )}
         </section>
         <section className=" mt-8 flex flex-col justify-start gap-3">
-          <div className=" text-lg font-semibold text-gray-700">
+          <div className=" text-lg font-semibold ">
             TOP CATEGORIES
           </div>
           {data.top_categories.length === 0 ? (
-            <div className=" text-gray-700">No replies yet.</div>
+            <div className=" ">No replies yet.</div>
           ) : (
             <table className=" w-full">
               <thead className=" border-b-2 border-gray-400 text-sm  text-gray-400">
@@ -216,7 +217,7 @@ export default function UserSummary({ data }: any) {
                             backgroundColor: `#${item.color}`,
                           }}
                         ></div>
-                        <div className="text-sm font-light text-gray-700">
+                        <div className="text-sm font-light ">
                           {item.name}
                         </div>
                       </div>
@@ -234,15 +235,15 @@ export default function UserSummary({ data }: any) {
         <section className=" mt-8 flex flex-col justify-start gap-3"></section>
 
         <section className=" col-span-2 mt-8 flex flex-col justify-start gap-3">
-          <div className=" text-lg font-semibold text-gray-700">TOP BADGES</div>
+          <div className=" text-lg font-semibold ">TOP BADGES</div>
           {data.badges.length === 0 ? (
-            <div className=" text-gray-700">No badges yet.</div>
+            <div className=" ">No badges yet.</div>
           ) : (
             <div className=" grid grid-cols-2 gap-4 md:grid-cols-3">
               {data.badges.map((item: any) => (
                 <div key={item.id} className=" flex flex-row bg-gray-100 p-6">
                   <UserIcon className=" h-14 w-14 text-orange-400" />
-                  <div className=" flex flex-col gap-1 pl-4">
+                  <div className=" flex flex-col gap-1 pl-4 text-gray-700">
                     <div className=" text-lg font-semibold">{item.id}</div>
                     <div className=" text-sm">hello</div>
                   </div>

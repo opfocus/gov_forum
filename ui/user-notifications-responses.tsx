@@ -59,7 +59,7 @@ export default function UserNotificationsResponses({
                   {""} {new Date(item.created_at).getFullYear()}
                 </div>
               </div>
-              <p className=" mt-4 text-sm text-gray-700">{item.excerpt}</p>
+              <p className=" mt-4 text-sm">{item.excerpt}</p>
             </li>
           ))}
         </ul>

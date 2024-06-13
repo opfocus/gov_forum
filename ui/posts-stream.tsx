@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 
 import type { Post, Topic } from "@/lib/type";
 import Processing from "@/ui/processing";
-import TimeLine from "./time-line";
+import TimeLine from "@/ui/time-line";
 
 export default function PostsStream() {
   const [topicRecord, setTopicRecord] = useState<Topic | undefined>(undefined);
@@ -75,7 +75,7 @@ export default function PostsStream() {
     return (
       <div>
         <div className=" mb-4 flex max-w-5xl flex-col">
-          <div className=" text-2xl font-semibold text-gray-700">
+          <div className=" text-2xl font-semibold ">
             {topicRecord.title}
           </div>
           <div className=" flex flex-row justify-start gap-1 text-sm font-normal text-gray-400">

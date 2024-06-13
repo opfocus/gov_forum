@@ -122,7 +122,6 @@ function MenuDropdown() {
     fetchData();
   }, []);
 
-  console.log(tags)
   return (
     <Transition
       as={Fragment}
