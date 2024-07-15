@@ -16,10 +16,5 @@ export async function GET() {
     (a, b) => a.position - b.position,
   );
 
-  return Response.json(data, {
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "max-age=1800",
-    },
-  });
+  return Response.json(data);
 }

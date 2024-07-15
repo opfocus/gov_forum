@@ -37,6 +37,7 @@ export default function FilterDropdownBarCategories({
 
   //Get the selected category based on the URL.
   const getSelectedCategoryBySlug = () => {
+    console.log(currentURLIngredients)
     if (currentURLIngredients.category !== "") {
       const item = categories?.find(
         (category: any) => category.slug === currentURLIngredients.category,
@@ -47,7 +48,7 @@ export default function FilterDropdownBarCategories({
   };
   useEffect(
     () => setSelectedCategory(getSelectedCategoryBySlug()),
-    [categories],
+    [categories, currentURLIngredients.category],
   );
   
   const element: React.ReactNode =

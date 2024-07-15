@@ -8,6 +8,7 @@ import Menu from "@/ui/menu";
 import ThemeSwitch from "@/ui/theme-switch";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import LoginButton from "@/ui/login-button";
+import { Route } from "next";
 
 export default function GlobalNav() {
   const { user } = useUser();
@@ -20,7 +21,7 @@ export default function GlobalNav() {
   return (
     <header className=" sticky top-0 z-10 w-full border-t border-solid border-gray-100 bg-inherit shadow-lg">
       <nav className=" relative mx-auto flex h-16 w-full items-center justify-between px-3 sm:max-lg:max-w-xl lg:max-xl:max-w-4xl  xl:max-w-6xl">
-        <Link href="/" className=" shrink-0">
+        <Link href= {"/" as Route} className=" shrink-0">
           <Image
             src={"/op-logo.png"}
             alt="OP Logo"

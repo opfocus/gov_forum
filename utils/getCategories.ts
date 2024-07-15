@@ -20,5 +20,7 @@ export const getCategories = cache(async () => {
     (a, b) => a.position - b.position,
   );
 
+  console.log("1111")
+
   return data;
 });

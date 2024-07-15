@@ -8,7 +8,7 @@ import { getCategories } from "@/utils/getCategories";
 import { getTopics } from "@/utils/getTopics";
 import { TopicsDivSkeleton } from "@/ui/topics-skeleton";
 
-export const revalidate = false
+export const revalidate = 1800
 
 export default async function HomePage() {
 

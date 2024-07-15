@@ -104,7 +104,7 @@ export default function TopicCreate() {
     // user name
     const user_name = user!.nickname!;
     //tag name
-    const tags = tagSelected;
+    const tags = tagSelected!;
     //category id (hard write for testing)
     const category_id = categorySelected!.id;
     const category_name = categorySelected!.name;

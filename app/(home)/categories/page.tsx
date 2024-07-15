@@ -1,7 +1,5 @@
-
-import HomePage from "@/app/(home)/page"
+import HomePage from "@/app/(home)/page";
 
 export default async function Page() {
-
-  return <HomePage />
+  return <HomePage />;
 }

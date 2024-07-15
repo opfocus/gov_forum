@@ -1,4 +1,6 @@
+import { Route } from "next";
 import Link from "next/link";
+import Router from "next/router";
 
 export default function NotFound() {
   return (
@@ -11,22 +13,22 @@ export default function NotFound() {
           <h2 className=" text-lg font-semibold">Popular</h2>
           <ul className=" space-y-2">
             <li className=" flex flex-col">
-              <Link href={"/"} className=" text-sky-600">
+              <Link href={"/" as Route} className=" text-sky-600">
                 Popular tipic title here
               </Link>
               <Link
-                href={"/"}
+                href={"/" as Route}
                 className=" text-sm text-gray-500 dark:text-gray-200"
               >
                 Category and tag here
               </Link>
             </li>
             <li className=" flex flex-col">
-              <Link href={"/"} className=" text-sky-600">
+              <Link href={"/" as Route} className=" text-sky-600">
                 Popular tipic title here
               </Link>
               <Link
-                href={"/"}
+                href={"/" as Route}
                 className=" text-sm text-gray-500 dark:text-gray-200"
               >
                 Category and tag here
@@ -38,11 +40,11 @@ export default function NotFound() {
           <h2 className=" text-lg font-semibold">Recent</h2>
           <ul className=" space-y-2">
             <li className=" flex flex-col">
-              <Link href={"/"} className=" text-sky-600">
+              <Link href={"/" as Route} className=" text-sky-600">
                 Recent topic title here
               </Link>
               <Link
-                href={"/"}
+                href={"/" as Route}
                 className=" text-sm text-gray-500 dark:text-gray-200"
               >
                 Category and tag here

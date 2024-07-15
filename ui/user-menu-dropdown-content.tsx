@@ -12,6 +12,7 @@ import {
 import { forwardRef, useEffect, useState } from "react";
 import Link from "next/link";
 import QuickPreview from "@/ui/user-tab-quick-preview";
+import { Route } from "next";
 
 const UserMenDropdownContent = forwardRef((props, ref) => {
   const [tabActive, setTabActive] = useState(0);
@@ -67,7 +68,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             role="tab"
             aria-selected="true"
             className="cursor-not-allowed p-3 hover:bg-gray-200 aria-selected:bg-gray-300 hover:dark:bg-gray-500 dark:aria-selected:bg-gray-400 "
-            href="/test7/tab1"
+            href={"/test7/tab1" as Route}
             title="TBA"
           >
             <BellIcon
@@ -80,7 +81,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             role="tab"
             aria-selected="false"
             className="cursor-not-allowed p-3 hover:bg-gray-200 aria-selected:bg-gray-300 hover:dark:bg-gray-500 dark:aria-selected:bg-gray-400 "
-            href="/test7/#"
+            href={"/test7/#" as Route}
             title="TBA"
           >
             <MagnifyingGlassIcon
@@ -92,7 +93,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
           <Link
             role="tab"
             className="cursor-not-allowed p-3 hover:bg-gray-200 aria-selected:bg-gray-300 hover:dark:bg-gray-500 dark:aria-selected:bg-gray-400 "
-            href="/test7/#"
+            href={"/test7/#" as Route}
             title="TBA"
           >
             <HeartIcon
@@ -105,7 +106,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             role="tab"
             aria-selected="false"
             className="cursor-not-allowed p-3 hover:bg-gray-200 aria-selected:bg-gray-300 hover:dark:bg-gray-500 dark:aria-selected:bg-gray-400 "
-            href="/test7/#"
+            href={"/test7/#" as Route}
             title="TBA"
           >
             <EnvelopeIcon
@@ -118,7 +119,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             role="tab"
             aria-selected="false"
             className="cursor-not-allowed p-3 hover:bg-gray-200 aria-selected:bg-gray-300 hover:dark:bg-gray-500 dark:aria-selected:bg-gray-400 "
-            href="/test7/#"
+            href={"/test7/#" as Route}
             title="TBA"
           >
             <BookmarkIcon
@@ -131,7 +132,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             role="tab"
             aria-selected="false"
             className="cursor-not-allowed p-3 hover:bg-gray-200 aria-selected:bg-gray-300 hover:dark:bg-gray-500 dark:aria-selected:bg-gray-400 "
-            href="/test7/#"
+            href={"/test7/#" as Route}
             title="TBA"
           >
             <PuzzlePieceIcon
@@ -147,7 +148,7 @@ const UserMenDropdownContent = forwardRef((props, ref) => {
             role="tab"
             aria-selected="false"
             className="cursor-not-allowed p-3 hover:bg-gray-200 aria-selected:bg-gray-300 hover:dark:bg-gray-500 dark:aria-selected:bg-gray-400 "
-            href="/test7/#"
+            href={"/test7/#" as Route}
           >
             <UserIcon
               className=" h-5 w-5  text-gray-500 dark:text-gray-200"
